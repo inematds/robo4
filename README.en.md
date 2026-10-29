@@ -24,6 +24,7 @@ Detailed plan (decisions, parts, pins, common issues): [PLANO.md](PLANO.md) (in 
 | `guia/assets/diagrama-*.svg` | Diagrams: wiring, pins, leg geometry, calibration, gait (PT, `-en`, `-es`) |
 | `guia/assets/*.jpg` | AI-generated illustrations (kit, exploded view, leg, wiring, assembled robot) |
 | `guia/` | Guide page in PT, `guia/en/`, and `guia/es/` |
+| `pecas/stl/` | Parts for 3D printing (base, walls, thighs, shins, corner brackets) and the full print plate; generator in `cad/gerar_stl.py` |
 
 ## Hardware at a glance
 
@@ -40,7 +41,7 @@ Legend: 🧠 you (with Nei) · ⚙️ command/script · 🤖 `claude -p`
 | 3 | Measure the UBEC output (5–6 V) before connecting a servo | multimeter | 🧠 |
 | 4 | Shield on the Uno, SEL jumper removed, UBEC on the terminal block, LiPo into the DC jack | [wiring diagram](guia/assets/diagrama-fiacao-en.svg) | 🧠 |
 | 5 | Set all 8 servos to 90° | `arduino-cli compile --fqbn arduino:avr:uno firmware/montagem && arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem` | ⚙️ |
-| 5b | Cut or print the parts | [dimensioned drawing](guia/assets/diagrama-pecas-en.svg) | 🧠 |
+| 5b | Cut or print the parts | [dimensioned drawing](guia/assets/diagrama-pecas-en.svg) or STL: `python cad/gerar_stl.py` → [`pecas/stl/`](pecas/stl/) | 🧠 |
 | 6 | Mount the thighs vertically and the shins at 90° | [calibration diagram](guia/assets/diagrama-calibracao-en.svg) | 🧠 |
 | 7 | Upload the firmware | `arduino-cli compile --fqbn arduino:avr:uno firmware/robo4 && arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/robo4` | ⚙️ |
 | 8 | Calibrate using the Serial Monitor (`m`, `o <perna> <junta> <graus>`, `p`, `g`) | `arduino-cli monitor -p /dev/ttyACM0 -c baudrate=9600` | 🧠 |

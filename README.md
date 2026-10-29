@@ -24,6 +24,7 @@ Plano detalhado (decisões, peças, pinos, problemas comuns): [PLANO.md](PLANO.m
 | `guia/assets/diagrama-*.svg` | Diagramas: fiação, pinos, geometria da perna, calibração, marcha (PT, `-en`, `-es`) |
 | `guia/assets/*.jpg` | Ilustrações geradas por IA (kit, vista explodida, perna, fiação, robô montado) |
 | `guia/` | Página do guia em PT, `guia/en/` e `guia/es/` |
+| `pecas/stl/` | Peças para impressão 3D (base, paredes, coxas, canelas, cantoneiras) e a mesa completa; gerador em `cad/gerar_stl.py` |
 
 ## Hardware em uma linha
 
@@ -40,7 +41,7 @@ Legenda: 🧠 você (com o Nei) · ⚙️ comando/script · 🤖 `claude -p`
 | 3 | Medir a saída do UBEC (5–6 V) antes de ligar servo | multímetro | 🧠 |
 | 4 | Shield no Uno, jumper SEL fora, UBEC no borne, LiPo no jack DC | [diagrama de fiação](guia/assets/diagrama-fiacao.svg) | 🧠 |
 | 5 | Pôr os 8 servos em 90° | `arduino-cli compile --fqbn arduino:avr:uno firmware/montagem && arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem` | ⚙️ |
-| 5b | Cortar ou imprimir as peças | [desenho com medidas](guia/assets/diagrama-pecas.svg) | 🧠 |
+| 5b | Cortar ou imprimir as peças | [desenho com medidas](guia/assets/diagrama-pecas.svg) ou STL: `python cad/gerar_stl.py` → [`pecas/stl/`](pecas/stl/) | 🧠 |
 | 6 | Montar coxas na vertical e canelas em 90° | [diagrama de calibração](guia/assets/diagrama-calibracao.svg) | 🧠 |
 | 7 | Carregar o firmware | `arduino-cli compile --fqbn arduino:avr:uno firmware/robo4 && arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/robo4` | ⚙️ |
 | 8 | Calibrar pelo Monitor Serial (`m`, `o <perna> <junta> <graus>`, `p`, `g`) | `arduino-cli monitor -p /dev/ttyACM0 -c baudrate=9600` | 🧠 |

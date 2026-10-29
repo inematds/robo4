@@ -24,6 +24,7 @@ Plan detallado (decisiones, piezas, pines, problemas comunes): [PLANO.md](PLANO.
 | `guia/assets/diagrama-*.svg` | Diagramas: cableado, pines, geometría de la pata, calibración, marcha (PT, `-en`, `-es`) |
 | `guia/assets/*.jpg` | Ilustraciones generadas por IA (kit, vista explotada, pata, cableado, robot montado) |
 | `guia/` | Página de la guía en PT, `guia/en/` y `guia/es/` |
+| `pecas/stl/` | Piezas para impresión 3D (base, paredes, muslos, tibias, escuadras) y la placa de impresión completa; generador en `cad/gerar_stl.py` |
 
 ## Hardware en una línea
 
@@ -40,7 +41,7 @@ Leyenda: 🧠 tú (con Nei) · ⚙️ comando/script · 🤖 `claude -p`
 | 3 | Medir la salida del UBEC (5–6 V) antes de conectar un servo | multímetro | 🧠 |
 | 4 | Conectar el Shield al Uno, quitar el jumper SEL, conectar el UBEC al bloque de terminales y la LiPo al jack DC | [diagrama de cableado](guia/assets/diagrama-fiacao-es.svg) | 🧠 |
 | 5 | Poner los 8 servos en 90° | `arduino-cli compile --fqbn arduino:avr:uno firmware/montagem && arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem` | ⚙️ |
-| 5b | Cortar o imprimir las piezas | [dibujo con medidas](guia/assets/diagrama-pecas-es.svg) | 🧠 |
+| 5b | Cortar o imprimir las piezas | [dibujo con medidas](guia/assets/diagrama-pecas-es.svg) o STL: `python cad/gerar_stl.py` → [`pecas/stl/`](pecas/stl/) | 🧠 |
 | 6 | Montar los muslos en vertical y las espinillas en 90° | [diagrama de calibración](guia/assets/diagrama-calibracao-es.svg) | 🧠 |
 | 7 | Cargar el firmware | `arduino-cli compile --fqbn arduino:avr:uno firmware/robo4 && arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/robo4` | ⚙️ |
 | 8 | Calibrar desde el Monitor Serial (`m`, `o <perna> <junta> <graus>`, `p`, `g`) | `arduino-cli monitor -p /dev/ttyACM0 -c baudrate=9600` | 🧠 |
