@@ -66,11 +66,21 @@ void cinematica(float x, float y, float &quadril, float &joelho) {
   joelho = degrees(k);
 }
 
+// Cada servo anda no máximo MAX_GRAUS por atualização (20 ms): ao ficar em pé ou trocar
+// de modo, as pernas vão aos poucos e a fonte não leva o pico dos 8 servos de uma vez.
+const float MAX_GRAUS = 5.0;   // o trote pede até ~4° por atualização no joelho
+float atual[4][2];
+
+void escreverServo(uint8_t p, uint8_t j, float alvo) {
+  alvo = constrain(alvo, 10, 170);
+  atual[p][j] += constrain(alvo - atual[p][j], -MAX_GRAUS, MAX_GRAUS);
+  servo[p][j].write((int)(atual[p][j] + 0.5));
+}
+
 // Montagem: servo em 90° = coxa na vertical e joelho em ângulo reto.
 void moverJunta(uint8_t p, uint8_t j, float graus) {
   float neutro = (j == 0) ? 0.0 : 90.0;
-  float alvo = 90.0 + SENTIDO[p][j] * (graus - neutro) + ajuste[p][j];
-  servo[p][j].write((int)constrain(alvo, 10, 170));
+  escreverServo(p, j, 90.0 + SENTIDO[p][j] * (graus - neutro) + ajuste[p][j]);
 }
 
 void moverPe(uint8_t p, float x, float y) {
@@ -156,7 +166,8 @@ void setup() {
   modo = calibrado ? PARADO : MONTAGEM;
   for (uint8_t p = 0; p < 4; p++)
     for (uint8_t j = 0; j < 2; j++) {
-      servo[p][j].write(90 + ajuste[p][j]);
+      atual[p][j] = 90 + ajuste[p][j];
+      servo[p][j].write((int)atual[p][j]);
       servo[p][j].attach(PINO[p][j]);
       delay(200);             // um servo por vez: evita pico de corrente na partida
     }
@@ -175,8 +186,8 @@ void loop() {
   for (uint8_t p = 0; p < 4; p++) {
     float x = 0, y = altura;
     if (modo == MONTAGEM) {
-      servo[p][0].write(90 + ajuste[p][0]);
-      servo[p][1].write(90 + ajuste[p][1]);
+      escreverServo(p, 0, 90 + ajuste[p][0]);
+      escreverServo(p, 1, 90 + ajuste[p][1]);
       continue;
     }
     if (modo == DEITADO) y = 45;

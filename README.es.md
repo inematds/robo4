@@ -27,7 +27,7 @@ Plan detallado (decisiones, piezas, pines, problemas comunes): [PLANO.md](PLANO.
 
 ## Hardware en una línea
 
-Arduino Uno + Sensor Shield V5 · 8× MG90S en los pines D2–D9 · LiPo 2S → UBEC 6 V/5 A en el bloque de terminales de los servos (jumper SEL fuera) · LiPo en VIN del Uno · GND común.
+Arduino Uno + Sensor Shield V5 · 8× MG90S en los pines D2–D9 · LiPo 2S → UBEC 6 V/5 A en el bloque de terminales de los servos (jumper SEL fuera) · LiPo en el jack DC del Uno (plug P4) · GND común.
 
 ## El proceso, de principio a fin
 
@@ -38,7 +38,7 @@ Leyenda: 🧠 tú (con Nei) · ⚙️ comando/script · 🤖 `claude -p`
 | 1 | Comprar las piezas de la lista y cargar la LiPo | [PLANO.md › Lista de piezas](PLANO.md#2-lista-de-peças) (en portugués) | 🧠 |
 | 2 | Instalar el compilador del Uno | `arduino-cli core install arduino:avr && arduino-cli lib install Servo` | ⚙️ |
 | 3 | Medir la salida del UBEC (5–6 V) antes de conectar un servo | multímetro | 🧠 |
-| 4 | Conectar el Shield al Uno, quitar el jumper SEL, conectar el UBEC al bloque de terminales y la LiPo al VIN | [diagrama de cableado](guia/assets/diagrama-fiacao-es.svg) | 🧠 |
+| 4 | Conectar el Shield al Uno, quitar el jumper SEL, conectar el UBEC al bloque de terminales y la LiPo al jack DC | [diagrama de cableado](guia/assets/diagrama-fiacao-es.svg) | 🧠 |
 | 5 | Poner los 8 servos en 90° | `arduino-cli compile --fqbn arduino:avr:uno firmware/montagem && arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem` | ⚙️ |
 | 5b | Cortar o imprimir las piezas | [dibujo con medidas](guia/assets/diagrama-pecas-es.svg) | 🧠 |
 | 6 | Montar los muslos en vertical y las espinillas en 90° | [diagrama de calibración](guia/assets/diagrama-calibracao-es.svg) | 🧠 |
@@ -50,7 +50,7 @@ Leyenda: 🧠 tú (con Nei) · ⚙️ comando/script · 🤖 `claude -p`
 
 ## Estado
 
-El código compila para `arduino:avr:uno` (37% de la memoria de programa, 17% de la RAM). **Todavía no se ha probado en un robot montado**: las señales de los servos, las medidas L1/L2 y los tiempos de marcha son valores iniciales.
+El código compila para `arduino:avr:uno` (38% de la memoria de programa, 19% de la RAM). **Todavía no se ha probado en un robot montado**: las señales de los servos, las medidas L1/L2 y los tiempos de marcha son valores iniciales.
 
 ---
 

@@ -173,7 +173,7 @@
 <section id="fluxo"><div class="wrap">
   <span class="chip">Como funciona</span>
   <h2>Do saco de peças ao trote</h2>
-  <p class="sub">Seis fases. As três primeiras são montagem; as três últimas são ajuste no robô já de pé.</p>
+  <p class="sub">Sete etapas. As quatro primeiras são montagem; as três últimas são ajuste no robô já montado.</p>
   <div class="flow">
     <span>Comprar e carregar a bateria</span><span class="arr">→</span>
     <span>Eletrônica na bancada</span><span class="arr">→</span>
@@ -205,6 +205,7 @@
     <tr><td>UBEC / step-down 5–6 V, 5 A ou mais</td><td>1</td><td>R$ 20–45</td><td>8 servos puxam 4 a 6 A no pico</td></tr>
     <tr><td>Chave liga/desliga (≥ 5 A)</td><td>1</td><td>R$ 5–10</td><td>Cortar tudo de uma vez</td></tr>
     <tr><td>Alarme de tensão para LiPo (bipador)</td><td>1</td><td>R$ 8–15</td><td>Apita antes de a bateria descer demais</td></tr>
+    <tr><td>Plugue P4 macho 5,5 × 2,1 mm com rabicho</td><td>1</td><td>R$ 5–10</td><td>Leva a bateria ao jack DC do Uno (o shield cobre o pino VIN)</td></tr>
     <tr><td>Fio 18 AWG vermelho e preto (~1 m)</td><td>1</td><td>R$ 8–15</td><td>Linha de força bateria → chave → UBEC → borne</td></tr>
     <tr><td>Carregador balanceado 2S</td><td>1</td><td>R$ 60–150</td><td>LiPo só carrega com balanceador</td></tr>
     <tr><td>Chassi + 4 coxas + 4 canelas</td><td>1 jogo</td><td>R$ 10–40</td><td>Impresso em 3D ou acrílico/MDF 3 mm</td></tr>
@@ -214,7 +215,10 @@
   <div class="grid g3">
     <div class="card"><h3>Ferramentas</h3><p>Chave Phillips pequena, alicate de corte, multímetro e ferro de solda (só para o XT60 e a chave).</p></div>
     <div class="card"><h3>Software</h3><p>Arduino IDE ou <code>arduino-cli</code> (ferramenta de linha de comando do Arduino). Os comandos deste guia usam o <code>arduino-cli</code>.</p><pre><span class="c"># instala o arduino-cli (Linux/macOS; no Windows baixe em arduino.github.io/arduino-cli)</span>
-<span class="k">curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh</span>
+<span class="k">mkdir -p ~/.local/bin</span>
+<span class="k">curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/.local/bin sh</span>
+<span class="k">export PATH="$HOME/.local/bin:$PATH"</span>  <span class="c"># ponha esta linha no ~/.bashrc</span>
+<span class="k">arduino-cli core update-index</span>
 <span class="k">arduino-cli core install arduino:avr</span>
 <span class="k">arduino-cli lib install Servo</span>
 <span class="c"># Linux: permissão para usar a porta USB (saia e entre na sessão depois)</span>
@@ -227,9 +231,9 @@
 <section id="diagramas"><div class="wrap">
   <span class="chip">Diagramas</span>
   <h2>Tudo o que você precisa olhar enquanto monta</h2>
-  <p class="sub">Os diagramas estão em SVG no repositório (<code>guia/assets/</code>). Toque em "abrir em tela cheia" para ampliar ou imprimir.</p>
+  <p class="sub">Os diagramas estão em SVG no repositório (<code>guia/assets/</code>). No celular eles ficam pequenos: toque em "Abrir em tela cheia". Para imprimir o desenho das peças em tamanho real, use as cotas escritas nele (em mm), não a escala da tela.</p>
   <div class="aviso"><strong>Regra número 1:</strong> os 8 servos nunca são alimentados pelo 5 V do Uno. Tire o jumper SEL do shield (a pecinha plástica que liga o 5 V do Uno aos pinos V dos servos) e ligue o UBEC no borne (conector de parafuso) dos servos. As trilhas do shield são finas: se os servos tremerem com o robô andando, reforce levando um fio 18 AWG do UBEC direto à fileira de pinos V.</div>
-  <figure class="dia"><a href="assets/diagrama-fiacao.svg" target="_blank" rel="noopener"><img src="assets/diagrama-fiacao.svg" alt="Diagrama de fiação: bateria, chave, UBEC, borne dos servos, VIN e pinos D2 a D9" loading="lazy"></a><figcaption>Fiação e energia: força dos servos pelo UBEC, lógica pelo VIN, GND comum. <a href="assets/diagrama-fiacao.svg" target="_blank" rel="noopener">Abrir em tela cheia</a></figcaption></figure>
+  <figure class="dia"><a href="assets/diagrama-fiacao.svg" target="_blank" rel="noopener"><img src="assets/diagrama-fiacao.svg" alt="Diagrama de fiação: bateria, chave, UBEC, borne dos servos, jack DC do Uno e pinos D2 a D9" loading="lazy"></a><figcaption>Fiação e energia: força dos servos pelo UBEC, lógica pelo jack DC do Uno, GND comum. <a href="assets/diagrama-fiacao.svg" target="_blank" rel="noopener">Abrir em tela cheia</a></figcaption></figure>
   <figure class="dia"><a href="assets/diagrama-pinos.svg" target="_blank" rel="noopener"><img src="assets/diagrama-pinos.svg" alt="Mapa das pernas vista de cima com número no código, pinos e sinal de cada servo" loading="lazy"></a><figcaption>Mapa das pernas: número usado no código, pinos e sinal de cada servo. <a href="assets/diagrama-pinos.svg" target="_blank" rel="noopener">Abrir em tela cheia</a></figcaption></figure>
   <figure class="dia"><a href="assets/diagrama-pecas.svg" target="_blank" rel="noopener"><img src="assets/diagrama-pecas.svg" alt="Desenho das peças com medidas: parede lateral, base, coxa e canela, e medidas do servo MG90S" loading="lazy"></a><figcaption>Peças com medidas: parede lateral, base, coxa e canela. <a href="assets/diagrama-pecas.svg" target="_blank" rel="noopener">Abrir em tela cheia</a></figcaption></figure>
   <figure class="dia"><a href="assets/diagrama-perna.svg" target="_blank" rel="noopener"><img src="assets/diagrama-perna.svg" alt="Geometria da perna com coxa de 55 mm, canela de 60 mm e fórmulas da cinemática inversa" loading="lazy"></a><figcaption>Uma perna em escala e as fórmulas que o código usa. <a href="assets/diagrama-perna.svg" target="_blank" rel="noopener">Abrir em tela cheia</a></figcaption></figure>
@@ -249,7 +253,8 @@
 
   <div class="step"><div class="b">2</div><div>
     <h3>Shield no Uno, jumper SEL fora</h3>
-    <p>Encaixe o Sensor Shield. Retire o jumper SEL e confira com o multímetro que o pino V do shield não está ligado ao 5 V do Uno (clones variam). Ligue o UBEC no borne dos servos e a LiPo no VIN/GND do Uno.</p>
+    <p>Encaixe o Sensor Shield. Retire o jumper SEL e confira com o multímetro que o pino V do shield não está ligado ao 5 V do Uno (clones variam). Ligue o UBEC no borne dos servos. A lógica do Uno recebe a LiPo pelo jack DC (o conector redondo ao lado do USB), com um plugue P4 5,5 × 2,1 mm: centro positivo, fio vermelho no pino do meio. Confira a polaridade com o multímetro antes de encaixar.</p>
+    <p>O regulador do Uno precisa de uns 7 V no jack. Regule o alarme da LiPo para 3,5 V por célula (7,0 V no total): ele apita antes de o Uno começar a reiniciar.</p>
     <figure class="dia"><img src="assets/fiacao-bancada.jpg" alt="Ilustração da eletrônica na bancada: Uno com shield, servos plugados, UBEC, chave e bateria" loading="lazy"><figcaption>Ilustração gerada por IA: eletrônica montada na bancada antes de ir para o chassi.</figcaption></figure>
   </div></div>
 
@@ -282,7 +287,7 @@
 
   <div class="step"><div class="b">7</div><div>
     <h3>Calibre cada junta</h3>
-    <p>Digite <code>m</code> para pôr tudo em 90°. Corrija a junta torta com <code>o &lt;perna&gt; &lt;junta&gt; &lt;graus&gt;</code> e Enter: perna 0 a 3 (FE, FD, TE, TD), junta 0 = quadril, 1 = joelho, graus de −30 a 30. Grave com <code>g</code> na EEPROM (a memória do Uno que não apaga ao desligar).</p>
+    <p>Digite <code>m</code> para pôr tudo em 90°. Corrija a junta torta com <code>o &lt;perna&gt; &lt;junta&gt; &lt;graus&gt;</code> e Enter (na Arduino IDE, deixe o Monitor Serial em "Nova linha"; sem final de linha, o comando vale depois de 3 s): perna 0 a 3 (FE, FD, TE, TD), junta 0 = quadril, 1 = joelho, graus de −30 a 30. Grave com <code>g</code> na EEPROM (a memória do Uno que não apaga ao desligar).</p>
 <pre><span class="k">m</span>          <span class="c"># todos em 90°</span>
 <span class="k">o 0 1 -6</span>   <span class="c"># joelho da frente esquerda: −6° (se piorou, use 6)</span>
 <span class="k">p</span>          <span class="c"># mostra os ajustes</span>
@@ -291,7 +296,7 @@
 
   <div class="step"><div class="b">8</div><div>
     <h3>Fique em pé</h3>
-    <p>Digite <code>x</code>. As quatro pernas devem dobrar igual. Se alguma dobrar para o lado errado, troque o sinal dela em <code>SENTIDO[][]</code> no código, compile e carregue de novo.</p>
+    <p>Digite <code>x</code>. As pernas vão aos poucos até a pose em pé (cada servo anda no máximo 5° a cada 20 ms, o que também poupa a fonte). As quatro devem dobrar igual. Se alguma dobrar para o lado errado, troque o sinal dela em <code>SENTIDO[][]</code> no código, compile e carregue de novo.</p>
 <pre><span class="c">// firmware/robo4/robo4.ino</span>
 <span class="k">const int8_t SENTIDO[4][2] = {{1, -1}, {-1, 1}, {1, -1}, {-1, 1}};</span></pre>
   </div></div>
@@ -299,7 +304,7 @@
   <div class="step"><div class="b">9</div><div>
     <h3>Primeiros passos: marcha lenta</h3>
     <p>Com o robô suspenso, digite <code>c</code> (marcha lenta, em inglês <em>creep</em>) e confira a ordem: trás esquerda, frente esquerda, trás direita, frente direita. O corpo balança para a frente e para trás: é de propósito, para o peso ficar sobre as três pernas no chão. Depois ponha no chão.</p>
-<p>Se tombar para o lado: baixe a altura com <code>-</code>, ou no código diminua <code>PASSO</code>, aumente <code>BALANCO</code> (12 → 18) ou <code>CICLO_CREEP</code>. Pernas mais afastadas (paredes mais distantes) também ajudam.</p>
+<p><code>BALANCO</code> só leva o corpo para a frente e para trás. Se tombar para a frente ou para trás, aumente <code>BALANCO</code> (12 → 18) ou diminua <code>PASSO</code>. Se tombar para o lado, o que resolve é baixar a altura com <code>-</code> ou afastar as pernas (base mais larga que 80 mm).</p>
   </div></div>
 
   <div class="step"><div class="b">10</div><div>
@@ -337,6 +342,12 @@
     <tr><td>AWG</td><td>Medida de espessura do fio: quanto menor o número, mais grosso (18 AWG é mais grosso que 20).</td></tr>
     <tr><td>Mancal</td><td>Apoio do lado oposto ao eixo que deixa a peça girar sem folga.</td></tr>
     <tr><td>EEPROM</td><td>Memória do Arduino que não apaga ao desligar; guarda a calibração.</td></tr>
+    <tr><td>Sketch</td><td>Nome do programa do Arduino (a pasta com o arquivo <code>.ino</code>).</td></tr>
+    <tr><td>Monitor Serial</td><td>Janela de texto onde você conversa com o Arduino pelo cabo USB.</td></tr>
+    <tr><td>Step-down</td><td>Regulador que baixa a tensão (o UBEC é um step-down).</td></tr>
+    <tr><td>I2C</td><td>Ligação de 2 fios (A4 e A5 no Uno) usada por sensores como a IMU.</td></tr>
+    <tr><td>IMU</td><td>Sensor que mede inclinação e giro (ex.: MPU-6050).</td></tr>
+    <tr><td>Jack DC / P4</td><td>Conector redondo de energia do Uno e o plugue que encaixa nele.</td></tr>
     <tr><td>FQBN</td><td>Nome completo da placa para o <code>arduino-cli</code>: <code>arduino:avr:uno</code>.</td></tr>
     <tr><td>Cinemática inversa</td><td>Conta que transforma "onde o pé deve estar" nos ângulos do quadril e do joelho.</td></tr>
     <tr><td>Marcha lenta (creep) e trote</td><td>Jeitos de andar: um pé no ar por vez, ou dois pés em diagonal.</td></tr>
@@ -350,7 +361,7 @@
   <div class="tblwrap"><table class="tbl">
     <tr><th>Sintoma</th><th>Causa provável</th><th>O que fazer</th></tr>
     <tr><td>Arduino reinicia quando os servos mexem</td><td>Servos tirando energia do Uno</td><td>Jumper SEL fora, servos só pelo UBEC, GND comum</td></tr>
-    <tr><td>Servo treme parado</td><td>Fonte fraca ou fio fino</td><td>UBEC de 5 A ou mais, fio 20 AWG, bateria carregada</td></tr>
+    <tr><td>Servo treme parado</td><td>Fonte fraca ou fio fino</td><td>UBEC de 5 A ou mais, fio 18 AWG na linha de força, bateria carregada</td></tr>
     <tr><td>Servo esquenta</td><td>Forçando contra o limite</td><td>Ajuste com <code>o</code>; veja se a perna não bate no chassi</td></tr>
     <tr><td>Perna dobra para o lado errado</td><td>Sinal invertido</td><td>Troque o sinal em <code>SENTIDO[][]</code></td></tr>
     <tr><td>Anda torto</td><td>Lados calibrados diferente</td><td><code>m</code> e iguale as pernas com <code>o</code></td></tr>

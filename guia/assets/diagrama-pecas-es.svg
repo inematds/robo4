@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="Inter, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 872" font-family="Inter, Arial, sans-serif">
   <title>Piezas con medidas: chasis, muslo y espinilla</title>
-  <rect width="1200" height="800" rx="16" fill="#0c0c10"/>
+  <rect width="1200" height="872" rx="16" fill="#0c0c10"/>
   <text x="40" y="52" fill="#e9e9ee" font-size="28" font-weight="700" font-family="Sora, Inter, sans-serif">Piezas con medidas (mm)</text>
   <text x="40" y="82" fill="#9a9aa6" font-size="16">Escala: 3 px = 1 mm. Corta en acrílico/MDF de 3 mm o imprime con 3 mm de espesor. Medidas de referencia: comprueba con un calibrador.</text>
   <g stroke-width="2" fill="none">
@@ -84,5 +84,15 @@
     <text x="22" y="476" fill="#9a9aa6" font-size="14">¿Cambiaste 55 o 60? Cambia L1 y L2</text>
     <text x="22" y="496" fill="#9a9aa6" font-size="14">en firmware/robo4/robo4.ino.</text>
     <text x="22" y="530" fill="#9a9aa6" font-size="14">Peso objetivo armado: 350–450 g.</text>
+  </g>
+  <g id="cotas" font-size="14" fill="#e9e9ee">
+    <text x="40" y="680" fill="#FACC15" font-size="16" font-weight="700">Cotas para marcar (mm, desde la esquina superior izquierda de cada pieza)</text>
+    <text x="40" y="706">Pared: ejes a 20 y a 120 del extremo, 20 debajo del borde superior. Ventana 23 × 12,5, de altura 13,75 a</text>
+    <text x="40" y="726">26,25; el eje queda a 6 del extremo de la ventana que da hacia afuera.</text>
+    <text x="40" y="750">Pestañas del servo: 2 orificios M2 a 27,8 entre centros, a la altura del eje, centrados en la ventana.</text>
+    <text x="40" y="774">Base: Uno centrado, esquina de la placa en (35,7; 13,4). Orificios del Uno desde esa esquina: (14,0; 2,5)</text>
+    <text x="40" y="794">(15,3; 50,7) (66,1; 7,6) (66,1; 35,5).</text>
+    <text x="40" y="818">Muslo: orificio del horn a 8 del borde superior, centrado. Tibia: horn a 8 del borde superior, orificio del</text>
+    <text x="40" y="838">pie 60 más abajo (6 del borde inferior).</text>
   </g>
 </svg>

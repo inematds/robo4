@@ -27,7 +27,7 @@ Plano detalhado (decisões, peças, pinos, problemas comuns): [PLANO.md](PLANO.m
 
 ## Hardware em uma linha
 
-Arduino Uno + Sensor Shield V5 · 8× MG90S nos pinos D2–D9 · LiPo 2S → UBEC 6 V/5 A no borne dos servos (jumper SEL fora) · LiPo no VIN do Uno · GND comum.
+Arduino Uno + Sensor Shield V5 · 8× MG90S nos pinos D2–D9 · LiPo 2S → UBEC 6 V/5 A no borne dos servos (jumper SEL fora) · LiPo no jack DC do Uno (plugue P4) · GND comum.
 
 ## O processo, do início ao fim
 
@@ -38,7 +38,7 @@ Legenda: 🧠 você (com o Nei) · ⚙️ comando/script · 🤖 `claude -p`
 | 1 | Comprar as peças da lista e carregar a LiPo | [PLANO.md › Lista de peças](PLANO.md#2-lista-de-peças) | 🧠 |
 | 2 | Instalar o compilador do Uno | `arduino-cli core install arduino:avr && arduino-cli lib install Servo` | ⚙️ |
 | 3 | Medir a saída do UBEC (5–6 V) antes de ligar servo | multímetro | 🧠 |
-| 4 | Shield no Uno, jumper SEL fora, UBEC no borne, LiPo no VIN | [diagrama de fiação](guia/assets/diagrama-fiacao.svg) | 🧠 |
+| 4 | Shield no Uno, jumper SEL fora, UBEC no borne, LiPo no jack DC | [diagrama de fiação](guia/assets/diagrama-fiacao.svg) | 🧠 |
 | 5 | Pôr os 8 servos em 90° | `arduino-cli compile --fqbn arduino:avr:uno firmware/montagem && arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem` | ⚙️ |
 | 5b | Cortar ou imprimir as peças | [desenho com medidas](guia/assets/diagrama-pecas.svg) | 🧠 |
 | 6 | Montar coxas na vertical e canelas em 90° | [diagrama de calibração](guia/assets/diagrama-calibracao.svg) | 🧠 |
@@ -50,7 +50,7 @@ Legenda: 🧠 você (com o Nei) · ⚙️ comando/script · 🤖 `claude -p`
 
 ## Estado
 
-O código compila para `arduino:avr:uno` (37% da memória de programa, 17% da RAM). **Ainda não foi testado num robô montado**: sinais dos servos, medidas L1/L2 e tempos de marcha são pontos de partida.
+O código compila para `arduino:avr:uno` (38% da memória de programa, 19% da RAM). **Ainda não foi testado num robô montado**: sinais dos servos, medidas L1/L2 e tempos de marcha são pontos de partida.
 
 ---
 

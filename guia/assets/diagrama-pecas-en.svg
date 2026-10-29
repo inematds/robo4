@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="Inter, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 872" font-family="Inter, Arial, sans-serif">
   <title>Parts with dimensions: chassis, thigh, and shin</title>
-  <rect width="1200" height="800" rx="16" fill="#0c0c10"/>
+  <rect width="1200" height="872" rx="16" fill="#0c0c10"/>
   <text x="40" y="52" fill="#e9e9ee" font-size="28" font-weight="700" font-family="Sora, Inter, sans-serif">Parts with dimensions (mm)</text>
   <text x="40" y="82" fill="#9a9aa6" font-size="16">Scale: 3 px = 1 mm. Cut from 3 mm acrylic/MDF or print at 3 mm thick. Reference dimensions: check with calipers.</text>
   <g stroke-width="2" fill="none">
@@ -84,5 +84,15 @@
     <text x="22" y="476" fill="#9a9aa6" font-size="14">Changed 55 or 60? Update L1 and L2</text>
     <text x="22" y="496" fill="#9a9aa6" font-size="14">in firmware/robo4/robo4.ino.</text>
     <text x="22" y="530" fill="#9a9aa6" font-size="14">Target assembled weight: 350–450 g.</text>
+  </g>
+  <g id="cotas" font-size="14" fill="#e9e9ee">
+    <text x="40" y="680" fill="#FACC15" font-size="16" font-weight="700">Marking dimensions (mm, from the top-left corner of each part)</text>
+    <text x="40" y="706">Wall: axes at 20 and 120 from the end, 20 below the top. Slot 23 × 12.5, from height 13.75 to 26.25; the</text>
+    <text x="40" y="726">axis is 6 from the slot end that faces the outside of the wall.</text>
+    <text x="40" y="750">Servo tabs: 2 M2 holes 27.8 apart (center to center), at axis height, centered on the slot.</text>
+    <text x="40" y="774">Base: Uno centered, board corner at (35.7; 13.4). Uno holes from that corner: (14.0; 2.5) (15.3; 50.7)</text>
+    <text x="40" y="794">(66.1; 7.6) (66.1; 35.5).</text>
+    <text x="40" y="818">Thigh: horn hole 8 from the top edge, centered. Shin: horn 8 from the top, foot hole 60 below (6 from the</text>
+    <text x="40" y="838">bottom edge).</text>
   </g>
 </svg>

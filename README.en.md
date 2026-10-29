@@ -27,7 +27,7 @@ Detailed plan (decisions, parts, pins, common issues): [PLANO.md](PLANO.md) (in 
 
 ## Hardware at a glance
 
-Arduino Uno + Sensor Shield V5 · 8× MG90S on pins D2–D9 · 2S LiPo → UBEC 6 V/5 A on the servo terminal block (SEL jumper removed) · LiPo on the Uno’s VIN · Common GND.
+Arduino Uno + Sensor Shield V5 · 8× MG90S on pins D2–D9 · 2S LiPo → UBEC 6 V/5 A on the servo terminal block (SEL jumper removed) · LiPo into the Uno’s DC jack (P4 plug) · Common GND.
 
 ## The process, from start to finish
 
@@ -38,7 +38,7 @@ Legend: 🧠 you (with Nei) · ⚙️ command/script · 🤖 `claude -p`
 | 1 | Buy the parts on the list and charge the LiPo | [PLANO.md › Parts list](PLANO.md#2-lista-de-peças) (in Portuguese) | 🧠 |
 | 2 | Install the Uno compiler | `arduino-cli core install arduino:avr && arduino-cli lib install Servo` | ⚙️ |
 | 3 | Measure the UBEC output (5–6 V) before connecting a servo | multimeter | 🧠 |
-| 4 | Shield on the Uno, SEL jumper removed, UBEC on the terminal block, LiPo on VIN | [wiring diagram](guia/assets/diagrama-fiacao-en.svg) | 🧠 |
+| 4 | Shield on the Uno, SEL jumper removed, UBEC on the terminal block, LiPo into the DC jack | [wiring diagram](guia/assets/diagrama-fiacao-en.svg) | 🧠 |
 | 5 | Set all 8 servos to 90° | `arduino-cli compile --fqbn arduino:avr:uno firmware/montagem && arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem` | ⚙️ |
 | 5b | Cut or print the parts | [dimensioned drawing](guia/assets/diagrama-pecas-en.svg) | 🧠 |
 | 6 | Mount the thighs vertically and the shins at 90° | [calibration diagram](guia/assets/diagrama-calibracao-en.svg) | 🧠 |
@@ -50,7 +50,7 @@ Legend: 🧠 you (with Nei) · ⚙️ command/script · 🤖 `claude -p`
 
 ## Status
 
-The code compiles for `arduino:avr:uno` (37% of program memory, 17% of RAM). **It has not yet been tested on an assembled robot**: servo directions, L1/L2 measurements, and gait timing are starting points.
+The code compiles for `arduino:avr:uno` (38% of program memory, 19% of RAM). **It has not yet been tested on an assembled robot**: servo directions, L1/L2 measurements, and gait timing are starting points.
 
 ---
 

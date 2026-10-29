@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="Inter, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 872" font-family="Inter, Arial, sans-serif">
   <title>Peças com medidas: chassi, coxa e canela</title>
-  <rect width="1200" height="800" rx="16" fill="#0c0c10"/>
+  <rect width="1200" height="872" rx="16" fill="#0c0c10"/>
   <text x="40" y="52" fill="#e9e9ee" font-size="28" font-weight="700" font-family="Sora, Inter, sans-serif">Peças com medidas (mm)</text>
   <text x="40" y="82" fill="#9a9aa6" font-size="16">Escala 3 px = 1 mm. Corte em acrílico/MDF de 3 mm ou imprima com 3 mm de espessura. Medidas de referência: confira com paquímetro.</text>
   <g stroke-width="2" fill="none">
@@ -84,5 +84,15 @@
     <text x="22" y="476" fill="#9a9aa6" font-size="14">Mudou 55 ou 60? Troque L1 e L2</text>
     <text x="22" y="496" fill="#9a9aa6" font-size="14">no firmware/robo4/robo4.ino.</text>
     <text x="22" y="530" fill="#9a9aa6" font-size="14">Peso alvo montado: 350–450 g.</text>
+  </g>
+  <g id="cotas" font-size="14" fill="#e9e9ee">
+    <text x="40" y="680" fill="#FACC15" font-size="16" font-weight="700">Cotas para marcar (mm, a partir do canto de cima à esquerda de cada peça)</text>
+    <text x="40" y="706">Parede: eixos a 20 e a 120 da ponta, 20 abaixo do topo. Janela 23 × 12,5 de altura 13,75 a 26,25; o eixo</text>
+    <text x="40" y="726">fica a 6 da ponta da janela voltada para fora da parede.</text>
+    <text x="40" y="750">Abas do servo: 2 furos M2 a 27,8 entre centros, na altura do eixo, centrados na janela.</text>
+    <text x="40" y="774">Base: Uno centrado, canto da placa em (35,7; 13,4). Furos do Uno a partir desse canto: (14,0; 2,5) (15,3;</text>
+    <text x="40" y="794">50,7) (66,1; 7,6) (66,1; 35,5).</text>
+    <text x="40" y="818">Coxa: furo do horn a 8 da borda de cima, no centro. Canela: horn a 8 do topo, furo do pé 60 abaixo (6 da</text>
+    <text x="40" y="838">borda de baixo).</text>
   </g>
 </svg>

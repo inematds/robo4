@@ -26,7 +26,7 @@
 
   <!-- VIN -->
   <path d="M420,190 L440,190 L440,300 L716,300" fill="none" stroke="#38bdf8" stroke-width="3" marker-end="url(#seta)"/>
-  <text x="456" y="290" fill="#38bdf8" font-size="15">7.4 V directly to VIN (or jack) → logic</text>
+  <text x="456" y="290" fill="#38bdf8" font-size="15">7.4 V into the Uno DC jack (P4 plug) → logic</text>
 
   <!-- Shield -->
   <rect x="720" y="120" width="440" height="470" rx="14" fill="#101a2b" stroke="#3b82f6" stroke-width="2"/>
@@ -40,7 +40,7 @@
   <text x="1045" y="192" fill="#fca5a5" font-size="14" text-anchor="middle" font-weight="700">JUMPER SEL</text>
   <text x="1045" y="210" fill="#fca5a5" font-size="14" text-anchor="middle">REMOVED</text>
   <!-- VIN pin label -->
-  <text x="740" y="306" fill="#38bdf8" font-size="15">VIN / GND</text>
+  <text x="740" y="306" fill="#38bdf8" font-size="15">Uno DC jack (5.5 × 2.1 mm plug)</text>
 
   <!-- header rows -->
   <text x="740" y="352" fill="#9a9aa6" font-size="14">Pin  ·  S (signal)  V (+)  G (GND)</text>
