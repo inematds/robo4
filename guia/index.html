@@ -173,7 +173,7 @@
 <section id="fluxo"><div class="wrap">
   <span class="chip">Como funciona</span>
   <h2>Do saco de peças ao trote</h2>
-  <p class="sub">Sete etapas. As quatro primeiras são montagem; as três últimas são ajuste no robô já montado.</p>
+  <p class="sub">Sete etapas, que viram os 10 passos do guia: bateria = passo 1, eletrônica = 2, servos em 90° = 3, pernas = 4 e 5, calibrar = 6 a 8, marcha lenta = 9, trote = 10.</p>
   <div class="flow">
     <span>Comprar e carregar a bateria</span><span class="arr">→</span>
     <span>Eletrônica na bancada</span><span class="arr">→</span>
@@ -260,21 +260,21 @@
 
   <div class="step"><div class="b">3</div><div>
     <h3>Servos soltos em 90°</h3>
-    <p>Plugue os 8 servos nos pinos D2 a D9 (marrom no G, vermelho no V, laranja no S) sem os braços (horns, a pecinha plástica que encaixa no eixo) presos. Carregue o sketch de montagem: eles vão para 90° um por vez e ficam travados. Não gire o eixo com a mão enquanto estiverem ligados.</p>
+    <p>Plugue os 8 servos nos pinos D2 a D9 (marrom no G, vermelho no V, laranja no S) sem os braços (horns, a pecinha plástica que encaixa no eixo) presos. Ligue a chave (os servos recebem força do UBEC) e carregue o sketch de montagem: eles vão para 90° um por vez e ficam travados. Não gire o eixo com a mão enquanto estiverem ligados.</p>
 <pre><span class="k">arduino-cli compile --fqbn arduino:avr:uno firmware/montagem</span>
 <span class="k">arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem</span></pre>
   </div></div>
 
   <div class="step"><div class="b">4</div><div>
     <h3>Monte as pernas com os servos parados</h3>
-    <p>Corte as peças pelo <a href="#diagramas">desenho com medidas</a>. Parafuse os servos do quadril nas paredes laterais e encaixe as coxas na vertical. Prenda os servos do joelho na ponta das coxas e as canelas em ângulo reto. Do lado oposto ao eixo, um parafuso M3 com porca travante (porca com anel de nylon que não solta) serve de mancal, o apoio que deixa a peça girar sem folga. Se o horn não encaixar em ângulo reto exato, use o dente mais próximo: o resto se corrige no passo 7.</p>
+    <p>Corte as peças pelo <a href="#diagramas">desenho com medidas</a>. Parafuse os servos do quadril nas janelas das paredes laterais, eixo para fora, e prenda o horn no topo de cada coxa: coxa na vertical, apontando para o chão. Encaixe o servo do joelho na janela da coxa com o eixo para fora (o mesmo lado do quadril) e o corpo subindo pela coxa, voltado para dentro do robô. A canela vai no horn do joelho, do lado de fora da coxa, <strong>apontando para a FRENTE do robô</strong> em ângulo reto (vale para as 4 pernas). Se ela apontar para trás, o joelho dobra do jeito errado e o robô não fica em pé, e trocar o sinal no código não resolve. Se o horn não encaixar em ângulo reto exato, use o dente mais próximo: o resto se corrige no passo 7. Opcional: para menos folga, um parafuso M3 com porca travante (porca com anel de nylon que não solta) no lado oposto ao eixo, passando por uma segunda placa, faz de mancal.</p>
     <figure class="dia"><img src="assets/vista-explodida.jpg" alt="Ilustração da vista explodida do robô com chassi, Arduino, shield, bateria e pernas" loading="lazy"><figcaption>Ilustração gerada por IA: vista explodida (shield, Uno, chassi, bateria e UBEC, pernas).</figcaption></figure>
     <figure class="dia"><img src="assets/perna-detalhe.jpg" alt="Ilustração de uma perna com servo no quadril e servo no joelho" loading="lazy"><figcaption>Ilustração gerada por IA: servo do quadril no chassi, servo do joelho na ponta da coxa, cabos presos ao longo da perna.</figcaption></figure>
   </div></div>
 
   <div class="step"><div class="b">5</div><div>
     <h3>Feche o corpo</h3>
-    <p>Uno + shield em cima com espaçadores M3; bateria e UBEC embaixo com velcro. Prenda os cabos com abraçadeiras e deixe folga no joelho, senão o fio puxa quando a perna dobra.</p>
+    <p>Uno + shield em cima com espaçadores M3 de 25 mm (assim a placa passa por cima dos servos do quadril); bateria e UBEC embaixo com velcro. Prenda os cabos com abraçadeiras e deixe folga no joelho, senão o fio puxa quando a perna dobra.</p>
   </div></div>
 
   <div class="step"><div class="b">6</div><div>
@@ -287,7 +287,7 @@
 
   <div class="step"><div class="b">7</div><div>
     <h3>Calibre cada junta</h3>
-    <p>Digite <code>m</code> para pôr tudo em 90°. Corrija a junta torta com <code>o &lt;perna&gt; &lt;junta&gt; &lt;graus&gt;</code> e Enter (na Arduino IDE, deixe o Monitor Serial em "Nova linha"; sem final de linha, o comando vale depois de 3 s): perna 0 a 3 (FE, FD, TE, TD), junta 0 = quadril, 1 = joelho, graus de −30 a 30. Grave com <code>g</code> na EEPROM (a memória do Uno que não apaga ao desligar).</p>
+    <p>Digite <code>m</code> para pôr tudo em 90°. Corrija a junta torta com o comando <code>o &lt;perna&gt; &lt;junta&gt; &lt;graus&gt;</code>, digitado de uma vez e com Enter (o <code>arduino-cli monitor</code> não mostra o que você digita; na Arduino IDE deixe o Monitor Serial em "Nova linha"). O valor <strong>substitui</strong> o ajuste anterior daquela junta, não soma: perna 0 a 3 (FE, FD, TE, TD), junta 0 = quadril, 1 = joelho, graus de −30 a 30. Grave com <code>g</code> na EEPROM (a memória do Uno que não apaga ao desligar).</p>
 <pre><span class="k">m</span>          <span class="c"># todos em 90°</span>
 <span class="k">o 0 1 -6</span>   <span class="c"># joelho da frente esquerda: −6° (se piorou, use 6)</span>
 <span class="k">p</span>          <span class="c"># mostra os ajustes</span>
@@ -362,9 +362,9 @@
     <tr><th>Sintoma</th><th>Causa provável</th><th>O que fazer</th></tr>
     <tr><td>Arduino reinicia quando os servos mexem</td><td>Servos tirando energia do Uno</td><td>Jumper SEL fora, servos só pelo UBEC, GND comum</td></tr>
     <tr><td>Servo treme parado</td><td>Fonte fraca ou fio fino</td><td>UBEC de 5 A ou mais, fio 18 AWG na linha de força, bateria carregada</td></tr>
-    <tr><td>Servo esquenta</td><td>Forçando contra o limite</td><td>Ajuste com <code>o</code>; veja se a perna não bate no chassi</td></tr>
-    <tr><td>Perna dobra para o lado errado</td><td>Sinal invertido</td><td>Troque o sinal em <code>SENTIDO[][]</code></td></tr>
-    <tr><td>Anda torto</td><td>Lados calibrados diferente</td><td><code>m</code> e iguale as pernas com <code>o</code></td></tr>
+    <tr><td>Servo esquenta</td><td>Forçando contra o limite</td><td>Ajuste com o comando <code>o</code>; veja se a perna não bate no chassi</td></tr>
+    <tr><td>Perna dobra para o lado errado</td><td>Sinal invertido, ou canela montada apontando para trás</td><td>Confira se a canela aponta para a frente em 90° (passo 4); se sim, troque o sinal em <code>SENTIDO[][]</code></td></tr>
+    <tr><td>Anda torto</td><td>Lados calibrados diferente</td><td>Comando <code>m</code>, depois iguale as pernas com o comando <code>o</code></td></tr>
     <tr><td>Tropeça</td><td>Pé sobe pouco</td><td>Aumente <code>ELEVA</code> no código</td></tr>
     <tr><td>Cai para o lado no trote</td><td>Passo longo ou rápido demais</td><td>Diminua <code>PASSO</code> ou aumente <code>CICLO_TROTE</code></td></tr>
     <tr><td>Não carrega o código</td><td>Bluetooth ligado no D0/D1</td><td>Desligue o módulo durante o upload</td></tr>

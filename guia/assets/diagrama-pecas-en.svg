@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 872" font-family="Inter, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 896" font-family="Inter, Arial, sans-serif">
   <title>Parts with dimensions: chassis, thigh, and shin</title>
-  <rect width="1200" height="872" rx="16" fill="#0c0c10"/>
+  <rect width="1200" height="896" rx="16" fill="#0c0c10"/>
   <text x="40" y="52" fill="#e9e9ee" font-size="28" font-weight="700" font-family="Sora, Inter, sans-serif">Parts with dimensions (mm)</text>
   <text x="40" y="82" fill="#9a9aa6" font-size="16">Scale: 3 px = 1 mm. Cut from 3 mm acrylic/MDF or print at 3 mm thick. Reference dimensions: check with calipers.</text>
   <g stroke-width="2" fill="none">
@@ -9,6 +9,7 @@
     <rect x="82" y="161" width="69" height="38" rx="2" stroke="#60a5fa" fill="#0c0c10"/>
     <rect x="349" y="161" width="69" height="38" rx="2" stroke="#60a5fa" fill="#0c0c10"/>
     <circle cx="100" cy="180" r="4" stroke="#FACC15"/>
+    <circle cx="74.5" cy="180" r="3" stroke="#e9e9ee"/><circle cx="158" cy="180" r="3" stroke="#e9e9ee"/><circle cx="342" cy="180" r="3" stroke="#e9e9ee"/><circle cx="425.5" cy="180" r="3" stroke="#e9e9ee"/>
     <circle cx="400" cy="180" r="4" stroke="#FACC15"/>
     <!-- base -->
     <rect x="40" y="300" width="420" height="240" rx="4" stroke="#FACC15" fill="#16161e"/>
@@ -17,7 +18,8 @@
     <!-- thigh -->
     <rect x="554" y="120" width="60" height="245" rx="10" stroke="#FACC15" fill="#16161e"/>
     <circle cx="584" cy="144" r="5" stroke="#e9e9ee"/>
-    <rect x="565" y="291" width="38" height="69" rx="2" stroke="#60a5fa" fill="#0c0c10"/>
+    <rect x="565" y="259" width="38" height="69" rx="2" stroke="#60a5fa" fill="#0c0c10"/>
+    <circle cx="584" cy="251" r="3" stroke="#e9e9ee"/><circle cx="584" cy="334" r="3" stroke="#e9e9ee"/>
     <circle cx="584" cy="309" r="4" stroke="#FACC15"/>
     <!-- shin -->
     <rect x="700" y="120" width="42" height="222" rx="10" stroke="#FACC15" fill="#16161e"/>
@@ -87,12 +89,13 @@
   </g>
   <g id="cotas" font-size="14" fill="#e9e9ee">
     <text x="40" y="680" fill="#FACC15" font-size="16" font-weight="700">Marking dimensions (mm, from the top-left corner of each part)</text>
-    <text x="40" y="706">Wall: axes at 20 and 120 from the end, 20 below the top. Slot 23 × 12.5, from height 13.75 to 26.25; the</text>
-    <text x="40" y="726">axis is 6 from the slot end that faces the outside of the wall.</text>
-    <text x="40" y="750">Servo tabs: 2 M2 holes 27.8 apart (center to center), at axis height, centered on the slot.</text>
-    <text x="40" y="774">Base: Uno centered, board corner at (35.7; 13.4). Uno holes from that corner: (14.0; 2.5) (15.3; 50.7)</text>
-    <text x="40" y="794">(66.1; 7.6) (66.1; 35.5).</text>
-    <text x="40" y="818">Thigh: horn hole 8 from the top edge, centered. Shin: horn 8 from the top, foot hole 60 below (6 from the</text>
-    <text x="40" y="838">bottom edge).</text>
+    <text x="40" y="706">Wall: axes at 20 and 120 from the end, 20 below the top. Slot 23 × 12.5, from height 13.75 to 26.25; the axis is 6 from the slot end closest to the</text>
+    <text x="40" y="726">wall end.</text>
+    <text x="40" y="750">Hip servo tabs: M2 holes at 11.5 and 39.3 (rear servo) and at 100.7 and 128.5 (front servo), at axis height.</text>
+    <text x="40" y="774">Base: Uno centered, board corner at (35.7; 13.4). Uno holes from that corner: (14.0; 2.5) (15.3; 50.7) (66.1; 7.6) (66.1; 35.5). 25 mm M3 standoffs:</text>
+    <text x="40" y="794">the Uno sits above the hip servos.</text>
+    <text x="40" y="818">Thigh: horn hole 8 from the top, centered. Knee axis 63 from the top; slot from 46.2 to 69 (the servo body runs up the thigh, axis at the bottom); M2</text>
+    <text x="40" y="838">tab holes at 43.7 and 71.5.</text>
+    <text x="40" y="862">Shin: horn 8 from the top, foot hole 60 below (6 from the bottom edge).</text>
   </g>
 </svg>

@@ -96,10 +96,10 @@ O sinal vem do espelhamento do lado direito. Ele depende de como você parafusou
 7. Carregue o sketch de montagem: `arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem` (compile antes com `arduino-cli compile --fqbn arduino:avr:uno firmware/montagem`). Os 8 servos vão para 90° e ficam parados.
 
 ### Fase 3 — Mecânica (1–2 dias)
-8. Corte ou imprima as peças pelo `diagrama-pecas.svg`: 2 paredes laterais 140 × 35, base 140 × 80, 4 coxas (55 mm entre eixos) e 4 canelas (60 mm do eixo ao pé). Furos para o eixo do servo e um mancal (parafuso M3 com porca travante) do lado oposto ao eixo.
+8. Corte ou imprima as peças pelo `diagrama-pecas.svg`: 2 paredes laterais 140 × 35, base 140 × 80, 4 coxas (55 mm entre eixos) e 4 canelas (60 mm do eixo ao pé). Opcional: mancal (parafuso M3 com porca travante passando por uma segunda placa) do lado oposto ao eixo, para menos folga.
 9. Com os servos parados em 90°, parafuse os servos do quadril no chassi e encaixe as coxas **na vertical**.
-10. Encaixe os servos do joelho na ponta das coxas e as canelas formando **ângulo reto** com a coxa. O braço do servo tem dentes: escolha o dente mais próximo; o resto se acerta no ajuste fino.
-11. Prenda Uno + shield em cima com espaçadores M3; bateria e UBEC embaixo com velcro. Organize os cabos com abraçadeiras ao longo das coxas, deixando folga no joelho.
+10. Encaixe os servos do joelho na janela da coxa (eixo para fora, corpo subindo pela coxa, voltado para dentro do robô) e as canelas formando **ângulo reto** com a coxa, **apontando para a FRENTE do robô** nas 4 pernas. Canela para trás = joelho dobra do jeito errado, e o sinal no código não corrige isso. O braço do servo tem dentes: escolha o dente mais próximo; o resto se acerta no ajuste fino.
+11. Prenda Uno + shield em cima com espaçadores M3 de 25 mm (acima dos servos do quadril); bateria e UBEC embaixo com velcro. Organize os cabos com abraçadeiras ao longo das coxas, deixando folga no joelho.
 
 ### Fase 4 — Calibrar (1–2 horas)
 12. Deixe o robô suspenso (pernas no ar). Sem calibração gravada, o firmware liga em modo montagem (tudo em 90°) e só fica em pé com `x`. Carregue o firmware: `arduino-cli compile --fqbn arduino:avr:uno firmware/robo4 && arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/robo4`.
