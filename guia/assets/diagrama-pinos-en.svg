@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" font-family="Inter, Arial, sans-serif">
+  <title>robo4 leg and pin map (top view)</title>
+  <rect width="1000" height="700" rx="16" fill="#0c0c10"/>
+  <text x="40" y="52" fill="#e9e9ee" font-size="28" font-weight="700" font-family="Sora, Inter, sans-serif">Leg map (top view)</text>
+  <text x="40" y="82" fill="#9a9aa6" font-size="16">Leg number in the code · hip pin / knee pin · servo direction</text>
+
+  <!-- front -->
+  <text x="500" y="128" fill="#FACC15" font-size="17" font-weight="700" text-anchor="middle">▲ FRONT</text>
+  <!-- body -->
+  <rect x="380" y="150" width="240" height="420" rx="18" fill="#16161e" stroke="#9a9aa6" stroke-width="2"/>
+  <rect x="420" y="250" width="160" height="210" rx="10" fill="#101a2b" stroke="#3b82f6" stroke-width="2"/>
+  <text x="500" y="345" fill="#e9e9ee" font-size="16" text-anchor="middle">Uno +</text>
+  <text x="500" y="367" fill="#e9e9ee" font-size="16" text-anchor="middle">Sensor Shield</text>
+  <text x="500" y="540" fill="#9a9aa6" font-size="14" text-anchor="middle">battery underneath</text>
+
+  <!-- hips (servos) -->
+  <g fill="#1e3a8a" stroke="#60a5fa" stroke-width="2">
+    <rect x="350" y="170" width="56" height="40" rx="6"/>
+    <rect x="594" y="170" width="56" height="40" rx="6"/>
+    <rect x="350" y="510" width="56" height="40" rx="6"/>
+    <rect x="594" y="510" width="56" height="40" rx="6"/>
+  </g>
+  <!-- legs -->
+  <g stroke="#9a9aa6" stroke-width="10" stroke-linecap="round">
+    <line x1="350" y1="190" x2="290" y2="190"/>
+    <line x1="650" y1="190" x2="710" y2="190"/>
+    <line x1="350" y1="530" x2="290" y2="530"/>
+    <line x1="650" y1="530" x2="710" y2="530"/>
+  </g>
+
+  <!-- cards -->
+  <g font-size="16">
+    <g transform="translate(40,140)">
+      <rect width="240" height="104" rx="12" fill="#16161e" stroke="#FACC15" stroke-width="2"/>
+      <text x="16" y="32" fill="#FACC15" font-size="19" font-weight="700">0 · FE</text>
+      <text x="80" y="32" fill="#9a9aa6" font-size="15">front left</text>
+      <text x="16" y="62" fill="#e9e9ee">hip D2 · direction +1</text>
+      <text x="16" y="88" fill="#e9e9ee">knee  D3 · direction −1</text>
+    </g>
+    <g transform="translate(720,140)">
+      <rect width="240" height="104" rx="12" fill="#16161e" stroke="#FACC15" stroke-width="2"/>
+      <text x="16" y="32" fill="#FACC15" font-size="19" font-weight="700">1 · FD</text>
+      <text x="80" y="32" fill="#9a9aa6" font-size="15">front right</text>
+      <text x="16" y="62" fill="#e9e9ee">hip D4 · direction −1</text>
+      <text x="16" y="88" fill="#e9e9ee">knee  D5 · direction +1</text>
+    </g>
+    <g transform="translate(40,478)">
+      <rect width="240" height="104" rx="12" fill="#16161e" stroke="#FACC15" stroke-width="2"/>
+      <text x="16" y="32" fill="#FACC15" font-size="19" font-weight="700">2 · TE</text>
+      <text x="80" y="32" fill="#9a9aa6" font-size="15">rear left</text>
+      <text x="16" y="62" fill="#e9e9ee">hip D6 · direction +1</text>
+      <text x="16" y="88" fill="#e9e9ee">knee  D7 · direction −1</text>
+    </g>
+    <g transform="translate(720,478)">
+      <rect width="240" height="104" rx="12" fill="#16161e" stroke="#FACC15" stroke-width="2"/>
+      <text x="16" y="32" fill="#FACC15" font-size="19" font-weight="700">3 · TD</text>
+      <text x="80" y="32" fill="#9a9aa6" font-size="15">rear right</text>
+      <text x="16" y="62" fill="#e9e9ee">hip D8 · direction −1</text>
+      <text x="16" y="88" fill="#e9e9ee">knee  D9 · direction +1</text>
+    </g>
+  </g>
+  <text x="40" y="630" fill="#e9e9ee" font-size="16">Trot pairs: <tspan fill="#FACC15" font-weight="700">FE + TD</tspan> lift together, then <tspan fill="#FACC15" font-weight="700">FD + TE</tspan>.</text>
+  <text x="40" y="660" fill="#9a9aa6" font-size="15">The right side is mirrored, so the direction is reversed. If a joint turns the wrong way, change the direction in SENTIDO[][] in the code.</text>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="Inter, Arial, sans-serif">
+  <title>Peças com medidas: chassi, coxa e canela</title>
+  <rect width="1200" height="800" rx="16" fill="#0c0c10"/>
+  <text x="40" y="52" fill="#e9e9ee" font-size="28" font-weight="700" font-family="Sora, Inter, sans-serif">Peças com medidas (mm)</text>
+  <text x="40" y="82" fill="#9a9aa6" font-size="16">Escala 3 px = 1 mm. Corte em acrílico/MDF de 3 mm ou imprima com 3 mm de espessura. Medidas de referência: confira com paquímetro.</text>
+  <g stroke-width="2" fill="none">
+    <!-- parede lateral (2x) -->
+    <rect x="40" y="130" width="420" height="105" rx="4" stroke="#FACC15" fill="#16161e"/>
+    <rect x="82" y="161" width="69" height="38" rx="2" stroke="#60a5fa" fill="#0c0c10"/>
+    <rect x="349" y="161" width="69" height="38" rx="2" stroke="#60a5fa" fill="#0c0c10"/>
+    <circle cx="100" cy="180" r="4" stroke="#FACC15"/>
+    <circle cx="400" cy="180" r="4" stroke="#FACC15"/>
+    <!-- base -->
+    <rect x="40" y="300" width="420" height="240" rx="4" stroke="#FACC15" fill="#16161e"/>
+    <rect x="147" y="340" width="206" height="160" rx="6" stroke="#3b82f6" stroke-dasharray="6 5"/>
+    <g stroke="#e9e9ee"><circle cx="189" cy="492" r="5"/><circle cx="193" cy="348" r="5"/><circle cx="345" cy="477" r="5"/><circle cx="345" cy="393" r="5"/></g>
+    <!-- coxa -->
+    <rect x="554" y="120" width="60" height="245" rx="10" stroke="#FACC15" fill="#16161e"/>
+    <circle cx="584" cy="144" r="5" stroke="#e9e9ee"/>
+    <rect x="565" y="291" width="38" height="69" rx="2" stroke="#60a5fa" fill="#0c0c10"/>
+    <circle cx="584" cy="309" r="4" stroke="#FACC15"/>
+    <!-- canela -->
+    <rect x="700" y="120" width="42" height="222" rx="10" stroke="#FACC15" fill="#16161e"/>
+    <circle cx="721" cy="144" r="5" stroke="#e9e9ee"/>
+    <circle cx="721" cy="324" r="5" stroke="#e9e9ee"/>
+  </g>
+  <!-- cotas -->
+  <g stroke="#9a9aa6" stroke-width="1.5">
+    <line x1="100" y1="250" x2="400" y2="250"/><line x1="100" y1="244" x2="100" y2="256"/><line x1="400" y1="244" x2="400" y2="256"/>
+    <line x1="40" y1="118" x2="460" y2="118"/>
+    <line x1="472" y1="130" x2="472" y2="235"/>
+    <line x1="40" y1="556" x2="460" y2="556"/>
+    <line x1="472" y1="300" x2="472" y2="540"/>
+    <line x1="630" y1="144" x2="630" y2="309"/><line x1="624" y1="144" x2="636" y2="144"/><line x1="624" y1="309" x2="636" y2="309"/>
+    <line x1="756" y1="144" x2="756" y2="324"/><line x1="750" y1="144" x2="762" y2="144"/><line x1="750" y1="324" x2="762" y2="324"/>
+  </g>
+  <g fill="#e9e9ee" font-size="15">
+    <text x="40" y="112">Parede lateral (corte 2) · 140 × 35</text>
+    <text x="478" y="188">35</text>
+    <text x="250" y="272" text-anchor="middle">100 entre eixos do quadril</text>
+    <text x="152" y="215" fill="#60a5fa" font-size="14">janela do servo 23 × 12,5</text>
+    <text x="40" y="292">Base (corte 1) · 140 × 80</text>
+    <text x="478" y="425">80</text>
+    <text x="250" y="576" text-anchor="middle">140</text>
+    <text x="250" y="430" fill="#60a5fa" font-size="14" text-anchor="middle">Arduino Uno 68,6 × 53,3</text>
+    <text x="250" y="450" fill="#9a9aa6" font-size="14" text-anchor="middle">4 furos M3 nos furos da placa</text>
+    <text x="554" y="112">Coxa (4) · 20 × 82</text>
+    <text x="638" y="232">55</text>
+    <text x="700" y="112" fill="#e9e9ee">Canela (4) · 14 × 74</text>
+    <text x="764" y="240">60</text>
+    <text x="608" y="388" fill="#9a9aa6" font-size="14" text-anchor="middle">janela do servo</text>
+    <text x="608" y="406" fill="#9a9aa6" font-size="14" text-anchor="middle">do joelho</text>
+    <text x="721" y="364" fill="#9a9aa6" font-size="14" text-anchor="middle">pé (M3 +</text>
+    <text x="721" y="382" fill="#9a9aa6" font-size="14" text-anchor="middle">ponteira)</text>
+  </g>
+  <!-- legenda -->
+  <g font-size="14" fill="#9a9aa6">
+    <circle cx="48" cy="610" r="5" fill="none" stroke="#FACC15" stroke-width="2"/><text x="62" y="615">eixo do servo (centro de giro)</text>
+    <circle cx="300" cy="610" r="5" fill="none" stroke="#e9e9ee" stroke-width="2"/><text x="314" y="615">furo para o braço (horn) ou parafuso</text>
+    <rect x="42" y="632" width="14" height="10" fill="none" stroke="#60a5fa" stroke-width="2"/><text x="62" y="642">janela onde o servo encaixa (o eixo fica a 6 mm de uma ponta)</text>
+  </g>
+  <!-- painel -->
+  <g transform="translate(830,120)">
+    <rect width="330" height="560" rx="14" fill="#16161e" stroke="#272730" stroke-width="1.5"/>
+    <text x="22" y="38" fill="#FACC15" font-size="18" font-weight="700">MG90S (típico)</text>
+    <g fill="#e9e9ee" font-size="15">
+      <text x="22" y="70">corpo 22,8 × 12,2 × 28,5</text>
+      <text x="22" y="96">abas de ponta a ponta 32,5</text>
+      <text x="22" y="122">furos das abas: 27,8 entre centros</text>
+      <text x="22" y="148">eixo a ~6 da ponta do corpo</text>
+      <text x="22" y="174">torque ~2,2 kg·cm a 6 V</text>
+    </g>
+    <text x="22" y="220" fill="#FACC15" font-size="18" font-weight="700">Como as peças se ligam</text>
+    <g fill="#e9e9ee" font-size="15">
+      <text x="22" y="252">1. Servo do quadril na janela da</text>
+      <text x="22" y="274">   parede, eixo para fora.</text>
+      <text x="22" y="302">2. Braço (horn) de 1 ponta parafusado</text>
+      <text x="22" y="324">   no topo da coxa (2 parafusos M2).</text>
+      <text x="22" y="352">3. Servo do joelho na janela da coxa.</text>
+      <text x="22" y="380">4. Horn do joelho no topo da canela.</text>
+      <text x="22" y="408">5. Paredes presas na base com</text>
+      <text x="22" y="430">   cantoneiras ou cola, em L.</text>
+    </g>
+    <text x="22" y="476" fill="#9a9aa6" font-size="14">Mudou 55 ou 60? Troque L1 e L2</text>
+    <text x="22" y="496" fill="#9a9aa6" font-size="14">no firmware/robo4/robo4.ino.</text>
+    <text x="22" y="530" fill="#9a9aa6" font-size="14">Peso alvo montado: 350–450 g.</text>
+  </g>
+</svg>

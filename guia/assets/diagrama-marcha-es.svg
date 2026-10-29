@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" font-family="Inter, Arial, sans-serif">
+  <title>Tiempo de las marchas: trote y marcha lenta</title>
+  <rect width="1100" height="640" rx="16" fill="#0c0c10"/>
+  <text x="40" y="52" fill="#e9e9ee" font-size="28" font-weight="700" font-family="Sora, Inter, sans-serif">Cuándo se levanta cada pata</text>
+  <text x="40" y="82" fill="#9a9aa6" font-size="16">Un ciclo completo de izquierda a derecha.</text>
+  <!-- leyenda -->
+  <rect x="660" y="60" width="28" height="18" rx="4" fill="#272730"/><text x="696" y="75" fill="#e9e9ee" font-size="15">pata en el suelo (empuja)</text>
+  <rect x="870" y="60" width="28" height="18" rx="4" fill="#FACC15"/><text x="906" y="75" fill="#e9e9ee" font-size="15">pata en el aire</text>
+
+  <!-- TROTE: x0=200, largura 820 -->
+  <text x="40" y="140" fill="#FACC15" font-size="19" font-weight="700">Trote · comando w</text>
+  <text x="240" y="140" fill="#9a9aa6" font-size="15">ciclo 600 ms · dos patas en el aire a la vez (pares diagonales)</text>
+  <g font-size="16" fill="#e9e9ee">
+    <text x="40" y="184">FE delantera izq.</text><text x="40" y="224">FD delantera der.</text><text x="40" y="264">TE trasera izq.</text><text x="40" y="304">TD trasera der.</text>
+  </g>
+  <g>
+    <rect x="200" y="166" width="410" height="26" rx="5" fill="#272730"/><rect x="610" y="166" width="410" height="26" rx="5" fill="#FACC15"/>
+    <rect x="200" y="206" width="410" height="26" rx="5" fill="#FACC15"/><rect x="610" y="206" width="410" height="26" rx="5" fill="#272730"/>
+    <rect x="200" y="246" width="410" height="26" rx="5" fill="#FACC15"/><rect x="610" y="246" width="410" height="26" rx="5" fill="#272730"/>
+    <rect x="200" y="286" width="410" height="26" rx="5" fill="#272730"/><rect x="610" y="286" width="410" height="26" rx="5" fill="#FACC15"/>
+  </g>
+
+  <!-- CREEP -->
+  <text x="40" y="380" fill="#FACC15" font-size="19" font-weight="700">Marcha lenta · comando c</text>
+  <text x="300" y="380" fill="#9a9aa6" font-size="15">ciclo 1600 ms · una pata en el aire a la vez, tres siempre apoyadas</text>
+  <g font-size="16" fill="#e9e9ee">
+    <text x="40" y="424">FE delantera izq.</text><text x="40" y="464">FD delantera der.</text><text x="40" y="504">TE trasera izq.</text><text x="40" y="544">TD trasera der.</text>
+  </g>
+  <g>
+    <!-- 820/4 = 205 -->
+    <rect x="200" y="406" width="820" height="26" rx="5" fill="#272730"/><rect x="405" y="406" width="205" height="26" rx="5" fill="#FACC15"/>
+    <rect x="200" y="446" width="820" height="26" rx="5" fill="#272730"/><rect x="815" y="446" width="205" height="26" rx="5" fill="#FACC15"/>
+    <rect x="200" y="486" width="820" height="26" rx="5" fill="#272730"/><rect x="200" y="486" width="205" height="26" rx="5" fill="#FACC15"/>
+    <rect x="200" y="526" width="820" height="26" rx="5" fill="#272730"/><rect x="610" y="526" width="205" height="26" rx="5" fill="#FACC15"/>
+  </g>
+  <g font-size="15" fill="#1a1206" font-weight="700" text-anchor="middle">
+    <text x="302" y="504">1º</text><text x="507" y="424">2º</text><text x="712" y="544">3º</text><text x="917" y="464">4º</text>
+  </g>
+  <!-- eje -->
+  <g fill="#9a9aa6" font-size="14" text-anchor="middle">
+    <text x="200" y="584">0</text><text x="405" y="584">¼</text><text x="610" y="584">½</text><text x="815" y="584">¾</text><text x="1020" y="584">1 ciclo</text>
+  </g>
+  <text x="40" y="618" fill="#9a9aa6" font-size="15">Empieza con la marcha lenta: es más estable y muestra pronto si alguna pata está mal calibrada.</text>
+</svg>

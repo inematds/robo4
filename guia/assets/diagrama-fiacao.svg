@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="Inter, Arial, sans-serif">
+  <title>Fiação e energia do robo4</title>
+  <defs>
+    <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#FACC15"/></marker>
+  </defs>
+  <rect width="1200" height="720" rx="16" fill="#0c0c10"/>
+  <text x="40" y="52" fill="#e9e9ee" font-size="28" font-weight="700" font-family="Sora, Inter, sans-serif">Fiação e energia</text>
+  <text x="40" y="82" fill="#9a9aa6" font-size="16">Duas linhas de energia separadas: lógica (Arduino) e força (servos). GND comum entre as duas.</text>
+
+  <!-- Bateria -->
+  <rect x="40" y="130" width="210" height="96" rx="12" fill="#16161e" stroke="#FACC15" stroke-width="2"/>
+  <text x="60" y="166" fill="#e9e9ee" font-size="19" font-weight="700">Bateria LiPo 2S</text>
+  <text x="60" y="192" fill="#9a9aa6" font-size="16">7,4 V · 1000–2200 mAh</text>
+  <text x="60" y="214" fill="#9a9aa6" font-size="15">conector XT60</text>
+
+  <!-- Chave -->
+  <rect x="300" y="150" width="120" height="56" rx="10" fill="#16161e" stroke="#272730" stroke-width="2"/>
+  <text x="360" y="184" fill="#e9e9ee" font-size="17" font-weight="600" text-anchor="middle">Chave</text>
+  <line x1="250" y1="178" x2="296" y2="178" stroke="#FACC15" stroke-width="3" marker-end="url(#seta)"/>
+
+  <!-- UBEC -->
+  <rect x="470" y="110" width="200" height="78" rx="12" fill="#16161e" stroke="#FACC15" stroke-width="2"/>
+  <text x="570" y="144" fill="#e9e9ee" font-size="18" font-weight="700" text-anchor="middle">UBEC / step-down</text>
+  <text x="570" y="170" fill="#9a9aa6" font-size="15" text-anchor="middle">saída 6 V · 5 A ou mais</text>
+  <path d="M420,170 L440,170 L440,150 L466,150" fill="none" stroke="#FACC15" stroke-width="3" marker-end="url(#seta)"/>
+
+  <!-- VIN -->
+  <path d="M420,190 L440,190 L440,300 L716,300" fill="none" stroke="#38bdf8" stroke-width="3" marker-end="url(#seta)"/>
+  <text x="456" y="290" fill="#38bdf8" font-size="15">7,4 V direto no VIN (ou jack) → lógica</text>
+
+  <!-- Shield -->
+  <rect x="720" y="120" width="440" height="470" rx="14" fill="#101a2b" stroke="#3b82f6" stroke-width="2"/>
+  <text x="740" y="152" fill="#e9e9ee" font-size="19" font-weight="700">Arduino Uno + Sensor Shield V5</text>
+  <!-- borne -->
+  <rect x="740" y="170" width="190" height="50" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="835" y="200" fill="#e9e9ee" font-size="15" text-anchor="middle">Borne servos V+ / GND</text>
+  <path d="M670,150 L700,150 L700,195 L736,195" fill="none" stroke="#FACC15" stroke-width="3" marker-end="url(#seta)"/>
+  <!-- jumper -->
+  <rect x="950" y="170" width="190" height="50" rx="8" fill="#2a1212" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="1045" y="192" fill="#fca5a5" font-size="14" text-anchor="middle" font-weight="700">JUMPER SEL</text>
+  <text x="1045" y="210" fill="#fca5a5" font-size="14" text-anchor="middle">RETIRADO</text>
+  <!-- VIN pin label -->
+  <text x="740" y="306" fill="#38bdf8" font-size="15">VIN / GND</text>
+
+  <!-- header rows -->
+  <text x="740" y="352" fill="#9a9aa6" font-size="14">Pino  ·  S (sinal)  V (+)  G (GND)</text>
+  <g font-size="15" fill="#e9e9ee">
+    <g transform="translate(740,370)">
+      <rect width="200" height="28" rx="6" fill="#16161e" stroke="#272730"/><text x="12" y="19">D2 · FE quadril</text>
+      <rect y="34" width="200" height="28" rx="6" fill="#16161e" stroke="#272730"/><text x="12" y="53">D3 · FE joelho</text>
+      <rect y="68" width="200" height="28" rx="6" fill="#16161e" stroke="#272730"/><text x="12" y="87">D4 · FD quadril</text>
+      <rect y="102" width="200" height="28" rx="6" fill="#16161e" stroke="#272730"/><text x="12" y="121">D5 · FD joelho</text>
+    </g>
+    <g transform="translate(950,370)">
+      <rect width="190" height="28" rx="6" fill="#16161e" stroke="#272730"/><text x="12" y="19">D6 · TE quadril</text>
+      <rect y="34" width="190" height="28" rx="6" fill="#16161e" stroke="#272730"/><text x="12" y="53">D7 · TE joelho</text>
+      <rect y="68" width="190" height="28" rx="6" fill="#16161e" stroke="#272730"/><text x="12" y="87">D8 · TD quadril</text>
+      <rect y="102" width="190" height="28" rx="6" fill="#16161e" stroke="#272730"/><text x="12" y="121">D9 · TD joelho</text>
+    </g>
+  </g>
+  <text x="740" y="530" fill="#9a9aa6" font-size="14">Livres: D0/D1 (USB, Bluetooth) · A4/A5 (I2C)</text>
+  <text x="740" y="552" fill="#9a9aa6" font-size="14">A0–A3 e D10–D13 para sensores</text>
+
+  <!-- cabo do servo -->
+  <g transform="translate(40,330)">
+    <text x="0" y="0" fill="#e9e9ee" font-size="18" font-weight="700">Cabo do servo</text>
+    <rect x="0" y="18" width="34" height="22" rx="4" fill="#7c4a24"/><text x="46" y="35" fill="#e9e9ee" font-size="15">marrom = GND (G)</text>
+    <rect x="0" y="50" width="34" height="22" rx="4" fill="#dc2626"/><text x="46" y="67" fill="#e9e9ee" font-size="15">vermelho = V+ (V)</text>
+    <rect x="0" y="82" width="34" height="22" rx="4" fill="#f97316"/><text x="46" y="99" fill="#e9e9ee" font-size="15">laranja = sinal (S)</text>
+  </g>
+
+  <!-- regras -->
+  <g transform="translate(40,480)">
+    <text x="0" y="0" fill="#FACC15" font-size="18" font-weight="700">Regras que salvam a placa</text>
+    <text x="0" y="30" fill="#e9e9ee" font-size="15">1. Nunca alimente os 8 servos pelo 5 V do Uno.</text>
+    <text x="0" y="56" fill="#e9e9ee" font-size="15">2. Tire o jumper SEL: força dos servos só pelo borne.</text>
+    <text x="0" y="82" fill="#e9e9ee" font-size="15">3. GND da bateria, do UBEC e do Uno ligados juntos.</text>
+    <text x="0" y="108" fill="#e9e9ee" font-size="15">4. Meça a saída do UBEC (5–6 V) antes de ligar servo.</text>
+    <text x="0" y="134" fill="#e9e9ee" font-size="15">5. Pico de 8 MG90S ≈ 4–6 A: fonte de 5 A no mínimo.</text>
+  </g>
+  <text x="1160" y="700" fill="#5b5b68" font-size="13" text-anchor="end">robo4 · INEMA.CLUB · confira o seu shield: clones mudam a posição do jumper</text>
+</svg>

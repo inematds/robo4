@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" font-family="Inter, Arial, sans-serif">
+  <title>Geometría de la pierna y cinemática inversa</title>
+  <rect width="1100" height="560" rx="16" fill="#0c0c10"/>
+  <text x="40" y="52" fill="#e9e9ee" font-size="28" font-weight="700" font-family="Sora, Inter, sans-serif">Una pata, dos articulaciones</text>
+  <text x="40" y="82" fill="#9a9aa6" font-size="16">Vista de lado, frente hacia la derecha. Pose «de pie» del código, a escala.</text>
+
+  <!-- suelo -->
+  <line x1="60" y1="447" x2="500" y2="447" stroke="#5b5b68" stroke-width="2"/>
+  <g stroke="#272730" stroke-width="2">
+    <line x1="80" y1="447" x2="68" y2="462"/><line x1="140" y1="447" x2="128" y2="462"/><line x1="200" y1="447" x2="188" y2="462"/>
+    <line x1="260" y1="447" x2="248" y2="462"/><line x1="320" y1="447" x2="308" y2="462"/><line x1="380" y1="447" x2="368" y2="462"/><line x1="440" y1="447" x2="428" y2="462"/>
+  </g>
+  <!-- cuerpo -->
+  <rect x="270" y="140" width="210" height="26" rx="6" fill="#16161e" stroke="#9a9aa6" stroke-width="2"/>
+  <text x="440" y="132" fill="#FACC15" font-size="15" font-weight="700">frente →</text>
+  <!-- vertical -->
+  <line x1="300" y1="180" x2="300" y2="435" stroke="#5b5b68" stroke-width="2" stroke-dasharray="6 6"/>
+  <!-- muslo y pantorrilla -->
+  <line x1="300" y1="180" x2="184" y2="297" stroke="#e9e9ee" stroke-width="12" stroke-linecap="round"/>
+  <line x1="184" y1="297" x2="300" y2="435" stroke="#9a9aa6" stroke-width="10" stroke-linecap="round"/>
+  <!-- articulaciones -->
+  <circle cx="300" cy="180" r="16" fill="#1e3a8a" stroke="#60a5fa" stroke-width="3"/>
+  <circle cx="184" cy="297" r="14" fill="#1e3a8a" stroke="#60a5fa" stroke-width="3"/>
+  <circle cx="300" cy="437" r="9" fill="#FACC15"/>
+  <!-- arcos -->
+  <path d="M300,230 A50,50 0 0 1 264.8,215.5" fill="none" stroke="#FACC15" stroke-width="3"/>
+  <text x="246" y="252" fill="#FACC15" font-size="15" font-weight="700">cadera</text>
+  <path d="M212.1,268.6 A40,40 0 0 1 209.8,327.6" fill="none" stroke="#FACC15" stroke-width="3"/>
+  <text x="234" y="304" fill="#FACC15" font-size="15" font-weight="700">rodilla</text>
+  <!-- rótulos -->
+  <text x="322" y="208" fill="#e9e9ee" font-size="15">servo de la cadera</text>
+  <text x="60" y="292" fill="#e9e9ee" font-size="15">servo de la rodilla</text>
+  <text x="60" y="200" fill="#e9e9ee" font-size="16" font-weight="700">L1 = 55 mm</text>
+  <text x="60" y="222" fill="#9a9aa6" font-size="14">(muslo)</text>
+  <text x="232" y="390" fill="#e9e9ee" font-size="16" font-weight="700" text-anchor="end">L2 = 60 mm</text>
+  <text x="232" y="410" fill="#9a9aa6" font-size="14" text-anchor="end">(tibia)</text>
+  <text x="312" y="330" fill="#9a9aa6" font-size="15">altura = 85 mm</text>
+  <text x="312" y="430" fill="#e9e9ee" font-size="15">pie (x, y)</text>
+
+  <!-- fórmulas -->
+  <g transform="translate(560,120)">
+    <rect width="500" height="390" rx="14" fill="#16161e" stroke="#272730" stroke-width="1.5"/>
+    <text x="24" y="40" fill="#FACC15" font-size="18" font-weight="700">Cinemática inversa (ley de los cosenos)</text>
+    <g font-family="JetBrains Mono, monospace" font-size="15" fill="#e9e9ee">
+      <text x="24" y="80">d = √(x² + y²)</text>
+      <text x="24" y="112">a = atan2(x, y)</text>
+      <text x="24" y="144">b = acos((L1² + d² − L2²) / (2·L1·d))</text>
+      <text x="24" y="176">cadera = a − b   <tspan fill="#9a9aa6">// rodilla hacia atrás</tspan></text>
+      <text x="24" y="208">rodilla = acos((L1²+L2²−d²) / (2·L1·L2))</text>
+    </g>
+    <text x="24" y="250" fill="#e9e9ee" font-size="15">De pie (x = 0, y = 85): <tspan font-weight="700" fill="#FACC15">cadera ≈ −44,7°</tspan> y <tspan font-weight="700" fill="#FACC15">rodilla ≈ 95,2°</tspan></text>
+    <text x="24" y="288" fill="#9a9aa6" font-size="15">Ángulo enviado al servo:</text>
+    <g font-family="JetBrains Mono, monospace" font-size="14" fill="#e9e9ee">
+      <text x="24" y="316">cadera: 90 + signo·cadera + ajuste</text>
+      <text x="24" y="342">rodilla: 90 + signo·(rodilla − 90) + ajuste</text>
+    </g>
+    <text x="24" y="374" fill="#9a9aa6" font-size="14">Mide L1 y L2 en tus piezas (de eje a eje) y cámbialos en el código.</text>
+  </g>
+</svg>

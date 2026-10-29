@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>robo4 — robot cuadrúpedo con rodillas (Arduino Uno + shield)</title>
+<meta name="description" content="Plan completo para construir un robot de cuatro patas con rodillas: 8 servos MG90S, Arduino Uno y Sensor Shield V5. Piezas, diagramas de cableado, calibración y código.">
+<link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/robo4/guia/">
+<link rel="alternate" hreflang="en" href="https://inematds.github.io/robo4/guia/en/">
+<link rel="alternate" hreflang="es" href="https://inematds.github.io/robo4/guia/es/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#E2A23B; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#b9791d; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb)}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut);padding:.2em .45em;border-radius:6px} .lang a.on{color:var(--amb);background:rgba(226,162,59,.12)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--amb);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  @media(max-width:760px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(226,162,59,.22),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.18rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:34ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;height:auto;display:block}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:62ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.92rem;margin:0}
+  .num{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:8px;background:rgba(226,162,59,.14);color:var(--amb);font-family:Sora;font-weight:800;font-size:.9rem;margin-bottom:.7em}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0}
+  pre .c{color:#6f6f7c} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:26px}
+  .step>div,.card{min-width:0}
+  p code,li code,td code{overflow-wrap:anywhere}
+  .step .b{width:46px;height:46px;border-radius:12px;background:var(--amb);color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .7em}
+  .ex{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.ex{grid-template-columns:1fr}}
+  .ex figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .ex figure img{width:100%;height:auto;display:block}
+  .ex figcaption{padding:12px 14px;font-size:.88rem;color:var(--mut);background:var(--card)}
+  .phase{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border:none}
+  .phase .tag{flex:0 0 92px;font-family:Sora;font-weight:800;color:var(--amb)}
+  .phase .d strong{display:block;margin-bottom:.2em}
+  .phase .d span{color:var(--mut);font-size:.92rem}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:0 4px}
+</style>
+<style>
+  .tbl{width:100%;border-collapse:collapse;font-size:.92rem;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .tbl th,.tbl td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .tbl th{font-family:Sora;font-weight:600;color:var(--amb);background:var(--bg2)}
+  .tbl td{color:var(--txt)} .tbl tr:last-child td{border-bottom:none}
+  .tblwrap{overflow-x:auto;margin-bottom:18px}
+  .dia{margin:0 0 26px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0c0c10}
+  .dia img{width:100%;height:auto;display:block}
+  .dia figcaption{padding:12px 14px;font-size:.9rem;color:var(--mut);background:var(--card)}
+  .aviso{border:1px solid var(--line);border-left:4px solid var(--amb);background:var(--card);border-radius:12px;padding:14px 16px;margin:0 0 22px;color:var(--txt)}
+  .aviso strong{color:var(--amb)}
+</style>
+</head>
+<body>
+
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><span class="emoji">🐕</span> robo4</a>
+  <span class="sep">|</span>
+  <span class="clubpro">
+    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <span class="sep">-</span>
+    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+  </span>
+  <div class="links">
+    <a class="sec" href="#oque">Qué es</a>
+    <a class="sec" href="#pre">Piezas</a>
+    <a class="sec" href="#diagramas">Diagramas</a>
+    <a class="sec" href="#guia">Paso a paso</a>
+    <a class="sec" href="#termos">Términos</a>
+    <a class="sec" href="#problemas">Problemas</a>
+    <span class="lang"><a href="../">PT</a><a href="../en/">EN</a><a class="on" href="./">ES</a></span>
+    <button class="tgl" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">🌙</button>
+    <a class="btn" href="https://github.com/inematds/robo4" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div>
+      <span class="chip">Robótica · Arduino Uno + Sensor Shield</span>
+      <h1>Construye un robot de cuatro patas con <span class="amb">rodillas</span></h1>
+      <p class="lead">8 servos, un Arduino Uno y un shield. Piezas, cableado, calibración y código listos para que se pare y camine.</p>
+      <div class="cta">
+        <a class="btn" href="#guia">Empezar la guía</a>
+        <a class="btn ghost" href="https://github.com/inematds/robo4" target="_blank" rel="noopener">Ver en GitHub</a>
+      </div>
+    </div>
+    <figure><img src="../assets/banner-es.jpg" alt="Banner de robo4: robot cuadrúpedo con 8 servos, Arduino Uno y shield"></figure>
+  </div>
+</header>
+
+<section id="resumo" class="resumo"><div class="wrap">
+  <span class="chip">En resumen</span>
+  <p>robo4 es un plan completo para construir en casa un pequeño robot de cuatro patas (unos 20 cm) que camina. Cada pata tiene dos motores pequeños llamados servos: uno en la cadera y otro en la rodilla. Un Arduino Uno con una placa de expansión (shield) encima controla todo; ahí se conectan los 8 servos. Aquí tienes la lista de piezas, los diagramas de cableado, los pasos de montaje y calibración, y el código que ya compila. Te sirve si quieres aprender robótica con las manos; necesitas una computadora, las piezas de la lista y una tarde para montarlo.</p>
+</div></section>
+
+<section id="oque"><div class="wrap">
+  <span class="chip">Qué es</span>
+  <h2>Un cuadrúpedo sencillo que sí camina</h2>
+  <p class="sub">Dos articulaciones por pata son el mínimo para que el pie suba, avance y baje. Lo demás es calibración y ritmo.</p>
+  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-es.jpg" alt="Etapas de robo4: piezas, montaje, cableado, calibración, cinemática y marcha" loading="lazy" style="width:100%;display:block"></figure>
+  <div class="grid g3">
+    <div class="card"><h3>🦿 Rodillas reales</h3><p>Cadera y rodilla en cada pata (8 servos MG90S con engranajes metálicos). El pie describe un arco: sube, avanza y se apoya.</p></div>
+    <div class="card"><h3>🔌 Sin protoboard</h3><p>El Sensor Shield V5 tiene 3 pines por puerto: conecta los servos directamente de D2 a D9. Una fuente aparte suministra energía a los servos.</p></div>
+    <div class="card"><h3>🧮 Código listo</h3><p>Cinemática inversa, trote, marcha lenta, giro y calibración guardada en memoria. Controla el robot con letras desde el Monitor Serial.</p></div>
+  </div>
+</div></section>
+
+<section id="fluxo"><div class="wrap">
+  <span class="chip">Cómo funciona</span>
+  <h2>De las piezas al trote</h2>
+  <p class="sub">Seis fases. Las tres primeras son de montaje; las tres últimas, de ajuste con el robot ya de pie.</p>
+  <div class="flow">
+    <span>Comprar y cargar la batería</span><span class="arr">→</span>
+    <span>Electrónica en la mesa</span><span class="arr">→</span>
+    <span>Servos a 90°</span><span class="arr">→</span>
+    <span>Montar las patas</span><span class="arr">→</span>
+    <span>Calibrar</span><span class="arr">→</span>
+    <span>Marcha lenta</span><span class="arr">→</span>
+    <span>Trote</span>
+  </div>
+  <div class="grid g3" style="margin-top:22px">
+    <div class="card"><h3>Dónde debe estar el pie</h3><p>El código trabaja en milímetros: «pie 15 mm adelante y 85 mm debajo de la cadera». La cinemática inversa (ley de cosenos) convierte esto en dos ángulos.</p></div>
+    <div class="card"><h3>Hacia dónde va el servo</h3><p>90° en el servo = muslo vertical y rodilla en ángulo recto. Cadera: 90 + signo × ángulo + ajuste. Rodilla: 90 + signo × (ángulo − 90) + ajuste.</p></div>
+    <div class="card"><h3>Cuándo sube cada pie</h3><p>En la marcha lenta, sube un pie a la vez (tres en el suelo) y el cuerpo se balancea para que el peso recaiga sobre ellos. En el trote, suben dos pies en diagonal. Todo se actualiza 50 veces por segundo.</p></div>
+  </div>
+</div></section>
+
+<section id="pre"><div class="wrap">
+  <span class="chip">Piezas y herramientas</span>
+  <h2>Qué comprar</h2>
+  <p class="sub">Los precios en reales son estimaciones de octubre de 2026. Total básico: de R$ 450 a 850, sin impresora 3D ni opcionales.</p>
+  <figure class="dia"><img src="../assets/kit-pecas.jpg" alt="Ilustración con todas las piezas del robot organizadas sobre la mesa" loading="lazy"><figcaption>Ilustración generada con IA: el kit completo antes del montaje.</figcaption></figure>
+  <p class="sub" style="margin:0 0 8px;font-size:.88rem">En el celular, desliza la tabla hacia un lado para ver todas las columnas.</p>
+  <div class="tblwrap"><table class="tbl">
+    <tr><th>Artículo</th><th>Cant.</th><th>Estimación</th><th>Por qué esta pieza</th></tr>
+    <tr><td>Arduino Uno R3 + cable USB</td><td>1</td><td>R$ 50–130</td><td>Cerebro del robot</td></tr>
+    <tr><td>Sensor Shield V5.0 para Uno</td><td>1</td><td>R$ 20–35</td><td>Pines S/V/G para conectar los servos y terminal de alimentación independiente</td></tr>
+    <tr><td>Microservo MG90S</td><td>8 (+1 de repuesto)</td><td>R$ 18–30 cada uno</td><td>Los engranajes metálicos soportan el peso en la rodilla; los engranajes plásticos del SG90 se desgastan</td></tr>
+    <tr><td>Batería LiPo 2S 7,4 V, 1000–2200 mAh, XT60</td><td>1</td><td>R$ 70–140</td><td>Alimenta los servos y el Arduino</td></tr>
+    <tr><td>UBEC / step-down 5–6 V, 5 A o más</td><td>1</td><td>R$ 20–45</td><td>Los 8 servos consumen de 4 a 6 A en el pico</td></tr>
+    <tr><td>Interruptor de encendido y apagado (≥ 5 A)</td><td>1</td><td>R$ 5–10</td><td>Cortar toda la alimentación de una vez</td></tr>
+    <tr><td>Alarma de voltaje para LiPo (zumbador)</td><td>1</td><td>R$ 8–15</td><td>Suena antes de que la batería se descargue demasiado</td></tr>
+    <tr><td>Cable 18 AWG rojo y negro (~1 m)</td><td>1</td><td>R$ 8–15</td><td>Línea de alimentación batería → interruptor → UBEC → terminal</td></tr>
+    <tr><td>Cargador balanceado 2S</td><td>1</td><td>R$ 60–150</td><td>Las LiPo solo se cargan con balanceador</td></tr>
+    <tr><td>Chasis + 4 muslos + 4 espinillas</td><td>1 juego</td><td>R$ 10–40</td><td>Impreso en 3D o de acrílico/MDF de 3 mm</td></tr>
+    <tr><td>Patas de goma, tornillos M2/M3, separadores, bridas, velcro</td><td>kit</td><td>R$ 30–60</td><td>Sujeción y agarre</td></tr>
+    <tr><td>Opcionales: Bluetooth HC-05, ultrasonido HC-SR04, IMU MPU-6050</td><td>—</td><td>R$ 50–80</td><td>Control desde el celular, evitar obstáculos, equilibrio</td></tr>
+  </table></div>
+  <div class="grid g3">
+    <div class="card"><h3>Herramientas</h3><p>Destornillador Phillips pequeño, alicate de corte, multímetro y cautín (solo para el XT60 y el interruptor).</p></div>
+    <div class="card"><h3>Software</h3><p>Arduino IDE o <code>arduino-cli</code> (herramienta de línea de comandos de Arduino). Los comandos de esta guía usan <code>arduino-cli</code>.</p><pre><span class="c"># instala arduino-cli (Linux/macOS; en Windows descárgalo en arduino.github.io/arduino-cli)</span>
+<span class="k">curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh</span>
+<span class="k">arduino-cli core install arduino:avr</span>
+<span class="k">arduino-cli lib install Servo</span>
+<span class="c"># Linux: permiso para usar el puerto USB (cierra e inicia sesión de nuevo después)</span>
+<span class="k">sudo usermod -aG dialout $USER</span></pre><p>Las placas clon con chip CH340 aparecen como <code>/dev/ttyUSB0</code> y, en Windows, pueden requerir el controlador CH340.</p></div>
+    <div class="card"><h3>Código del proyecto</h3><p>Descarga el repositorio con los dos sketches: montaje y firmware.</p><pre><span class="k">git clone https://github.com/inematds/robo4</span>
+<span class="k">cd robo4</span></pre></div>
+  </div>
+</div></section>
+
+<section id="diagramas"><div class="wrap">
+  <span class="chip">Diagramas</span>
+  <h2>Todo lo que necesitas consultar mientras lo montas</h2>
+  <p class="sub">Los diagramas están en SVG en el repositorio (<code>guia/assets/</code>). Toca «abrir en pantalla completa» para ampliarlos o imprimirlos.</p>
+  <div class="aviso"><strong>Regla número 1:</strong> nunca alimentes los 8 servos desde los 5 V del Uno. Retira el jumper SEL del shield (la pieza plástica que conecta los 5 V del Uno con los pines V de los servos) y conecta el UBEC al terminal (conector de tornillo) de los servos. Las pistas del shield son delgadas: si los servos tiemblan cuando el robot camina, refuérzalas llevando un cable 18 AWG del UBEC directamente a la fila de pines V.</div>
+  <figure class="dia"><a href="../assets/diagrama-fiacao-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-fiacao-es.svg" alt="Diagrama de cableado: batería, interruptor, UBEC, terminal de los servos, VIN y pines D2 a D9" loading="lazy"></a><figcaption>Cableado y alimentación: energía de los servos desde el UBEC, lógica por VIN, GND común. <a href="../assets/diagrama-fiacao-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-pinos-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-pinos-es.svg" alt="Mapa de las patas visto desde arriba, con número en el código, pines y sentido de cada servo" loading="lazy"></a><figcaption>Mapa de las patas: número usado en el código, pines y sentido de cada servo. <a href="../assets/diagrama-pinos-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-pecas-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-pecas-es.svg" alt="Dibujo de las piezas con medidas: pared lateral, base, muslo y espinilla, y medidas del servo MG90S" loading="lazy"></a><figcaption>Piezas con medidas: pared lateral, base, muslo y espinilla. <a href="../assets/diagrama-pecas-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-perna-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-perna-es.svg" alt="Geometría de la pata con muslo de 55 mm, espinilla de 60 mm y fórmulas de cinemática inversa" loading="lazy"></a><figcaption>Una pata a escala y las fórmulas que usa el código. <a href="../assets/diagrama-perna-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-calibracao-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-calibracao-es.svg" alt="Calibración en tres pasos: servos a 90 grados, montaje de la pata y ajuste fino" loading="lazy"></a><figcaption>Calibración: servo a 90°, montaje en ángulo recto y ajuste fino desde Serial. <a href="../assets/diagrama-calibracao-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-marcha-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-marcha-es.svg" alt="Gráfico de tiempo del trote y la marcha lenta que muestra cuándo sube cada pie" loading="lazy"></a><figcaption>Cuándo sube cada pie en el trote y la marcha lenta. <a href="../assets/diagrama-marcha-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
+</div></section>
+
+<section id="guia"><div class="wrap">
+  <span class="chip">Guía de uso · paso a paso</span>
+  <h2>Montaje en 10 pasos</h2>
+  <p class="sub">Cambia <code>/dev/ttyACM0</code> por el puerto de tu Uno (en Windows, algo como <code>COM3</code>). <code>arduino-cli board list</code> muestra cuál es.</p>
+
+  <div class="step"><div class="b">1</div><div>
+    <h3>Prueba la alimentación sin nada conectado</h3>
+    <p>Carga la LiPo. Conecta batería → interruptor → UBEC y mide la salida con el multímetro. Debe dar entre 5 y 6 V. Conecta los servos solo después.</p>
+  </div></div>
+
+  <div class="step"><div class="b">2</div><div>
+    <h3>Shield en el Uno, jumper SEL retirado</h3>
+    <p>Conecta el Sensor Shield. Retira el jumper SEL y comprueba con el multímetro que el pin V del shield no esté conectado a los 5 V del Uno (los clones varían). Conecta el UBEC al terminal de los servos y la LiPo a VIN/GND del Uno.</p>
+    <figure class="dia"><img src="../assets/fiacao-bancada.jpg" alt="Ilustración de la electrónica en la mesa: Uno con shield, servos conectados, UBEC, interruptor y batería" loading="lazy"><figcaption>Ilustración generada con IA: electrónica montada en la mesa antes de instalarla en el chasis.</figcaption></figure>
+  </div></div>
+
+  <div class="step"><div class="b">3</div><div>
+    <h3>Servos sueltos a 90°</h3>
+    <p>Conecta los 8 servos a los pines D2 a D9 (marrón en G, rojo en V, naranja en S), sin los brazos (horns, la pieza plástica que encaja en el eje) instalados. Carga el sketch de montaje: se moverán a 90° uno por uno y quedarán bloqueados. No gires el eje con la mano mientras estén conectados.</p>
+<pre><span class="k">arduino-cli compile --fqbn arduino:avr:uno firmware/montagem</span>
+<span class="k">arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">4</div><div>
+    <h3>Monta las patas con los servos quietos</h3>
+    <p>Corta las piezas según el <a href="#diagramas">dibujo con medidas</a>. Atornilla los servos de la cadera a las paredes laterales y coloca los muslos en posición vertical. Sujeta los servos de la rodilla en el extremo de los muslos y las espinillas en ángulo recto. Del lado opuesto al eje, un tornillo M3 con tuerca autofrenante (con anillo de nailon que evita que se afloje) sirve como cojinete, el apoyo que permite que la pieza gire sin holgura. Si el horn no encaja en un ángulo recto exacto, usa el diente más cercano: corregirás el resto en el paso 7.</p>
+    <figure class="dia"><img src="../assets/vista-explodida.jpg" alt="Ilustración de la vista explotada del robot con chasis, Arduino, shield, batería y patas" loading="lazy"><figcaption>Ilustración generada con IA: vista explotada (shield, Uno, chasis, batería y UBEC, patas).</figcaption></figure>
+    <figure class="dia"><img src="../assets/perna-detalhe.jpg" alt="Ilustración de una pata con un servo en la cadera y otro en la rodilla" loading="lazy"><figcaption>Ilustración generada con IA: servo de la cadera en el chasis, servo de la rodilla en el extremo del muslo y cables sujetos a lo largo de la pata.</figcaption></figure>
+  </div></div>
+
+  <div class="step"><div class="b">5</div><div>
+    <h3>Cierra el cuerpo</h3>
+    <p>Uno + shield arriba con separadores M3; batería y UBEC abajo con velcro. Sujeta los cables con bridas y deja holgura en la rodilla; de lo contrario, el cable tirará cuando la pata se doble.</p>
+  </div></div>
+
+  <div class="step"><div class="b">6</div><div>
+    <h3>Carga el firmware</h3>
+    <p>El firmware incluye la cinemática, las marchas y la calibración. La primera vez, deja el robot suspendido (sobre un recipiente, con las patas en el aire). Si no tiene una calibración guardada, se inicia en modo de montaje, con todo a 90°, y solo se pone de pie cuando se lo indiques.</p>
+<pre><span class="k">arduino-cli compile --fqbn arduino:avr:uno firmware/robo4</span>
+<span class="k">arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/robo4</span>
+<span class="k">arduino-cli monitor -p /dev/ttyACM0 -c baudrate=9600</span>  <span class="c"># robo4 pronto (sem calibracao: modo montagem, 90 graus).</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">7</div><div>
+    <h3>Calibra cada articulación</h3>
+    <p>Escribe <code>m</code> para poner todo a 90°. Corrige la articulación torcida con <code>o &lt;perna&gt; &lt;junta&gt; &lt;graus&gt;</code> y Enter: pata 0 a 3 (FE frente izq., FD frente der., TE trasera izq., TD trasera der.), articulación 0 = cadera, 1 = rodilla, grados de −30 a 30. Guarda con <code>g</code> en la EEPROM (la memoria del Uno que conserva los datos al apagarlo).</p>
+<pre><span class="k">m</span>          <span class="c"># todos a 90°</span>
+<span class="k">o 0 1 -6</span>   <span class="c"># rodilla delantera izquierda: −6° (si empeora, usa 6)</span>
+<span class="k">p</span>          <span class="c"># muestra los ajustes</span>
+<span class="k">g</span>          <span class="c"># guarda en la EEPROM (se conserva al apagar)</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">8</div><div>
+    <h3>Ponlo de pie</h3>
+    <p>Escribe <code>x</code>. Las cuatro patas deben doblarse igual. Si alguna se dobla hacia el lado equivocado, cambia su sentido en <code>SENTIDO[][]</code> en el código, compila y vuelve a cargarlo.</p>
+<pre><span class="c">// firmware/robo4/robo4.ino</span>
+<span class="k">const int8_t SENTIDO[4][2] = {{1, -1}, {-1, 1}, {1, -1}, {-1, 1}};</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">9</div><div>
+    <h3>Primeros pasos: marcha lenta</h3>
+    <p>Con el robot suspendido, escribe <code>c</code> (marcha lenta, en inglés <em>creep</em>) y comprueba el orden: trasera izquierda, delantera izquierda, trasera derecha, delantera derecha. El cuerpo se balancea hacia adelante y atrás a propósito, para que el peso recaiga sobre las tres patas apoyadas en el suelo. Después, ponlo en el suelo.</p>
+<p>Si se cae hacia un lado: baja la altura con <code>-</code> o, en el código, reduce <code>PASSO</code>, aumenta <code>BALANCO</code> (12 → 18) o <code>CICLO_CREEP</code>. También ayuda separar más las patas (alejar las paredes).</p>
+  </div></div>
+
+  <div class="step"><div class="b">10</div><div>
+    <h3>Trote y comandos</h3>
+    <p>Cuando la marcha lenta sea estable, pasa al trote.</p>
+<pre><span class="k">w</span> adelante   <span class="k">s</span> atrás   <span class="k">a</span> gira izq.   <span class="k">d</span> gira der.
+<span class="k">c</span> marcha lenta   <span class="k">x</span> parar   <span class="k">z</span> acostarse   <span class="k">+</span> / <span class="k">-</span> altura</pre>
+  </div></div>
+</div></section>
+
+<section id="exemplos"><div class="wrap">
+  <span class="chip">Referencia visual</span>
+  <h2>Cómo queda una vez montado</h2>
+  <p class="sub">Imágenes generadas con IA para mostrar el objetivo. Todavía no son fotos de un prototipo real.</p>
+  <div class="ex">
+    <figure><img src="../assets/robo4-montado.jpg" alt="Ilustración del robot cuadrúpedo montado sobre la mesa" loading="lazy"><figcaption>Robot montado: Uno + shield arriba, batería abajo, dos servos por pata.</figcaption></figure>
+    <figure><img src="../assets/perna-detalhe.jpg" alt="Ilustración de cerca de una pata del robot" loading="lazy"><figcaption>De cerca: la rodilla es un segundo servo en el extremo del muslo.</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="termos"><div class="wrap">
+  <span class="chip">Términos</span>
+  <h2>Palabras que aparecen en la guía</h2>
+  <p class="sub">Si alguna palabra te dificulta la lectura, búscala aquí.</p>
+  <div class="tblwrap"><table class="tbl">
+    <tr><th>Término</th><th>Qué es</th></tr>
+    <tr><td>Servo</td><td>Motor pequeño que gira hasta el ángulo indicado (de 0 a 180°) y se queda ahí.</td></tr>
+    <tr><td>Horn</td><td>Brazo plástico que encaja en el eje del servo; ahí se atornilla la pata.</td></tr>
+    <tr><td>Shield</td><td>Placa que se coloca sobre el Arduino y añade conectores.</td></tr>
+    <tr><td>Jumper SEL</td><td>Pieza plástica del shield que conecta los 5 V del Arduino con los servos. Aquí se retira.</td></tr>
+    <tr><td>Terminal</td><td>Conector con tornillo donde se sujeta el cable al apretarlo.</td></tr>
+    <tr><td>LiPo 2S</td><td>Batería de polímero de litio con 2 celdas en serie: 7,4 V nominales.</td></tr>
+    <tr><td>XT60</td><td>Conector amarillo común en baterías LiPo que soporta corrientes altas.</td></tr>
+    <tr><td>UBEC</td><td>Regulador que baja el voltaje de la batería a 5–6 V, con corriente suficiente para los servos.</td></tr>
+    <tr><td>AWG</td><td>Medida del grosor del cable: cuanto menor es el número, más grueso es el cable (18 AWG es más grueso que 20).</td></tr>
+    <tr><td>Cojinete</td><td>Apoyo del lado opuesto al eje que permite que la pieza gire sin holgura.</td></tr>
+    <tr><td>EEPROM</td><td>Memoria del Arduino que conserva los datos al apagarlo; guarda la calibración.</td></tr>
+    <tr><td>FQBN</td><td>Nombre completo de la placa para <code>arduino-cli</code>: <code>arduino:avr:uno</code>.</td></tr>
+    <tr><td>Cinemática inversa</td><td>Cálculo que convierte «dónde debe estar el pie» en los ángulos de la cadera y la rodilla.</td></tr>
+    <tr><td>Marcha lenta (creep) y trote</td><td>Formas de caminar: un pie en el aire a la vez o dos pies en diagonal.</td></tr>
+  </table></div>
+</div></section>
+
+<section id="problemas"><div class="wrap">
+  <span class="chip">Problemas comunes</span>
+  <h2>Si algo sale mal</h2>
+  <p class="sub">Casi todos los problemas de un cuadrúpedo con servos tienen que ver con la alimentación o la calibración.</p>
+  <div class="tblwrap"><table class="tbl">
+    <tr><th>Síntoma</th><th>Causa probable</th><th>Qué hacer</th></tr>
+    <tr><td>El Arduino se reinicia cuando se mueven los servos</td><td>Los servos toman energía del Uno</td><td>Retira el jumper SEL; alimenta los servos solo desde el UBEC; comparte GND</td></tr>
+    <tr><td>El servo tiembla cuando está quieto</td><td>Fuente débil o cable delgado</td><td>UBEC de 5 A o más, cable 20 AWG, batería cargada</td></tr>
+    <tr><td>El servo se calienta</td><td>Hace fuerza contra el límite</td><td>Ajusta con <code>o</code>; revisa que la pata no choque con el chasis</td></tr>
+    <tr><td>La pata se dobla hacia el lado equivocado</td><td>Sentido invertido</td><td>Cambia el sentido en <code>SENTIDO[][]</code></td></tr>
+    <tr><td>Camina torcido</td><td>Los lados tienen distinta calibración</td><td><code>m</code> e iguala las patas con <code>o</code></td></tr>
+    <tr><td>Se tropieza</td><td>El pie sube poco</td><td>Aumenta <code>ELEVA</code> en el código</td></tr>
+    <tr><td>Se cae hacia un lado al trotar</td><td>El paso es demasiado largo o rápido</td><td>Reduce <code>PASSO</code> o aumenta <code>CICLO_TROTE</code></td></tr>
+    <tr><td>No carga el código</td><td>Bluetooth conectado a D0/D1</td><td>Desconecta el módulo durante la carga</td></tr>
+  </table></div>
+  <div class="aviso"><strong>Batería LiPo:</strong> cárgala solo con un cargador balanceado y no la dejes sola. No la descargues por debajo de 6,6 V en total. Si está hinchada, deséchala; nunca la uses en el robot.</div>
+</div></section>
+
+<section id="roadmap"><div class="wrap">
+  <span class="chip">Próximos pasos</span>
+  <h2>Después de que camine</h2>
+  <p class="sub">Todo cabe en los pines libres del Uno.</p>
+  <div class="phase"><div class="tag">Ahora</div><div class="d"><strong>Plan, diagramas y código</strong><span>Lista de piezas, cableado, calibración, cinemática y dos marchas. El código compila; todavía no se ha probado en un robot montado.</span></div></div>
+  <div class="phase"><div class="tag">Extra 1</div><div class="d"><strong>Control desde el celular</strong><span>Módulo Bluetooth HC-05 en D0/D1: las mismas letras, enviadas desde una app de terminal serial.</span></div></div>
+  <div class="phase"><div class="tag">Extra 2</div><div class="d"><strong>Evitar obstáculos</strong><span>Sensor ultrasónico HC-SR04 en D10/D11: se detiene o gira cuando algo se acerca.</span></div></div>
+  <div class="phase"><div class="tag">Extra 3</div><div class="d"><strong>Equilibrio</strong><span>IMU MPU-6050 en A4/A5: lee la inclinación y corrige la altura de cada pata.</span></div></div>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="pill">Arduino Uno</div><div class="pill">Sensor Shield V5</div><div class="pill">8× MG90S</div><div class="pill">C++ / Servo.h</div>
+    <p style="margin-top:18px">robo4 · cuadrúpedo con rodillas ·
+      <a href="https://github.com/inematds/robo4">inematds/robo4</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var KEY='robo4-theme';
+    var b=document.body, t=document.getElementById('themeToggle');
+    try{ if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; } }catch(e){}
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      try{ localStorage.setItem(KEY, light?'light':'dark'); }catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>

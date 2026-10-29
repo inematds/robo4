@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" font-family="Inter, Arial, sans-serif">
+  <title>Gait timing: trot and creep</title>
+  <rect width="1100" height="640" rx="16" fill="#0c0c10"/>
+  <text x="40" y="52" fill="#e9e9ee" font-size="28" font-weight="700" font-family="Sora, Inter, sans-serif">When each foot lifts</text>
+  <text x="40" y="82" fill="#9a9aa6" font-size="16">One complete cycle from left to right.</text>
+  <!-- legend -->
+  <rect x="660" y="60" width="28" height="18" rx="4" fill="#272730"/><text x="696" y="75" fill="#e9e9ee" font-size="15">foot on ground (pushes)</text>
+  <rect x="870" y="60" width="28" height="18" rx="4" fill="#FACC15"/><text x="906" y="75" fill="#e9e9ee" font-size="15">foot in the air</text>
+
+  <!-- TROT: x0=200, width 820 -->
+  <text x="40" y="140" fill="#FACC15" font-size="19" font-weight="700">Trot · command w</text>
+  <text x="240" y="140" fill="#9a9aa6" font-size="15">600 ms cycle · two feet in the air at a time (diagonal pairs)</text>
+  <g font-size="16" fill="#e9e9ee">
+    <text x="40" y="184">FE front left</text><text x="40" y="224">FD front right</text><text x="40" y="264">TE rear left</text><text x="40" y="304">TD rear right</text>
+  </g>
+  <g>
+    <rect x="200" y="166" width="410" height="26" rx="5" fill="#272730"/><rect x="610" y="166" width="410" height="26" rx="5" fill="#FACC15"/>
+    <rect x="200" y="206" width="410" height="26" rx="5" fill="#FACC15"/><rect x="610" y="206" width="410" height="26" rx="5" fill="#272730"/>
+    <rect x="200" y="246" width="410" height="26" rx="5" fill="#FACC15"/><rect x="610" y="246" width="410" height="26" rx="5" fill="#272730"/>
+    <rect x="200" y="286" width="410" height="26" rx="5" fill="#272730"/><rect x="610" y="286" width="410" height="26" rx="5" fill="#FACC15"/>
+  </g>
+
+  <!-- CREEP -->
+  <text x="40" y="380" fill="#FACC15" font-size="19" font-weight="700">Creep · command c</text>
+  <text x="300" y="380" fill="#9a9aa6" font-size="15">1600 ms cycle · one foot in the air at a time, three always on the ground</text>
+  <g font-size="16" fill="#e9e9ee">
+    <text x="40" y="424">FE front left</text><text x="40" y="464">FD front right</text><text x="40" y="504">TE rear left</text><text x="40" y="544">TD rear right</text>
+  </g>
+  <g>
+    <!-- 820/4 = 205 -->
+    <rect x="200" y="406" width="820" height="26" rx="5" fill="#272730"/><rect x="405" y="406" width="205" height="26" rx="5" fill="#FACC15"/>
+    <rect x="200" y="446" width="820" height="26" rx="5" fill="#272730"/><rect x="815" y="446" width="205" height="26" rx="5" fill="#FACC15"/>
+    <rect x="200" y="486" width="820" height="26" rx="5" fill="#272730"/><rect x="200" y="486" width="205" height="26" rx="5" fill="#FACC15"/>
+    <rect x="200" y="526" width="820" height="26" rx="5" fill="#272730"/><rect x="610" y="526" width="205" height="26" rx="5" fill="#FACC15"/>
+  </g>
+  <g font-size="15" fill="#1a1206" font-weight="700" text-anchor="middle">
+    <text x="302" y="504">1º</text><text x="507" y="424">2º</text><text x="712" y="544">3º</text><text x="917" y="464">4º</text>
+  </g>
+  <!-- axis -->
+  <g fill="#9a9aa6" font-size="14" text-anchor="middle">
+    <text x="200" y="584">0</text><text x="405" y="584">¼</text><text x="610" y="584">½</text><text x="815" y="584">¾</text><text x="1020" y="584">1 cycle</text>
+  </g>
+  <text x="40" y="618" fill="#9a9aa6" font-size="15">Start with the creep gait: it is more stable and quickly shows if any leg is poorly calibrated.</text>
+</svg>
