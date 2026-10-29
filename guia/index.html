@@ -203,12 +203,13 @@
     <tr><td>Micro servo MG90S</td><td>8 (+1 reserva)</td><td>R$ 18–30 cada</td><td>Engrenagem de metal aguenta o peso no joelho; o SG90 de plástico espana</td></tr>
     <tr><td>Bateria LiPo 2S 7,4 V, 1000–2200 mAh, XT60</td><td>1</td><td>R$ 70–140</td><td>Alimenta servos e Arduino</td></tr>
     <tr><td>UBEC / step-down 5–6 V, 5 A ou mais</td><td>1</td><td>R$ 20–45</td><td>8 servos puxam 4 a 6 A no pico</td></tr>
+    <tr><td>Porta-fusível de lâmina + fusível 7,5 A</td><td>1</td><td>R$ 8–15</td><td>Logo depois do XT60: um curto não derrete fio nem trilha</td></tr>
     <tr><td>Chave liga/desliga (≥ 5 A)</td><td>1</td><td>R$ 5–10</td><td>Cortar tudo de uma vez</td></tr>
     <tr><td>Alarme de tensão para LiPo (bipador)</td><td>1</td><td>R$ 8–15</td><td>Apita antes de a bateria descer demais</td></tr>
     <tr><td>Plugue P4 macho 5,5 × 2,1 mm com rabicho</td><td>1</td><td>R$ 5–10</td><td>Leva a bateria ao jack DC do Uno (o shield cobre o pino VIN)</td></tr>
     <tr><td>Fio 18 AWG vermelho e preto (~1 m)</td><td>1</td><td>R$ 8–15</td><td>Linha de força bateria → chave → UBEC → borne</td></tr>
     <tr><td>Carregador balanceado 2S</td><td>1</td><td>R$ 60–150</td><td>LiPo só carrega com balanceador</td></tr>
-    <tr><td>Chassi + 4 coxas + 4 canelas</td><td>1 jogo</td><td>R$ 10–40</td><td>Impresso em 3D ou acrílico/MDF 3 mm</td></tr>
+    <tr><td>Chassi + 4 coxas + 4 canelas</td><td>1 jogo</td><td>R$ 10–40</td><td>Acrílico ou MDF de 3 mm cortado pelo desenho com cotas (não há arquivo STL; quem imprime em 3D desenha uma placa de 3 mm com as mesmas medidas)</td></tr>
     <tr><td>Pés de borracha, parafusos M2/M3, espaçadores, abraçadeiras, velcro</td><td>kit</td><td>R$ 30–60</td><td>Fixação e aderência</td></tr>
     <tr><td>Opcionais: Bluetooth HC-05, ultrassom HC-SR04, IMU MPU-6050</td><td>—</td><td>R$ 50–80</td><td>Controle pelo celular, desviar de obstáculo, equilíbrio</td></tr>
   </table></div>
@@ -253,21 +254,21 @@
 
   <div class="step"><div class="b">2</div><div>
     <h3>Shield no Uno, jumper SEL fora</h3>
-    <p>Encaixe o Sensor Shield. Retire o jumper SEL e confira com o multímetro que o pino V do shield não está ligado ao 5 V do Uno (clones variam). Ligue o UBEC no borne dos servos. A lógica do Uno recebe a LiPo pelo jack DC (o conector redondo ao lado do USB), com um plugue P4 5,5 × 2,1 mm: centro positivo, fio vermelho no pino do meio. Confira a polaridade com o multímetro antes de encaixar.</p>
+    <p>Encaixe o Sensor Shield. Retire o jumper SEL. Com tudo desligado e sem bateria, ponha o multímetro em continuidade (o modo que apita) e encoste uma ponta num pino V de qualquer porta de servo e a outra no pino 5V do Uno (ou no pino 5V do shield): <strong>não pode apitar</strong>. Se apitar, o jumper ainda está ligando os dois (clones variam). Ligue o UBEC no borne dos servos. A lógica do Uno recebe a LiPo pelo jack DC (o conector redondo ao lado do USB), com um plugue P4 5,5 × 2,1 mm: centro positivo, fio vermelho no pino do meio. Confira a polaridade com o multímetro antes de encaixar.</p>
     <p>O regulador do Uno precisa de uns 7 V no jack. Regule o alarme da LiPo para 3,5 V por célula (7,0 V no total): ele apita antes de o Uno começar a reiniciar.</p>
     <figure class="dia"><img src="assets/fiacao-bancada.jpg" alt="Ilustração da eletrônica na bancada: Uno com shield, servos plugados, UBEC, chave e bateria" loading="lazy"><figcaption>Ilustração gerada por IA: eletrônica montada na bancada antes de ir para o chassi.</figcaption></figure>
   </div></div>
 
   <div class="step"><div class="b">3</div><div>
     <h3>Servos soltos em 90°</h3>
-    <p>Plugue os 8 servos nos pinos D2 a D9 (marrom no G, vermelho no V, laranja no S) sem os braços (horns, a pecinha plástica que encaixa no eixo) presos. Ligue a chave (os servos recebem força do UBEC) e carregue o sketch de montagem: eles vão para 90° um por vez e ficam travados. Não gire o eixo com a mão enquanto estiverem ligados.</p>
+    <p>Plugue os 8 servos nos pinos D2 a D9 (marrom no G, vermelho no V, laranja no S) sem os braços (horns, a pecinha plástica que encaixa no eixo) presos. Com a chave dos servos desligada, carregue o sketch de montagem pelo USB (o Uno pode ter um programa antigo que mexe nos pinos D2 a D9). Depois ligue a chave: os servos vão para 90° um por vez e ficam travados. Não gire o eixo com a mão enquanto estiverem ligados.</p>
 <pre><span class="k">arduino-cli compile --fqbn arduino:avr:uno firmware/montagem</span>
 <span class="k">arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem</span></pre>
   </div></div>
 
   <div class="step"><div class="b">4</div><div>
     <h3>Monte as pernas com os servos parados</h3>
-    <p>Corte as peças pelo <a href="#diagramas">desenho com medidas</a>. Parafuse os servos do quadril nas janelas das paredes laterais, eixo para fora, e prenda o horn no topo de cada coxa: coxa na vertical, apontando para o chão. Encaixe o servo do joelho na janela da coxa com o eixo para fora (o mesmo lado do quadril) e o corpo subindo pela coxa, voltado para dentro do robô. A canela vai no horn do joelho, do lado de fora da coxa, <strong>apontando para a FRENTE do robô</strong> em ângulo reto (vale para as 4 pernas). Se ela apontar para trás, o joelho dobra do jeito errado e o robô não fica em pé, e trocar o sinal no código não resolve. Se o horn não encaixar em ângulo reto exato, use o dente mais próximo: o resto se corrige no passo 7. Opcional: para menos folga, um parafuso M3 com porca travante (porca com anel de nylon que não solta) no lado oposto ao eixo, passando por uma segunda placa, faz de mancal.</p>
+    <p>Corte as peças pelo <a href="#diagramas">desenho com medidas</a>. Parafuse os servos do quadril nas janelas das paredes laterais, eixo para fora, e prenda o horn no topo de cada coxa: coxa na vertical, apontando para o chão. Os furos dos 2 parafusos do horn variam por fabricante: encoste o horn na peça, centrado no furo do eixo, e marque os furos com ele (furo central de 3 mm para o parafuso do eixo, furos de 1,5 mm para os parafusos do horn). Encaixe o servo do joelho na janela da coxa com o eixo para fora (o mesmo lado do quadril) e o corpo subindo pela coxa, voltado para dentro do robô. A canela vai no horn do joelho, do lado de fora da coxa, <strong>apontando para a FRENTE do robô</strong> em ângulo reto (vale para as 4 pernas). Se ela apontar para trás, o joelho dobra do jeito errado e o robô não fica em pé, e trocar o sinal no código não resolve. Se o horn não encaixar em ângulo reto exato, use o dente mais próximo: o resto se corrige no passo 7. Opcional: para menos folga, um parafuso M3 com porca travante (porca com anel de nylon que não solta) no lado oposto ao eixo, passando por uma segunda placa, faz de mancal.</p>
     <figure class="dia"><img src="assets/vista-explodida.jpg" alt="Ilustração da vista explodida do robô com chassi, Arduino, shield, bateria e pernas" loading="lazy"><figcaption>Ilustração gerada por IA: vista explodida (shield, Uno, chassi, bateria e UBEC, pernas).</figcaption></figure>
     <figure class="dia"><img src="assets/perna-detalhe.jpg" alt="Ilustração de uma perna com servo no quadril e servo no joelho" loading="lazy"><figcaption>Ilustração gerada por IA: servo do quadril no chassi, servo do joelho na ponta da coxa, cabos presos ao longo da perna.</figcaption></figure>
   </div></div>
@@ -365,7 +366,7 @@
     <tr><td>Servo esquenta</td><td>Forçando contra o limite</td><td>Ajuste com o comando <code>o</code>; veja se a perna não bate no chassi</td></tr>
     <tr><td>Perna dobra para o lado errado</td><td>Sinal invertido, ou canela montada apontando para trás</td><td>Confira se a canela aponta para a frente em 90° (passo 4); se sim, troque o sinal em <code>SENTIDO[][]</code></td></tr>
     <tr><td>Anda torto</td><td>Lados calibrados diferente</td><td>Comando <code>m</code>, depois iguale as pernas com o comando <code>o</code></td></tr>
-    <tr><td>Tropeça</td><td>Pé sobe pouco</td><td>Aumente <code>ELEVA</code> no código</td></tr>
+    <tr><td>Tropeça</td><td>Pé sobe pouco</td><td>Aumente <code>ELEVA</code> (constantes no topo de <code>firmware/robo4/robo4.ino</code>)</td></tr>
     <tr><td>Cai para o lado no trote</td><td>Passo longo ou rápido demais</td><td>Diminua <code>PASSO</code> ou aumente <code>CICLO_TROTE</code></td></tr>
     <tr><td>Não carrega o código</td><td>Bluetooth ligado no D0/D1</td><td>Desligue o módulo durante o upload</td></tr>
   </table></div>

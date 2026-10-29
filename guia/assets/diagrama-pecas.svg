@@ -89,13 +89,13 @@
   </g>
   <g id="cotas" font-size="14" fill="#e9e9ee">
     <text x="40" y="680" fill="#FACC15" font-size="16" font-weight="700">Cotas para marcar (mm, a partir do canto de cima à esquerda de cada peça)</text>
-    <text x="40" y="706">Parede: eixos a 20 e a 120 da ponta, 20 abaixo do topo. Janela 23 × 12,5, de altura 13,75 a 26,25; o eixo fica a 6 da ponta da janela mais perto da</text>
-    <text x="40" y="726">ponta da parede.</text>
+    <text x="40" y="706">Parede: eixos a 20 e a 120 da ponta, 20 abaixo do topo. Janela 23 × 12,5, de altura 13,75 a 26,25; o eixo fica a 6 da ponta da</text>
+    <text x="40" y="726">janela mais perto da ponta da parede.</text>
     <text x="40" y="750">Abas do servo do quadril: furos M2 a 11,5 e 39,3 (servo de trás) e a 100,7 e 128,5 (servo da frente), na altura do eixo.</text>
-    <text x="40" y="774">Base: Uno centrado, canto da placa em (35,7; 13,4). Furos do Uno a partir desse canto: (14,0; 2,5) (15,3; 50,7) (66,1; 7,6) (66,1; 35,5). Espaçadores</text>
-    <text x="40" y="794">M3 de 25 mm: o Uno fica acima dos servos do quadril.</text>
-    <text x="40" y="818">Coxa: furo do horn a 8 do topo, no centro. Eixo do joelho a 63 do topo; janela de 46,2 a 69 (o corpo do servo sobe pela coxa, eixo embaixo); furos M2</text>
-    <text x="40" y="838">das abas a 43,7 e 71,5.</text>
+    <text x="40" y="774">Base: Uno centrado, canto da placa em (35,7; 13,4). Furos do Uno a partir desse canto: (14,0; 2,5) (15,3; 50,7) (66,1; 7,6) (66,1;</text>
+    <text x="40" y="794">35,5). Espaçadores M3 de 25 mm: o Uno fica acima dos servos do quadril.</text>
+    <text x="40" y="818">Coxa: furo do eixo do horn (3 mm) a 8 do topo, no centro; furos dos parafusos do horn: marque com o próprio horn. Eixo do joelho a</text>
+    <text x="40" y="838">63 do topo; janela de 46,2 a 69 (o corpo do servo sobe pela coxa, eixo embaixo); furos M2 das abas a 43,7 e 71,5.</text>
     <text x="40" y="862">Canela: horn a 8 do topo, furo do pé 60 abaixo (6 da borda de baixo).</text>
   </g>
 </svg>

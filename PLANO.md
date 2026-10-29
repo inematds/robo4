@@ -16,7 +16,7 @@ Valores de preço são **estimativas** (out/2026, lojas brasileiras e AliExpress
 | Biblioteca | `Servo.h` (vem com a IDE) | No Uno ela controla até 12 servos em qualquer pino digital. Usa o Timer1, então D9/D10 perdem o `analogWrite` (não usamos). Não precisa de driver PCA9685 para 8 servos. |
 | Energia dos servos | Bateria **LiPo 2S (7,4 V)** → **UBEC 6 V / 5 A** → borne do shield | 8 MG90S puxam 4–6 A de pico. O 5 V do Uno aguenta ~0,5 A: se alimentar por ali, o Arduino reinicia ou queima. |
 | Energia do Arduino | A mesma LiPo no **jack DC** do Uno (plugue P4 5,5 × 2,1 mm, centro positivo) | 7,4 V está dentro da faixa do regulador do Uno (7–12 V). GND tudo ligado junto. |
-| Estrutura | Impressão 3D (PLA/PETG) ou acrílico/MDF 3 mm cortado | Qualquer um serve. O importante é medir **L1** (coxa) e **L2** (canela) eixo a eixo e colocar no código. Referência: L1 = 55 mm, L2 = 60 mm. |
+| Estrutura | Acrílico/MDF 3 mm cortado pelo `diagrama-pecas.svg` (sem STL; para imprimir em 3D, desenhe placas de 3 mm com as mesmas cotas) | Qualquer um serve. O importante é medir **L1** (coxa) e **L2** (canela) eixo a eixo e colocar no código. Referência: L1 = 55 mm, L2 = 60 mm. |
 | Marchas | Marcha lenta (*creep*, 1 pé no ar) e trote (2 pés diagonais) | A marcha lenta é estável sem sensor nenhum; o trote é mais rápido, mas precisa de pernas bem calibradas. |
 
 > **Alternativa de shield:** se você já tem uma placa **PCA9685** (16 canais, I2C), ela também serve: liga em A4/A5 e tem borne V+ próprio. Aí o código troca `Servo.h` pela biblioteca `Adafruit_PWMServoDriver`. Este plano segue o Sensor Shield V5, que é mais simples para começar.
@@ -32,6 +32,7 @@ Valores de preço são **estimativas** (out/2026, lojas brasileiras e AliExpress
 | 3 | Micro servo MG90S (metal) | 8 (+1 de reserva) | 18–30 cada |
 | 4 | Bateria LiPo 2S 7,4 V 1000–2200 mAh (XT60) | 1 | 70–140 |
 | 5 | UBEC / step-down 5–6 V, **5 A ou mais** | 1 | 20–45 |
+| 5b | Porta-fusível de lâmina + fusível 7,5 A (logo depois do XT60) | 1 | 8–15 |
 | 6 | Chave liga/desliga (≥ 5 A) | 1 | 5–10 |
 | 6b | Alarme de tensão para LiPo (bipador) | 1 | 8–15 |
 | 6d | Plugue P4 macho 5,5 × 2,1 mm com rabicho (bateria → jack DC do Uno) | 1 | 5–10 |

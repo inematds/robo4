@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>robo4 — quadruped robot with knees (Arduino Uno + shield)</title>
-<meta name="description" content="Complete plan for building a four-legged robot with knees: 8 MG90S servos, Arduino Uno, and Sensor Shield V5. Parts, wiring diagrams, calibration, and code.">
+<meta name="description" content="Complete plan to build a four-legged robot with knees: 8 MG90S servos, Arduino Uno, and Sensor Shield V5. Parts, wiring diagrams, calibration, and code.">
 <link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/robo4/guia/">
 <link rel="alternate" hreflang="en" href="https://inematds.github.io/robo4/guia/en/">
 <link rel="alternate" hreflang="es" href="https://inematds.github.io/robo4/guia/es/">
@@ -128,7 +128,7 @@
     <a class="sec" href="#oque">About</a>
     <a class="sec" href="#pre">Parts</a>
     <a class="sec" href="#diagramas">Diagrams</a>
-    <a class="sec" href="#guia">Step by step</a>
+    <a class="sec" href="#guia">Step by Step</a>
     <a class="sec" href="#termos">Terms</a>
     <a class="sec" href="#problemas">Troubleshooting</a>
     <span class="lang"><a href="../">PT</a><a class="on" href="./">EN</a><a href="../es/">ES</a></span>
@@ -143,7 +143,7 @@
     <div>
       <span class="chip">Robotics · Arduino Uno + Sensor Shield</span>
       <h1>Build a four-legged robot with <span class="amb">knees</span></h1>
-      <p class="lead">8 servos, an Arduino Uno, and a shield. Parts, wiring, calibration, and code are ready to help it stand and walk.</p>
+      <p class="lead">8 servos, an Arduino Uno, and a shield. Parts, wiring, calibration, and code are ready to help your robot stand and walk.</p>
       <div class="cta">
         <a class="btn" href="#guia">Start the guide</a>
         <a class="btn ghost" href="https://github.com/inematds/robo4" target="_blank" rel="noopener">View on GitHub</a>
@@ -155,66 +155,67 @@
 
 <section id="resumo" class="resumo"><div class="wrap">
   <span class="chip">At a glance</span>
-  <p>robo4 is a complete plan for building a small walking quadruped at home (about 20 cm tall). Each leg has two small motors called servos: one at the hip and one at the knee. An Arduino Uno controls everything, with a shield plugged on top to connect the 8 servos. Here you'll find the parts list, wiring diagrams, assembly and calibration steps, and code that already compiles. It's for anyone who wants to learn robotics by building something. You need a computer, the parts on the list, and an afternoon to put it together.</p>
+  <p>robo4 is a complete plan for building a small four-legged robot at home (about 20 cm tall) that can walk. Each leg has two small motors called servos: one at the hip and one at the knee. An Arduino Uno controls everything, with a plug-on board (shield) on top where the 8 servos connect. This guide includes the parts list, wiring diagrams, assembly and calibration steps, and code that already compiles. It is for anyone who wants to learn robotics hands-on. You need a computer, the listed parts, and an afternoon to build it.</p>
 </div></section>
 
 <section id="oque"><div class="wrap">
   <span class="chip">About</span>
   <h2>A simple quadruped that really walks</h2>
-  <p class="sub">Two joints per leg are the minimum needed to lift the foot, move it forward, and set it down. The rest is calibration and timing.</p>
+  <p class="sub">Two joints per leg are the minimum needed for the foot to lift, move forward, and come down. The rest is calibration and timing.</p>
   <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-en.jpg" alt="robo4 stages: parts, assembly, wiring, calibration, kinematics, and gait" loading="lazy" style="width:100%;display:block"></figure>
   <div class="grid g3">
-    <div class="card"><h3>🦿 Real knees</h3><p>Hip and knee joints on each leg (8 MG90S metal gear servos). The foot follows an arc: it lifts, moves forward, and lands.</p></div>
-    <div class="card"><h3>🔌 No breadboard</h3><p>The Sensor Shield V5 has 3 pins per port: plug the servos directly into D2 through D9. A separate power supply powers the servos.</p></div>
-    <div class="card"><h3>🧮 Ready-to-use code</h3><p>Inverse kinematics, trot, slow walk, turning, and calibration saved in memory. Control it with letters in the Serial Monitor.</p></div>
+    <div class="card"><h3>🦿 Real knees</h3><p>Each leg has a hip and a knee (8 MG90S metal gear servos). The foot follows an arc: it lifts, moves forward, and plants.</p></div>
+    <div class="card"><h3>🔌 No breadboard</h3><p>Sensor Shield V5 has 3 pins per port. Plug the servos directly into D2 through D9. A separate power supply powers the servos.</p></div>
+    <div class="card"><h3>🧮 Ready-to-use code</h3><p>Inverse kinematics, trot, slow walk, turns, and saved calibration. Control it with letters in the Serial Monitor.</p></div>
   </div>
 </div></section>
 
 <section id="fluxo"><div class="wrap">
   <span class="chip">How it works</span>
-  <h2>From a bag of parts to a trot</h2>
-  <p class="sub">Seven stages that become the guide's 10 steps: battery = step 1, electronics = 2, servos at 90° = 3, legs = 4 and 5, calibration = 6 to 8, slow walk = 9, trot = 10.</p>
+  <h2>From parts bag to trot</h2>
+  <p class="sub">Seven stages become the guide’s 10 steps: battery = step 1, electronics = 2, servos at 90° = 3, legs = 4 and 5, calibration = 6 to 8, slow walk = 9, trot = 10.</p>
   <div class="flow">
     <span>Buy and charge the battery</span><span class="arr">→</span>
-    <span>Set up the electronics</span><span class="arr">→</span>
-    <span>Set servos to 90°</span><span class="arr">→</span>
-    <span>Build the legs</span><span class="arr">→</span>
+    <span>Electronics on the bench</span><span class="arr">→</span>
+    <span>Servos at 90°</span><span class="arr">→</span>
+    <span>Assemble the legs</span><span class="arr">→</span>
     <span>Calibrate</span><span class="arr">→</span>
     <span>Slow walk</span><span class="arr">→</span>
     <span>Trot</span>
   </div>
   <div class="grid g3" style="margin-top:22px">
-    <div class="card"><h3>Where the foot should be</h3><p>The code uses millimeters: "foot 15 mm forward and 85 mm below the hip." Inverse kinematics (the law of cosines) converts this into two angles.</p></div>
+    <div class="card"><h3>Where the foot should be</h3><p>The code uses millimeters: “foot 15 mm forward and 85 mm below the hip.” Inverse kinematics (the law of cosines) converts that into two angles.</p></div>
     <div class="card"><h3>Where the servo moves</h3><p>90° on the servo = thigh vertical and knee at a right angle. Hip: 90 + sign × angle + offset. Knee: 90 + sign × (angle − 90) + offset.</p></div>
-    <div class="card"><h3>When each foot lifts</h3><p>In the slow walk, one foot lifts at a time (three on the ground), and the body shifts so its weight stays over them. In a trot, two diagonal feet lift together. The code updates 50 times per second.</p></div>
+    <div class="card"><h3>When each foot lifts</h3><p>In the slow walk, one foot lifts at a time (three stay on the ground), and the body shifts to keep its weight over them. In the trot, two diagonal feet lift together. Everything updates 50 times per second.</p></div>
   </div>
 </div></section>
 
 <section id="pre"><div class="wrap">
   <span class="chip">Parts and tools</span>
   <h2>What to buy</h2>
-  <p class="sub">Prices in Brazilian reais are estimates from October 2026. Basic total: R$ 450 to 850, excluding a 3D printer and optional items.</p>
-  <figure class="dia"><img src="../assets/kit-pecas.jpg" alt="Illustration of all the robot parts arranged on a workbench" loading="lazy"><figcaption>AI-generated illustration: the complete kit before assembly.</figcaption></figure>
-  <p class="sub" style="margin:0 0 8px;font-size:.88rem">On a phone, swipe the table sideways to see all columns.</p>
+  <p class="sub">Prices in Brazilian reais are estimates from October 2026. Basic total: R$ 450 to 850, excluding a 3D printer and optional parts.</p>
+  <figure class="dia"><img src="../assets/kit-pecas.jpg" alt="Illustration of all robot parts arranged on a workbench" loading="lazy"><figcaption>AI-generated illustration: the complete kit before assembly.</figcaption></figure>
+  <p class="sub" style="margin:0 0 8px;font-size:.88rem">On a phone, swipe the table sideways to see all the columns.</p>
   <div class="tblwrap"><table class="tbl">
-    <tr><th>Item</th><th>Qty</th><th>Estimate</th><th>Why this one</th></tr>
-    <tr><td>Arduino Uno R3 + USB cable</td><td>1</td><td>R$ 50–130</td><td>The robot's brain</td></tr>
+    <tr><th>Item</th><th>Qty.</th><th>Estimate</th><th>Why this one</th></tr>
+    <tr><td>Arduino Uno R3 + USB cable</td><td>1</td><td>R$ 50–130</td><td>The robot’s brain</td></tr>
     <tr><td>Sensor Shield V5.0 for Uno</td><td>1</td><td>R$ 20–35</td><td>S/V/G pins for plugging in the servos and a separate power terminal</td></tr>
-    <tr><td>MG90S micro servo</td><td>8 (+1 spare)</td><td>R$ 18–30 each</td><td>Metal gears handle the load at the knee; the plastic SG90 strips</td></tr>
-    <tr><td>LiPo 2S battery, 7.4 V, 1000–2200 mAh, XT60</td><td>1</td><td>R$ 70–140</td><td>Powers the servos and Arduino</td></tr>
-    <tr><td>UBEC / step-down, 5–6 V, 5 A or more</td><td>1</td><td>R$ 20–45</td><td>8 servos draw 4 to 6 A at peak</td></tr>
-    <tr><td>On/off switch (≥ 5 A)</td><td>1</td><td>R$ 5–10</td><td>Cut power to everything at once</td></tr>
-    <tr><td>LiPo voltage alarm (buzzer)</td><td>1</td><td>R$ 8–15</td><td>Beeps before the battery gets too low</td></tr>
-    <tr><td>5.5 × 2.1 mm male P4 plug with pigtail</td><td>1</td><td>R$ 5–10</td><td>Connects the battery to the Uno's DC jack (the shield covers the VIN pin)</td></tr>
-    <tr><td>18 AWG red and black wire (~1 m)</td><td>1</td><td>R$ 8–15</td><td>Power line: battery → switch → UBEC → terminal</td></tr>
+    <tr><td>MG90S micro servo</td><td>8 (+1 spare)</td><td>R$ 18–30 each</td><td>Metal gears handle the load at the knee; plastic gears in the SG90 strip</td></tr>
+    <tr><td>2S 7.4 V LiPo battery, 1000–2200 mAh, XT60</td><td>1</td><td>R$ 70–140</td><td>Powers the servos and Arduino</td></tr>
+    <tr><td>UBEC / 5–6 V step-down, 5 A or more</td><td>1</td><td>R$ 20–45</td><td>8 servos draw 4 to 6 A at peak</td></tr>
+    <tr><td>Blade fuse holder + 7.5 A fuse</td><td>1</td><td>R$ 8–15</td><td>Right after the XT60: a short circuit won’t melt a wire or trace</td></tr>
+    <tr><td>On/off switch (≥ 5 A)</td><td>1</td><td>R$ 5–10</td><td>Shuts everything off at once</td></tr>
+    <tr><td>LiPo voltage alarm (buzzer)</td><td>1</td><td>R$ 8–15</td><td>Beeps before the battery voltage drops too low</td></tr>
+    <tr><td>5.5 × 2.1 mm male P4 plug with pigtail</td><td>1</td><td>R$ 5–10</td><td>Connects the battery to the Uno’s DC jack (the shield covers the VIN pin)</td></tr>
+    <tr><td>Red and black 18 AWG wire (~1 m)</td><td>1</td><td>R$ 8–15</td><td>Power line: battery → switch → UBEC → terminal</td></tr>
     <tr><td>2S balance charger</td><td>1</td><td>R$ 60–150</td><td>LiPo batteries must be charged with a balance charger</td></tr>
-    <tr><td>Chassis + 4 thighs + 4 shins</td><td>1 set</td><td>R$ 10–40</td><td>3D-printed, or 3 mm acrylic/MDF</td></tr>
-    <tr><td>Rubber feet, M2/M3 screws, spacers, cable ties, Velcro</td><td>kit</td><td>R$ 30–60</td><td>Fastening and traction</td></tr>
+    <tr><td>Chassis + 4 thighs + 4 shins</td><td>1 set</td><td>R$ 10–40</td><td>3 mm acrylic or MDF cut to the dimensioned drawing (there is no STL file; if you 3D-print it, design a 3 mm plate with the same measurements)</td></tr>
+    <tr><td>Rubber feet, M2/M3 screws, spacers, zip ties, hook-and-loop tape</td><td>kit</td><td>R$ 30–60</td><td>Mounting and grip</td></tr>
     <tr><td>Optional: HC-05 Bluetooth, HC-SR04 ultrasonic sensor, MPU-6050 IMU</td><td>—</td><td>R$ 50–80</td><td>Phone control, obstacle avoidance, balance</td></tr>
   </table></div>
   <div class="grid g3">
     <div class="card"><h3>Tools</h3><p>Small Phillips screwdriver, wire cutters, multimeter, and soldering iron (only for the XT60 and switch).</p></div>
-    <div class="card"><h3>Software</h3><p>Arduino IDE or <code>arduino-cli</code> (Arduino command-line tool). The commands in this guide use <code>arduino-cli</code>.</p><pre><span class="c"># install arduino-cli (Linux/macOS; on Windows, download it from arduino.github.io/arduino-cli)</span>
+    <div class="card"><h3>Software</h3><p>Arduino IDE or <code>arduino-cli</code> (Arduino’s command-line tool). The commands in this guide use <code>arduino-cli</code>.</p><pre><span class="c"># install arduino-cli (Linux/macOS; on Windows, download it from arduino.github.io/arduino-cli)</span>
 <span class="k">mkdir -p ~/.local/bin</span>
 <span class="k">curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/.local/bin sh</span>
 <span class="k">export PATH="$HOME/.local/bin:$PATH"</span>  <span class="c"># add this line to ~/.bashrc</span>
@@ -222,7 +223,7 @@
 <span class="k">arduino-cli core install arduino:avr</span>
 <span class="k">arduino-cli lib install Servo</span>
 <span class="c"># Linux: permission to use the USB port (log out and back in afterward)</span>
-<span class="k">sudo usermod -aG dialout $USER</span></pre><p>Clones with a CH340 chip appear as <code>/dev/ttyUSB0</code>. On Windows, they may need the CH340 driver.</p></div>
+<span class="k">sudo usermod -aG dialout $USER</span></pre><p>Clones with a CH340 chip appear as <code>/dev/ttyUSB0</code>. On Windows, you may need the CH340 driver.</p></div>
     <div class="card"><h3>Project code</h3><p>Download the repository with both sketches: assembly and firmware.</p><pre><span class="k">git clone https://github.com/inematds/robo4</span>
 <span class="k">cd robo4</span></pre></div>
   </div>
@@ -230,56 +231,56 @@
 
 <section id="diagramas"><div class="wrap">
   <span class="chip">Diagrams</span>
-  <h2>Everything you need to reference while you build</h2>
-  <p class="sub">The diagrams are SVG files in the repository (<code>guia/assets/</code>). They look small on a phone: tap "Open full screen." To print the parts drawing at full size, use the dimensions written on it (in mm), not the screen scale.</p>
-  <div class="aviso"><strong>Rule number 1:</strong> Never power the 8 servos from the Uno's 5 V. Remove the shield's SEL jumper (the small plastic piece that connects the Uno's 5 V to the servos' V pins) and connect the UBEC to the servos' power terminal (screw connector). The shield's traces are thin: if the servos shake while the robot walks, reinforce the power supply by running 18 AWG wire from the UBEC directly to the V pin row.</div>
-  <figure class="dia"><a href="../assets/diagrama-fiacao-en.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-fiacao-en.svg" alt="Wiring diagram: battery, switch, UBEC, servo power terminal, Uno DC jack, and D2 through D9 pins" loading="lazy"></a><figcaption>Wiring and power: UBEC powers the servos, the Uno's DC jack powers the logic, and GND is shared. <a href="../assets/diagrama-fiacao-en.svg" target="_blank" rel="noopener">Open full screen</a></figcaption></figure>
-  <figure class="dia"><a href="../assets/diagrama-pinos-en.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-pinos-en.svg" alt="Top view of the leg map with code number, pins, and signal for each servo" loading="lazy"></a><figcaption>Leg map: code number, pins, and signal for each servo. <a href="../assets/diagrama-pinos-en.svg" target="_blank" rel="noopener">Open full screen</a></figcaption></figure>
-  <figure class="dia"><a href="../assets/diagrama-pecas-en.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-pecas-en.svg" alt="Parts drawing with measurements: side wall, base, thigh, and shin, plus MG90S servo dimensions" loading="lazy"></a><figcaption>Parts with dimensions: side wall, base, thigh, and shin. <a href="../assets/diagrama-pecas-en.svg" target="_blank" rel="noopener">Open full screen</a></figcaption></figure>
-  <figure class="dia"><a href="../assets/diagrama-perna-en.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-perna-en.svg" alt="Leg geometry with a 55 mm thigh, 60 mm shin, and inverse kinematics formulas" loading="lazy"></a><figcaption>One leg to scale and the formulas used by the code. <a href="../assets/diagrama-perna-en.svg" target="_blank" rel="noopener">Open full screen</a></figfigcaption></figure>
-  <figure class="dia"><a href="../assets/diagrama-calibracao-en.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-calibracao-en.svg" alt="Three calibration steps: servos at 90 degrees, attaching the leg, and fine adjustment" loading="lazy"></a><figcaption>Calibration: servo at 90°, attach at a right angle, then fine-tune through Serial. <a href="../assets/diagrama-calibracao-en.svg" target="_blank" rel="noopener">Open full screen</a></figcaption></figure>
+  <h2>Everything to reference while you build</h2>
+  <p class="sub">The diagrams are SVGs in the repository (<code>guia/assets/</code>). They’re small on a phone: tap “Open full screen.” To print the parts drawing at full size, use the dimensions written on it (in mm), not the size on your screen.</p>
+  <div class="aviso"><strong>Rule number 1:</strong> Never power the 8 servos from the Uno’s 5 V pin. Remove the shield’s SEL jumper (the small plastic piece that connects the Uno’s 5 V to the servos’ V pins) and connect the UBEC to the servo power terminal (screw connector). The shield’s traces are thin. If the servos shake while the robot walks, reinforce the power line with an 18 AWG wire from the UBEC directly to the V pin row.</div>
+  <figure class="dia"><a href="../assets/diagrama-fiacao-en.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-fiacao-en.svg" alt="Wiring diagram: battery, switch, UBEC, servo power terminal, Uno DC jack, and D2 to D9 pins" loading="lazy"></a><figcaption>Wiring and power: UBEC powers the servos, the Uno’s DC jack powers the logic, and GND is shared. <a href="../assets/diagrama-fiacao-en.svg" target="_blank" rel="noopener">Open full screen</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-pinos-en.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-pinos-en.svg" alt="Top-down leg map with code number, pins, and signal for each servo" loading="lazy"></a><figcaption>Leg map: number used in the code, pins, and signal for each servo. <a href="../assets/diagrama-pinos-en.svg" target="_blank" rel="noopener">Open full screen</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-pecas-en.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-pecas-en.svg" alt="Dimensioned parts drawing: side wall, base, thigh and shin, and MG90S servo measurements" loading="lazy"></a><figcaption>Dimensioned parts: side wall, base, thigh, and shin. <a href="../assets/diagrama-pecas-en.svg" target="_blank" rel="noopener">Open full screen</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-perna-en.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-perna-en.svg" alt="Leg geometry with a 55 mm thigh, 60 mm shin, and inverse kinematics formulas" loading="lazy"></a><figcaption>One leg to scale and the formulas used by the code. <a href="../assets/diagrama-perna-en.svg" target="_blank" rel="noopener">Open full screen</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-calibracao-en.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-calibracao-en.svg" alt="Three calibration steps: servos at 90 degrees, attach the leg, and fine-tune" loading="lazy"></a><figcaption>Calibration: servo at 90°, attach at a right angle, fine-tune through Serial. <a href="../assets/diagrama-calibracao-en.svg" target="_blank" rel="noopener">Open full screen</a></figcaption></figure>
   <figure class="dia"><a href="../assets/diagrama-marcha-en.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-marcha-en.svg" alt="Trot and slow-walk timing chart showing when each foot lifts" loading="lazy"></a><figcaption>When each foot lifts during the trot and slow walk. <a href="../assets/diagrama-marcha-en.svg" target="_blank" rel="noopener">Open full screen</a></figcaption></figure>
 </div></section>
 
 <section id="guia"><div class="wrap">
   <span class="chip">How-to guide · step by step</span>
-  <h2>Assembly in 10 steps</h2>
-  <p class="sub">Replace <code>/dev/ttyACM0</code> with your Uno's port (on Windows, something like <code>COM3</code>). <code>arduino-cli board list</code> shows which one it is.</p>
+  <h2>Build it in 10 steps</h2>
+  <p class="sub">Replace <code>/dev/ttyACM0</code> with your Uno’s port (on Windows, something like <code>COM3</code>). <code>arduino-cli board list</code> shows which one it is.</p>
 
   <div class="step"><div class="b">1</div><div>
-    <h3>Test the power supply with nothing connected</h3>
-    <p>Charge the LiPo. Connect battery → switch → UBEC and measure the output with a multimeter. It must read between 5 and 6 V. Only connect a servo after that.</p>
+    <h3>Test the power with nothing connected</h3>
+    <p>Charge the LiPo. Connect battery → switch → UBEC and measure the output with a multimeter. It should read between 5 and 6 V. Only connect a servo after that.</p>
   </div></div>
 
   <div class="step"><div class="b">2</div><div>
     <h3>Shield on the Uno, SEL jumper removed</h3>
-    <p>Plug in the Sensor Shield. Remove the SEL jumper and use a multimeter to check that the shield's V pin is not connected to the Uno's 5 V (clones vary). Connect the UBEC to the servos' power terminal. The Uno's logic gets power from the LiPo through the DC jack (the round connector next to the USB port), using a 5.5 × 2.1 mm P4 plug: center positive, red wire to the center pin. Check the polarity with a multimeter before plugging it in.</p>
-    <p>The Uno's regulator needs about 7 V at the jack. Set the LiPo alarm to 3.5 V per cell (7.0 V total): it beeps before the Uno starts rebooting.</p>
-    <figure class="dia"><img src="../assets/fiacao-bancada.jpg" alt="Electronics on a workbench: Uno with shield, connected servos, UBEC, switch, and battery" loading="lazy"><figcaption>AI-generated illustration: electronics assembled on the workbench before mounting on the chassis.</figcaption></figure>
+    <p>Plug in the Sensor Shield. Remove the SEL jumper. With everything off and no battery connected, set the multimeter to continuity mode (the setting that beeps). Touch one probe to a V pin on any servo port and the other to the Uno’s 5V pin (or the shield’s 5V pin): <strong>it should not beep</strong>. If it beeps, the jumper still connects the two (clones vary). Connect the UBEC to the servo power terminal. The Uno’s logic gets power from the LiPo through the DC jack (the round connector next to USB), with a 5.5 × 2.1 mm P4 plug: positive in the center, red wire to the center pin. Check the polarity with a multimeter before plugging it in.</p>
+    <p>The Uno’s regulator needs about 7 V at the jack. Set the LiPo alarm to 3.5 V per cell (7.0 V total): it will beep before the Uno starts restarting.</p>
+    <figure class="dia"><img src="../assets/fiacao-bancada.jpg" alt="Illustration of the electronics on a workbench: Uno with shield, plugged-in servos, UBEC, switch, and battery" loading="lazy"><figcaption>AI-generated illustration: electronics assembled on the workbench before mounting on the chassis.</figcaption></figure>
   </div></div>
 
   <div class="step"><div class="b">3</div><div>
-    <h3>Servos loose at 90°</h3>
-    <p>Plug the 8 servos into pins D2 through D9 (brown to G, red to V, orange to S) without the arms (horns, the plastic pieces that fit onto the shafts) attached. Turn on the switch (the servos get power from the UBEC) and upload the assembly sketch: they move to 90° one at a time and stay there. Don't turn the shaft by hand while the servos are powered.</p>
+    <h3>Loose servos set to 90°</h3>
+    <p>Plug the 8 servos into pins D2 through D9 (brown to G, red to V, orange to S), with the arms (horns, the small plastic pieces that fit on the shafts) unattached. With the servo power switch off, upload the assembly sketch over USB (the Uno may have an old program that moves pins D2 through D9). Then turn the switch on: the servos will move to 90° one at a time and hold position. Don’t turn the shaft by hand while the servos are powered.</p>
 <pre><span class="k">arduino-cli compile --fqbn arduino:avr:uno firmware/montagem</span>
 <span class="k">arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem</span></pre>
   </div></div>
 
   <div class="step"><div class="b">4</div><div>
     <h3>Assemble the legs with the servos stopped</h3>
-    <p>Cut the parts using the <a href="#diagramas">dimensioned drawing</a>. Screw the hip servos into the openings in the side walls, with the shaft pointing out, and attach the horn to the top of each thigh: the thigh should be vertical, pointing toward the ground. Fit the knee servo into the opening in the thigh with its shaft pointing out (on the same side as the hip) and its body extending up the thigh, facing inward toward the robot. Attach the shin to the knee horn, outside the thigh, <strong>pointing toward the FRONT of the robot</strong> at a right angle (for all 4 legs). If it points backward, the knee bends the wrong way and the robot won't stand; changing the sign in the code won't fix it. If the horn doesn't fit at exactly a right angle, use the closest tooth; you can correct the rest in step 7. Optional: to reduce wobble, add an M3 screw with a locknut (a nut with a nylon ring that keeps it from coming loose) on the side opposite the shaft, through a second plate, to act as a bearing.</p>
-    <figure class="dia"><img src="../assets/vista-explodida.jpg" alt="Exploded view illustration of the robot with chassis, Arduino, shield, battery, and legs" loading="lazy"><figcaption>AI-generated illustration: exploded view (shield, Uno, chassis, battery and UBEC, legs).</figcaption></figure>
-    <figure class="dia"><img src="../assets/perna-detalhe.jpg" alt="Illustration of a leg with a hip servo and a knee servo" loading="lazy"><figcaption>AI-generated illustration: hip servo on the chassis, knee servo at the end of the thigh, wires secured along the leg.</figcaption></figure>
+    <p>Cut the parts using the <a href="#diagramas">dimensioned drawing</a>. Screw the hip servos into the openings in the side walls, with the shafts facing out, and attach a horn to the top of each thigh: the thigh should be vertical and point toward the ground. The 2 horn screw holes vary by manufacturer. Hold the horn against the part, centered on the shaft hole, and mark the holes with it (3 mm center hole for the shaft screw, 1.5 mm holes for the horn screws). Fit the knee servo into the opening in the thigh with the shaft facing out (on the same side as the hip) and the body extending up along the thigh, facing inward toward the robot. Attach the shin to the knee horn, on the outside of the thigh, <strong>pointing toward the FRONT of the robot</strong> at a right angle (for all 4 legs). If it points backward, the knee bends the wrong way and the robot won’t stand. Changing the sign in the code won’t fix it. If the horn won’t fit at an exact right angle, use the closest tooth. You’ll correct the rest in step 7. Optional: to reduce wobble, add an M3 screw with a locknut (a nut with a nylon ring that keeps it from loosening) on the side opposite the shaft, passing through a second plate to act as a bearing.</p>
+    <figure class="dia"><img src="../assets/vista-explodida.jpg" alt="Exploded-view illustration of the robot with chassis, Arduino, shield, battery, and legs" loading="lazy"><figcaption>AI-generated illustration: exploded view (shield, Uno, chassis, battery and UBEC, legs).</figcaption></figure>
+    <figure class="dia"><img src="../assets/perna-detalhe.jpg" alt="Illustration of a leg with a hip servo and a knee servo" loading="lazy"><figcaption>AI-generated illustration: hip servo on the chassis, knee servo at the end of the thigh, cables secured along the leg.</figcaption></figure>
   </div></div>
 
   <div class="step"><div class="b">5</div><div>
     <h3>Close up the body</h3>
-    <p>Mount the Uno + shield on top with 25 mm M3 spacers (so the board clears the hip servos); attach the battery and UBEC underneath with Velcro. Secure the wires with cable ties and leave slack at the knee, or the wire will pull when the leg bends.</p>
+    <p>Mount the Uno + shield on top with 25 mm M3 spacers (so the board clears the hip servos). Attach the battery and UBEC underneath with hook-and-loop tape. Secure the cables with zip ties and leave slack at the knee. Otherwise, the wire will pull when the leg bends.</p>
   </div></div>
 
   <div class="step"><div class="b">6</div><div>
     <h3>Upload the firmware</h3>
-    <p>The firmware includes the kinematics, gaits, and calibration. Suspend the robot (over a container, legs in the air) the first time. If no calibration is saved, it starts in assembly mode, with everything at 90°, and only stands when you tell it to.</p>
+    <p>The firmware includes kinematics, gaits, and calibration. Suspend the robot (over a jar, with its legs in the air) the first time you turn it on. If no calibration is saved, it starts in assembly mode with everything at 90°. It will stand only when you tell it to.</p>
 <pre><span class="k">arduino-cli compile --fqbn arduino:avr:uno firmware/robo4</span>
 <span class="k">arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/robo4</span>
 <span class="k">arduino-cli monitor -p /dev/ttyACM0 -c baudrate=9600</span>  <span class="c"># robo4 pronto (sem calibracao: modo montagem, 90 graus).</span></pre>
@@ -287,7 +288,7 @@
 
   <div class="step"><div class="b">7</div><div>
     <h3>Calibrate each joint</h3>
-    <p>Type <code>m</code> to set everything to 90°. Correct a crooked joint with the command <code>o &lt;leg&gt; &lt;joint&gt; &lt;degrees&gt;</code>. Type it all at once and press Enter (<code>arduino-cli monitor</code> doesn't show what you type; in the Arduino IDE, set the Serial Monitor to "Newline"). The value <strong>replaces</strong> the previous offset for that joint; it does not add to it: legs 0 to 3 (FE front left, FD front right, TE rear left, TD rear right), joint 0 = hip, 1 = knee, degrees from −30 to 30. Save with <code>g</code> to the EEPROM (the Uno's memory that keeps data when powered off).</p>
+    <p>Type <code>m</code> to set everything to 90°. Correct a crooked joint with the command <code>o &lt;leg&gt; &lt;joint&gt; &lt;degrees&gt;</code>. Type the whole command at once and press Enter (<code>arduino-cli monitor</code> doesn’t show what you type; in the Arduino IDE, set the Serial Monitor to “Newline”). The value <strong>replaces</strong> the previous offset for that joint; it doesn’t add to it. Legs 0 to 3 (FE, FD, TE, TD), joint 0 = hip, 1 = knee, degrees from −30 to 30. Save to EEPROM with <code>g</code> (the Uno’s memory that doesn’t erase when powered off).</p>
 <pre><span class="k">m</span>          <span class="c"># all at 90°</span>
 <span class="k">o 0 1 -6</span>   <span class="c"># front-left knee: −6° (if it got worse, use 6)</span>
 <span class="k">p</span>          <span class="c"># show the offsets</span>
@@ -295,16 +296,16 @@
   </div></div>
 
   <div class="step"><div class="b">8</div><div>
-    <h3>Make it stand</h3>
-    <p>Type <code>x</code>. The legs slowly move into the standing pose (each servo moves at most 5° every 20 ms, which also eases the load on the power supply). All four should bend the same way. If one bends the wrong way, change its sign in <code>SENTIDO[][]</code> in the code, then compile and upload again.</p>
+    <h3>Stand up</h3>
+    <p>Type <code>x</code>. The legs will slowly move into a standing pose (each servo moves at most 5° every 20 ms, which also reduces the load on the power supply). All four should bend the same way. If one bends the wrong way, change its sign in <code>SENTIDO[][]</code> in the code, compile, and upload again.</p>
 <pre><span class="c">// firmware/robo4/robo4.ino</span>
 <span class="k">const int8_t SENTIDO[4][2] = {{1, -1}, {-1, 1}, {1, -1}, {-1, 1}};</span></pre>
   </div></div>
 
   <div class="step"><div class="b">9</div><div>
     <h3>First steps: slow walk</h3>
-    <p>With the robot suspended, type <code>c</code> (slow walk, or <em>creep</em>) and check the sequence: rear left, front left, rear right, front right. The body shifts back and forth on purpose, so its weight stays over the three legs on the ground. Then set it on the floor.</p>
-<p><code>BALANCO</code> only moves the body forward and backward. If it tips forward or backward, increase <code>BALANCO</code> (12 → 18) or decrease <code>PASSO</code>. If it tips sideways, lower the height with <code>-</code> or spread the legs farther apart (base wider than 80 mm).</p>
+    <p>With the robot suspended, type <code>c</code> (slow walk, or <em>creep</em>) and check the order: rear left, front left, rear right, front right. The body shifts forward and backward on purpose to keep its weight over the three legs on the ground. Then place it on the floor.</p>
+<p><code>BALANCO</code> only moves the body forward and backward. If it tips forward or backward, increase <code>BALANCO</code> (12 → 18) or decrease <code>PASSO</code>. If it tips sideways, lower its height with <code>-</code> or spread the legs farther apart (base wider than 80 mm).</p>
   </div></div>
 
   <div class="step"><div class="b">10</div><div>
@@ -318,39 +319,39 @@
 <section id="exemplos"><div class="wrap">
   <span class="chip">Visual reference</span>
   <h2>What it looks like assembled</h2>
-  <p class="sub">AI-generated images show the intended result. They are not photos of a real prototype.</p>
+  <p class="sub">AI-generated images show the goal. They are not photos of a real prototype yet.</p>
   <div class="ex">
     <figure><img src="../assets/robo4-montado.jpg" alt="Illustration of the assembled quadruped robot on a workbench" loading="lazy"><figcaption>Assembled robot: Uno + shield on top, battery underneath, two servos per leg.</figcaption></figure>
-    <figure><img src="../assets/perna-detalhe.jpg" alt="Close-up illustration of one robot leg" loading="lazy"><figcaption>Close-up: the knee is a second servo at the end of the thigh.</figcaption></figure>
+    <figure><img src="../assets/perna-detalhe.jpg" alt="Close-up illustration of one robot leg" loading="lazy"><figcaption>Up close: the knee is a second servo at the end of the thigh.</figcaption></figure>
   </div>
 </div></section>
 
 <section id="termos"><div class="wrap">
   <span class="chip">Terms</span>
   <h2>Words used in this guide</h2>
-  <p class="sub">If a word made you stop reading, you should find it here.</p>
+  <p class="sub">If a word slowed you down, you’ll find it here.</p>
   <div class="tblwrap"><table class="tbl">
-    <tr><th>Term</th><th>What it is</th></tr>
-    <tr><td>Servo</td><td>Small motor that turns to a requested angle (0 to 180°) and stays there.</td></tr>
-    <tr><td>Horn</td><td>Plastic arm that fits onto the servo shaft; the leg is screwed to it.</td></tr>
+    <tr><th>Term</th><th>What it means</th></tr>
+    <tr><td>Servo</td><td>Small motor that turns to a requested angle (0 to 180°) and holds its position.</td></tr>
+    <tr><td>Horn</td><td>Plastic arm that fits on the servo shaft. The leg is screwed to it.</td></tr>
     <tr><td>Shield</td><td>Board that plugs on top of the Arduino and adds connectors.</td></tr>
-    <tr><td>SEL jumper</td><td>Small plastic piece on the shield that connects the Arduino's 5 V to the servos. Remove it here.</td></tr>
-    <tr><td>Power terminal</td><td>Screw connector that holds a wire in place when tightened.</td></tr>
-    <tr><td>LiPo 2S</td><td>Lithium polymer battery with 2 cells in series: 7.4 V nominal.</td></tr>
-    <tr><td>XT60</td><td>Yellow connector commonly used on LiPo batteries. Handles high current.</td></tr>
+    <tr><td>SEL jumper</td><td>Small plastic piece on the shield that connects the Arduino’s 5 V to the servos. Remove it here.</td></tr>
+    <tr><td>Terminal</td><td>Screw connector that holds a wire when tightened.</td></tr>
+    <tr><td>2S LiPo</td><td>Lithium polymer battery with 2 cells in series: 7.4 V nominal.</td></tr>
+    <tr><td>XT60</td><td>Common yellow connector on LiPo batteries. Handles high current.</td></tr>
     <tr><td>UBEC</td><td>Regulator that lowers battery voltage to 5–6 V with enough current for the servos.</td></tr>
     <tr><td>AWG</td><td>Wire thickness measurement: the lower the number, the thicker the wire (18 AWG is thicker than 20).</td></tr>
-    <tr><td>Bearing</td><td>Support opposite the shaft that lets the part rotate without wobble.</td></tr>
-    <tr><td>EEPROM</td><td>Arduino memory that keeps its data when powered off; stores the calibration.</td></tr>
-    <tr><td>Sketch</td><td>Arduino program (the folder with the <code>.ino</code> file).</td></tr>
+    <tr><td>Bearing</td><td>Support on the side opposite the shaft that lets the part turn without wobble.</td></tr>
+    <tr><td>EEPROM</td><td>Arduino memory that retains its data when powered off; it stores calibration.</td></tr>
+    <tr><td>Sketch</td><td>Arduino program (the folder containing the <code>.ino</code> file).</td></tr>
     <tr><td>Serial Monitor</td><td>Text window where you communicate with the Arduino over the USB cable.</td></tr>
     <tr><td>Step-down</td><td>Regulator that lowers voltage (the UBEC is a step-down converter).</td></tr>
-    <tr><td>I2C</td><td>2-wire connection (A4 and A5 on the Uno) used by sensors such as the IMU.</td></tr>
-    <tr><td>IMU</td><td>Sensor that measures tilt and rotation (e.g., MPU-6050).</td></tr>
-    <tr><td>DC jack / P4</td><td>The Uno's round power connector and the plug that fits into it.</td></tr>
-    <tr><td>FQBN</td><td>Full board name for <code>arduino-cli</code>: <code>arduino:avr:uno</code>.</td></tr>
-    <tr><td>Inverse kinematics</td><td>Calculation that turns "where the foot should be" into hip and knee angles.</td></tr>
-    <tr><td>Slow walk (creep) and trot</td><td>Ways to walk: one foot in the air at a time, or two diagonal feet.</td></tr>
+    <tr><td>I2C</td><td>Two-wire connection (A4 and A5 on the Uno) used by sensors such as the IMU.</td></tr>
+    <tr><td>IMU</td><td>Sensor that measures tilt and rotation (for example, MPU-6050).</td></tr>
+    <tr><td>DC jack / P4</td><td>Round power connector on the Uno and the plug that fits into it.</td></tr>
+    <tr><td>FQBN</td><td>Fully Qualified Board Name for <code>arduino-cli</code>: <code>arduino:avr:uno</code>.</td></tr>
+    <tr><td>Inverse kinematics</td><td>Calculation that converts “where the foot should be” into hip and knee angles.</td></tr>
+    <tr><td>Slow walk (creep) and trot</td><td>Ways to walk: one foot in the air at a time, or two diagonal feet together.</td></tr>
   </table></div>
 </div></section>
 
@@ -360,26 +361,26 @@
   <p class="sub">Almost every servo quadruped problem comes down to power or calibration.</p>
   <div class="tblwrap"><table class="tbl">
     <tr><th>Symptom</th><th>Likely cause</th><th>What to do</th></tr>
-    <tr><td>Arduino restarts when servos move</td><td>Servos drawing power from the Uno</td><td>Remove the SEL jumper, power servos only through the UBEC, share GND</td></tr>
-    <tr><td>Servo shakes while idle</td><td>Weak power supply or thin wire</td><td>Use a 5 A or higher UBEC, 18 AWG power wire, and a charged battery</td></tr>
-    <tr><td>Servo gets hot</td><td>Being forced against its limit</td><td>Adjust with command <code>o</code>; check that the leg isn't hitting the chassis</td></tr>
-    <tr><td>Leg bends the wrong way</td><td>Reversed sign, or shin installed pointing backward</td><td>Check that the shin points forward at 90° (step 4); if it does, change the sign in <code>SENTIDO[][]</code></td></tr>
-    <tr><td>Walks crooked</td><td>Sides calibrated differently</td><td>Use command <code>m</code>, then align the legs with command <code>o</code></td></tr>
-    <tr><td>Trips</td><td>Foot doesn't lift high enough</td><td>Increase <code>ELEVA</code> in the code</td></tr>
-    <tr><td>Falls sideways during the trot</td><td>Stride too long or too fast</td><td>Decrease <code>PASSO</code> or increase <code>CICLO_TROTE</code></td></tr>
-    <tr><td>Code won't upload</td><td>Bluetooth connected to D0/D1</td><td>Disconnect the module during upload</td></tr>
+    <tr><td>Arduino restarts when the servos move</td><td>Servos are drawing power from the Uno</td><td>Remove the SEL jumper, power servos only from the UBEC, share GND</td></tr>
+    <tr><td>Servo shakes while stopped</td><td>Weak power supply or thin wire</td><td>Use a 5 A or higher UBEC, 18 AWG power wire, and a charged battery</td></tr>
+    <tr><td>Servo gets hot</td><td>It is straining against its limit</td><td>Adjust with the <code>o</code> command; check that the leg isn’t hitting the chassis</td></tr>
+    <tr><td>Leg bends the wrong way</td><td>Reversed sign, or shin installed facing backward</td><td>Check that the shin points forward at 90° (step 4). If it does, change the sign in <code>SENTIDO[][]</code></td></tr>
+    <tr><td>Walks crooked</td><td>Left and right sides are calibrated differently</td><td>Type <code>m</code>, then align the legs with the <code>o</code> command</td></tr>
+    <tr><td>Trips</td><td>Foot doesn’t lift high enough</td><td>Increase <code>ELEVA</code> (constants at the top of <code>firmware/robo4/robo4.ino</code>)</td></tr>
+    <tr><td>Falls sideways during the trot</td><td>Stride is too long or too fast</td><td>Decrease <code>PASSO</code> or increase <code>CICLO_TROTE</code></td></tr>
+    <tr><td>Code won’t upload</td><td>Bluetooth is connected to D0/D1</td><td>Disconnect the module during upload</td></tr>
   </table></div>
-  <div class="aviso"><strong>LiPo battery:</strong> Charge it only with a balance charger and stay nearby. Don't discharge below 6.6 V total. Dispose of a swollen battery; never put it in the robot.</div>
+  <div class="aviso"><strong>LiPo battery:</strong> Charge only with a balance charger and stay nearby. Don’t discharge it below 6.6 V total. Dispose of a swollen battery. Never put it in the robot.</div>
 </div></section>
 
 <section id="roadmap"><div class="wrap">
   <span class="chip">Next steps</span>
   <h2>After it walks</h2>
-  <p class="sub">Everything fits on the Uno's unused pins.</p>
-  <div class="phase"><div class="tag">Now</div><div class="d"><strong>Plan, diagrams, and code</strong><span>Parts list, wiring, calibration, kinematics, and two gaits. The code compiles; it has not yet been tested on an assembled robot.</span></div></div>
-  <div class="phase"><div class="tag">Extra 1</div><div class="d"><strong>Phone control</strong><span>HC-05 Bluetooth module on D0/D1: send the same letters from a serial terminal app.</span></div></div>
+  <p class="sub">Everything fits on the Uno’s unused pins.</p>
+  <div class="phase"><div class="tag">Now</div><div class="d"><strong>Plan, diagrams, and code</strong><span>Parts list, wiring, calibration, kinematics, and two gaits. The code compiles; it has not been tested on an assembled robot yet.</span></div></div>
+  <div class="phase"><div class="tag">Extra 1</div><div class="d"><strong>Control from your phone</strong><span>HC-05 Bluetooth module on D0/D1: send the same letters from a serial terminal app.</span></div></div>
   <div class="phase"><div class="tag">Extra 2</div><div class="d"><strong>Avoid obstacles</strong><span>HC-SR04 ultrasonic sensor on D10/D11: stop or turn when something gets close.</span></div></div>
-  <div class="phase"><div class="tag">Extra 3</div><div class="d"><strong>Balance</strong><span>MPU-6050 IMU on A4/A5: reads the tilt and adjusts each leg's height.</span></div></div>
+  <div class="phase"><div class="tag">Extra 3</div><div class="d"><strong>Balance</strong><span>MPU-6050 IMU on A4/A5: reads the tilt and adjusts each leg’s height.</span></div></div>
 </div></section>
 
 <footer>

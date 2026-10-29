@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 896" font-family="Inter, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 936" font-family="Inter, Arial, sans-serif">
   <title>Piezas con medidas: chasis, muslo y espinilla</title>
-  <rect width="1200" height="896" rx="16" fill="#0c0c10"/>
+  <rect width="1200" height="936" rx="16" fill="#0c0c10"/>
   <text x="40" y="52" fill="#e9e9ee" font-size="28" font-weight="700" font-family="Sora, Inter, sans-serif">Piezas con medidas (mm)</text>
   <text x="40" y="82" fill="#9a9aa6" font-size="16">Escala: 3 px = 1 mm. Corta en acrílico/MDF de 3 mm o imprime con 3 mm de espesor. Medidas de referencia: comprueba con un calibrador.</text>
   <g stroke-width="2" fill="none">
@@ -89,13 +89,15 @@
   </g>
   <g id="cotas" font-size="14" fill="#e9e9ee">
     <text x="40" y="680" fill="#FACC15" font-size="16" font-weight="700">Cotas para marcar (mm, desde la esquina superior izquierda de cada pieza)</text>
-    <text x="40" y="706">Pared: ejes a 20 y a 120 del extremo, 20 debajo del borde superior. Ventana 23 × 12,5, de altura 13,75 a 26,25; el eje queda a 6 del extremo de la</text>
-    <text x="40" y="726">ventana más cercano al extremo de la pared.</text>
-    <text x="40" y="750">Pestañas del servo de la cadera: orificios M2 a 11,5 y 39,3 (servo trasero) y a 100,7 y 128,5 (servo delantero), a la altura del eje.</text>
-    <text x="40" y="774">Base: Uno centrado, esquina de la placa en (35,7; 13,4). Orificios del Uno desde esa esquina: (14,0; 2,5) (15,3; 50,7) (66,1; 7,6) (66,1; 35,5).</text>
-    <text x="40" y="794">Separadores M3 de 25 mm: el Uno queda encima de los servos de la cadera.</text>
-    <text x="40" y="818">Muslo: orificio del horn a 8 del borde superior, centrado. Eje de la rodilla a 63 del borde superior; ventana de 46,2 a 69 (el cuerpo del servo sube</text>
-    <text x="40" y="838">por el muslo, eje abajo); orificios M2 de las pestañas a 43,7 y 71,5.</text>
-    <text x="40" y="862">Tibia: horn a 8 del borde superior, orificio del pie 60 más abajo (6 del borde inferior).</text>
+    <text x="40" y="706">Pared: ejes a 20 y a 120 del extremo, 20 debajo del borde superior. Ventana 23 × 12,5, de altura 13,75 a 26,25; el eje queda a 6 del</text>
+    <text x="40" y="726">extremo de la ventana más cercano al extremo de la pared.</text>
+    <text x="40" y="750">Pestañas del servo de la cadera: orificios M2 a 11,5 y 39,3 (servo trasero) y a 100,7 y 128,5 (servo delantero), a la altura del</text>
+    <text x="40" y="770">eje.</text>
+    <text x="40" y="794">Base: Uno centrado, esquina de la placa en (35,7; 13,4). Orificios del Uno desde esa esquina: (14,0; 2,5) (15,3; 50,7) (66,1; 7,6)</text>
+    <text x="40" y="814">(66,1; 35,5). Separadores M3 de 25 mm: el Uno queda encima de los servos de la cadera.</text>
+    <text x="40" y="838">Muslo: orificio del eje del horn (3 mm) a 8 del borde superior, centrado; orificios de los tornillos del horn: márcalos con el</text>
+    <text x="40" y="858">propio horn. Eje de la rodilla a 63 del borde superior; ventana de 46,2 a 69 (el cuerpo del servo sube por el muslo, eje abajo);</text>
+    <text x="40" y="878">orificios M2 de las pestañas a 43,7 y 71,5.</text>
+    <text x="40" y="902">Tibia: horn a 8 del borde superior, orificio del pie 60 más abajo (6 del borde inferior).</text>
   </g>
 </svg>

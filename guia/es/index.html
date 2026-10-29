@@ -143,7 +143,7 @@
     <div>
       <span class="chip">Robótica · Arduino Uno + Sensor Shield</span>
       <h1>Construye un robot de cuatro patas con <span class="amb">rodillas</span></h1>
-      <p class="lead">8 servos, un Arduino Uno y un shield. Piezas, cableado, calibración y código listos para que se pare y camine.</p>
+      <p class="lead">8 servos, un Arduino Uno y un shield. Piezas, cableado, calibración y código listos para que se mantenga de pie y camine.</p>
       <div class="cta">
         <a class="btn" href="#guia">Empezar la guía</a>
         <a class="btn ghost" href="https://github.com/inematds/robo4" target="_blank" rel="noopener">Ver en GitHub</a>
@@ -155,74 +155,75 @@
 
 <section id="resumo" class="resumo"><div class="wrap">
   <span class="chip">En resumen</span>
-  <p>robo4 es un plan completo para construir en casa un pequeño robot de cuatro patas (de unos 20 cm) que camina. Cada pata tiene dos motores pequeños, llamados servos: uno en la cadera y otro en la rodilla. Un Arduino Uno controla todo con una placa shield encima, donde se conectan los 8 servos. Aquí tienes la lista de piezas, los diagramas de cableado, los pasos para armarlo y calibrarlo, y el código que ya compila. Es para quien quiere aprender robótica con sus propias manos. Necesitas una computadora, las piezas de la lista y una tarde para armarlo.</p>
+  <p>robo4 es un plan completo para construir en casa un pequeño robot de cuatro patas (unos 20 cm) que camina. Cada pata tiene dos motores pequeños, llamados servos: uno en la cadera y otro en la rodilla. Un Arduino Uno con una placa de expansión (shield) encima lo controla todo; allí se conectan los 8 servos. Aquí tienes la lista de piezas, los diagramas de cableado, los pasos de montaje y calibración y el código listo para compilar. Es para quien quiere aprender robótica con sus propias manos; necesitas una computadora, las piezas de la lista y una tarde para montarlo.</p>
 </div></section>
 
 <section id="oque"><div class="wrap">
   <span class="chip">Qué es</span>
   <h2>Un cuadrúpedo sencillo que camina de verdad</h2>
-  <p class="sub">Dos articulaciones por pata es lo mínimo para que el pie suba, avance y baje. El resto es calibración y ritmo.</p>
-  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-es.jpg" alt="Etapas de robo4: piezas, armado, cableado, calibración, cinemática y marcha" loading="lazy" style="width:100%;display:block"></figure>
+  <p class="sub">Dos articulaciones por pata es lo mínimo para que el pie suba, avance y baje. Lo demás es calibración y ritmo.</p>
+  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-es.jpg" alt="Etapas de robo4: piezas, montaje, cableado, calibración, cinemática y marcha" loading="lazy" style="width:100%;display:block"></figure>
   <div class="grid g3">
-    <div class="card"><h3>🦿 Rodillas reales</h3><p>Cadera y rodilla en cada pata (8 servos MG90S con engranajes metálicos). El pie describe un arco: sube, avanza y se apoya.</p></div>
-    <div class="card"><h3>🔌 Sin protoboard</h3><p>El Sensor Shield V5 tiene 3 pines por puerto: los servos se conectan directamente de D2 a D9. Los servos reciben energía de una fuente independiente.</p></div>
-    <div class="card"><h3>🧮 Código listo</h3><p>Cinemática inversa, trote, marcha lenta, giro y calibración guardada en la memoria. Controla el robot con letras desde el Monitor Serial.</p></div>
+    <div class="card"><h3>🦿 Rodillas de verdad</h3><p>Cadera y rodilla en cada pata (8 servos MG90S con engranajes metálicos). El pie describe un arco: sube, avanza y se apoya.</p></div>
+    <div class="card"><h3>🔌 Sin protoboard</h3><p>El Sensor Shield V5 tiene 3 pines por puerto: los servos se conectan directamente de D2 a D9. Los servos reciben energía de una fuente separada.</p></div>
+    <div class="card"><h3>🧮 Código listo</h3><p>Cinemática inversa, trote, marcha lenta, giros y calibración guardada en la memoria. Controla el robot con letras desde el Monitor Serial.</p></div>
   </div>
 </div></section>
 
 <section id="fluxo"><div class="wrap">
   <span class="chip">Cómo funciona</span>
   <h2>De las piezas al trote</h2>
-  <p class="sub">Siete etapas que se convierten en los 10 pasos de la guía: batería = paso 1, electrónica = 2, servos a 90° = 3, patas = 4 y 5, calibración = 6 a 8, marcha lenta = 9, trote = 10.</p>
+  <p class="sub">Son siete etapas, que corresponden a los 10 pasos de la guía: batería = paso 1, electrónica = 2, servos a 90° = 3, patas = 4 y 5, calibración = 6 a 8, marcha lenta = 9, trote = 10.</p>
   <div class="flow">
     <span>Comprar y cargar la batería</span><span class="arr">→</span>
     <span>Electrónica en la mesa</span><span class="arr">→</span>
     <span>Servos a 90°</span><span class="arr">→</span>
-    <span>Armar las patas</span><span class="arr">→</span>
+    <span>Montar las patas</span><span class="arr">→</span>
     <span>Calibrar</span><span class="arr">→</span>
     <span>Marcha lenta</span><span class="arr">→</span>
     <span>Trote</span>
   </div>
   <div class="grid g3" style="margin-top:22px">
-    <div class="card"><h3>Dónde debe estar el pie</h3><p>El código trabaja en milímetros: «pie 15 mm adelante y 85 mm debajo de la cadera». La cinemática inversa (ley de cosenos) convierte esto en dos ángulos.</p></div>
+    <div class="card"><h3>Dónde debe estar el pie</h3><p>El código trabaja en milímetros: «pie 15 mm adelante y 85 mm debajo de la cadera». La cinemática inversa (ley de cosenos) lo convierte en dos ángulos.</p></div>
     <div class="card"><h3>Hacia dónde va el servo</h3><p>90° en el servo = muslo vertical y rodilla en ángulo recto. Cadera: 90 + signo × ángulo + ajuste. Rodilla: 90 + signo × (ángulo − 90) + ajuste.</p></div>
-    <div class="card"><h3>Cuándo sube cada pie</h3><p>En la marcha lenta, sube un pie a la vez (tres quedan en el suelo) y el cuerpo se balancea para mantener el peso sobre ellos. En el trote, suben dos pies en diagonal. Todo se actualiza 50 veces por segundo.</p></div>
+    <div class="card"><h3>Cuándo sube cada pie</h3><p>En la marcha lenta sube un pie a la vez (tres en el suelo) y el cuerpo se balancea para que el peso quede sobre ellos. En el trote suben dos pies en diagonal. Todo se actualiza 50 veces por segundo.</p></div>
   </div>
 </div></section>
 
 <section id="pre"><div class="wrap">
   <span class="chip">Piezas y herramientas</span>
   <h2>Qué comprar</h2>
-  <p class="sub">Los precios en reales son estimaciones de octubre de 2026. Total básico: R$ 450 a 850, sin impresora 3D ni accesorios opcionales.</p>
-  <figure class="dia"><img src="../assets/kit-pecas.jpg" alt="Ilustración con todas las piezas del robot ordenadas sobre la mesa" loading="lazy"><figcaption>Ilustración generada con IA: el kit completo antes del armado.</figcaption></figure>
-  <p class="sub" style="margin:0 0 8px;font-size:.88rem">En el celular, desliza la tabla hacia un lado para ver todas las columnas.</p>
+  <p class="sub">Los precios en reales son estimaciones de octubre de 2026. Total básico: R$ 450 a 850, sin impresora 3D ni opcionales.</p>
+  <figure class="dia"><img src="../assets/kit-pecas.jpg" alt="Ilustración de todas las piezas del robot organizadas sobre la mesa" loading="lazy"><figcaption>Ilustración generada con IA: el kit completo antes del montaje.</figcaption></figure>
+  <p class="sub" style="margin:0 0 8px;font-size:.88rem">En el celular, arrastra la tabla hacia un lado para ver todas las columnas.</p>
   <div class="tblwrap"><table class="tbl">
-    <tr><th>Artículo</th><th>Cant.</th><th>Estimación</th><th>Por qué elegirlo</th></tr>
+    <tr><th>Elemento</th><th>Cant.</th><th>Estimación</th><th>Por qué elegirlo</th></tr>
     <tr><td>Arduino Uno R3 + cable USB</td><td>1</td><td>R$ 50–130</td><td>Cerebro del robot</td></tr>
-    <tr><td>Sensor Shield V5.0 para Uno</td><td>1</td><td>R$ 20–35</td><td>Conectores S/V/G para los servos y terminal de alimentación separado</td></tr>
-    <tr><td>Microservo MG90S</td><td>8 (+1 de repuesto)</td><td>R$ 18–30 cada uno</td><td>Los engranajes metálicos soportan el peso en la rodilla; el SG90 de plástico se desgasta</td></tr>
+    <tr><td>Sensor Shield V5.0 para Uno</td><td>1</td><td>R$ 20–35</td><td>Pines S/V/G para conectar los servos y bornera de alimentación separada</td></tr>
+    <tr><td>Microservo MG90S</td><td>8 (+1 de repuesto)</td><td>R$ 18–30 cada uno</td><td>Los engranajes metálicos soportan el peso en la rodilla; los engranajes plásticos del SG90 se desgastan</td></tr>
     <tr><td>Batería LiPo 2S 7,4 V, 1000–2200 mAh, XT60</td><td>1</td><td>R$ 70–140</td><td>Alimenta los servos y el Arduino</td></tr>
     <tr><td>UBEC / step-down 5–6 V, 5 A o más</td><td>1</td><td>R$ 20–45</td><td>Los 8 servos consumen de 4 a 6 A en el pico</td></tr>
-    <tr><td>Interruptor de encendido/apagado (≥ 5 A)</td><td>1</td><td>R$ 5–10</td><td>Cortar toda la alimentación de una vez</td></tr>
+    <tr><td>Portafusible de cuchilla + fusible de 7,5 A</td><td>1</td><td>R$ 8–15</td><td>Justo después del XT60: un cortocircuito no derrite el cable ni la pista</td></tr>
+    <tr><td>Interruptor de encendido/apagado (≥ 5 A)</td><td>1</td><td>R$ 5–10</td><td>Apaga todo de una vez</td></tr>
     <tr><td>Alarma de voltaje para LiPo (zumbador)</td><td>1</td><td>R$ 8–15</td><td>Suena antes de que la batería baje demasiado</td></tr>
-    <tr><td>Conector macho P4 de 5,5 × 2,1 mm con cable</td><td>1</td><td>R$ 5–10</td><td>Lleva la batería al jack DC del Uno (el shield cubre el pin VIN)</td></tr>
-    <tr><td>Cable 18 AWG rojo y negro (~1 m)</td><td>1</td><td>R$ 8–15</td><td>Línea de alimentación: batería → interruptor → UBEC → terminal</td></tr>
-    <tr><td>Cargador balanceado 2S</td><td>1</td><td>R$ 60–150</td><td>Las baterías LiPo solo se cargan con balanceador</td></tr>
-    <tr><td>Chasis + 4 muslos + 4 espinillas</td><td>1 juego</td><td>R$ 10–40</td><td>Impresos en 3D o de acrílico/MDF de 3 mm</td></tr>
+    <tr><td>Enchufe P4 macho de 5,5 × 2,1 mm con cable</td><td>1</td><td>R$ 5–10</td><td>Lleva la batería al jack DC del Uno (el shield cubre el pin VIN)</td></tr>
+    <tr><td>Cable 18 AWG rojo y negro (~1 m)</td><td>1</td><td>R$ 8–15</td><td>Línea de alimentación batería → interruptor → UBEC → bornera</td></tr>
+    <tr><td>Cargador balanceado 2S</td><td>1</td><td>R$ 60–150</td><td>La LiPo solo se carga con un balanceador</td></tr>
+    <tr><td>Chasis + 4 muslos + 4 tibias</td><td>1 juego</td><td>R$ 10–40</td><td>Acrílico o MDF de 3 mm cortado según el dibujo acotado (no hay archivo STL; si imprimes en 3D, diseña una placa de 3 mm con las mismas medidas)</td></tr>
     <tr><td>Patas de goma, tornillos M2/M3, separadores, bridas, velcro</td><td>kit</td><td>R$ 30–60</td><td>Sujeción y agarre</td></tr>
-    <tr><td>Opcionales: Bluetooth HC-05, ultrasonido HC-SR04, IMU MPU-6050</td><td>—</td><td>R$ 50–80</td><td>Control desde el celular, detección de obstáculos y equilibrio</td></tr>
+    <tr><td>Opcionales: Bluetooth HC-05, ultrasonido HC-SR04, IMU MPU-6050</td><td>—</td><td>R$ 50–80</td><td>Control desde el celular, evitar obstáculos, equilibrio</td></tr>
   </table></div>
   <div class="grid g3">
     <div class="card"><h3>Herramientas</h3><p>Destornillador Phillips pequeño, alicate de corte, multímetro y cautín (solo para el XT60 y el interruptor).</p></div>
-    <div class="card"><h3>Software</h3><p>Arduino IDE o <code>arduino-cli</code> (herramienta de línea de comandos de Arduino). Los comandos de esta guía usan <code>arduino-cli</code>.</p><pre><span class="c"># instala arduino-cli (Linux/macOS; en Windows descárgalo de arduino.github.io/arduino-cli)</span>
+    <div class="card"><h3>Software</h3><p>Arduino IDE o <code>arduino-cli</code> (herramienta de línea de comandos de Arduino). Los comandos de esta guía usan <code>arduino-cli</code>.</p><pre><span class="c"># instala arduino-cli (Linux/macOS; en Windows descárgalo desde arduino.github.io/arduino-cli)</span>
 <span class="k">mkdir -p ~/.local/bin</span>
 <span class="k">curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/.local/bin sh</span>
 <span class="k">export PATH="$HOME/.local/bin:$PATH"</span>  <span class="c"># agrega esta línea a ~/.bashrc</span>
 <span class="k">arduino-cli core update-index</span>
 <span class="k">arduino-cli core install arduino:avr</span>
 <span class="k">arduino-cli lib install Servo</span>
-<span class="c"># Linux: permiso para usar el puerto USB (cierra e inicia sesión de nuevo después)</span>
-<span class="k">sudo usermod -aG dialout $USER</span></pre><p>Los clones con chip CH340 aparecen como <code>/dev/ttyUSB0</code> y, en Windows, pueden requerir el controlador CH340.</p></div>
+<span class="c"># Linux: permiso para usar el puerto USB (cierra sesión y vuelve a entrar después)</span>
+<span class="k">sudo usermod -aG dialout $USER</span></pre><p>Las placas con chip CH340 aparecen como <code>/dev/ttyUSB0</code> y, en Windows, pueden requerir el controlador CH340.</p></div>
     <div class="card"><h3>Código del proyecto</h3><p>Descarga el repositorio con los dos sketches: montaje y firmware.</p><pre><span class="k">git clone https://github.com/inematds/robo4</span>
 <span class="k">cd robo4</span></pre></div>
   </div>
@@ -230,56 +231,56 @@
 
 <section id="diagramas"><div class="wrap">
   <span class="chip">Diagramas</span>
-  <h2>Todo lo que necesitas consultar mientras lo armas</h2>
+  <h2>Todo lo que necesitas consultar mientras montas</h2>
   <p class="sub">Los diagramas están en SVG en el repositorio (<code>guia/assets/</code>). En el celular se ven pequeños: toca «Abrir en pantalla completa». Para imprimir el dibujo de las piezas a tamaño real, usa las medidas escritas en él (en mm), no la escala de la pantalla.</p>
-  <div class="aviso"><strong>Regla número 1:</strong> los 8 servos nunca se alimentan con los 5 V del Uno. Retira el jumper SEL del shield (la pieza plástica que conecta los 5 V del Uno con los pines V de los servos) y conecta el UBEC al terminal (conector de tornillo) de los servos. Las pistas del shield son delgadas: si los servos tiemblan cuando el robot camina, refuerza la conexión llevando un cable 18 AWG del UBEC directamente a la fila de pines V.</div>
-  <figure class="dia"><a href="../assets/diagrama-fiacao-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-fiacao-es.svg" alt="Diagrama de cableado: batería, interruptor, UBEC, terminal de los servos, jack DC del Uno y pines D2 a D9" loading="lazy"></a><figcaption>Cableado y energía: alimentación de los servos por el UBEC, lógica por el jack DC del Uno, GND común. <a href="../assets/diagrama-fiacao-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
+  <div class="aviso"><strong>Regla número 1:</strong> los 8 servos nunca se alimentan con los 5 V del Uno. Retira el jumper SEL del shield (la pieza plástica que conecta los 5 V del Uno a los pines V de los servos) y conecta el UBEC a la bornera (conector de tornillo) de los servos. Las pistas del shield son delgadas: si los servos tiemblan cuando el robot camina, refuerza la conexión llevando un cable 18 AWG del UBEC directamente a la fila de pines V.</div>
+  <figure class="dia"><a href="../assets/diagrama-fiacao-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-fiacao-es.svg" alt="Diagrama de cableado: batería, interruptor, UBEC, bornera de los servos, jack DC del Uno y pines D2 a D9" loading="lazy"></a><figcaption>Cableado y alimentación: energía de los servos por el UBEC, lógica por el jack DC del Uno, GND común. <a href="../assets/diagrama-fiacao-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
   <figure class="dia"><a href="../assets/diagrama-pinos-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-pinos-es.svg" alt="Mapa de las patas visto desde arriba con número en el código, pines y sentido de cada servo" loading="lazy"></a><figcaption>Mapa de las patas: número usado en el código, pines y sentido de cada servo. <a href="../assets/diagrama-pinos-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
-  <figure class="dia"><a href="../assets/diagrama-pecas-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-pecas-es.svg" alt="Dibujo de las piezas con medidas: pared lateral, base, muslo y espinilla, y medidas del servo MG90S" loading="lazy"></a><figcaption>Piezas con medidas: pared lateral, base, muslo y espinilla. <a href="../assets/diagrama-pecas-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
-  <figure class="dia"><a href="../assets/diagrama-perna-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-perna-es.svg" alt="Geometría de la pata con muslo de 55 mm, espinilla de 60 mm y fórmulas de cinemática inversa" loading="lazy"></a><figcaption>Una pata a escala y las fórmulas que usa el código. <a href="../assets/diagrama-perna-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
-  <figure class="dia"><a href="../assets/diagrama-calibracao-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-calibracao-es.svg" alt="Calibración en tres pasos: servos a 90 grados, montaje de la pata y ajuste fino" loading="lazy"></a><figcaption>Calibración: servo a 90°, montaje en ángulo recto y ajuste fino desde el Serial. <a href="../assets/diagrama-calibracao-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
-  <figure class="dia"><a href="../assets/diagrama-marcha-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-marcha-es.svg" alt="Gráfico del tiempo del trote y la marcha lenta que muestra cuándo sube cada pie" loading="lazy"></a><figcaption>Cuándo sube cada pie en el trote y en la marcha lenta. <a href="../assets/diagrama-marcha-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-pecas-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-pecas-es.svg" alt="Dibujo de las piezas con medidas: pared lateral, base, muslo y tibia, y medidas del servo MG90S" loading="lazy"></a><figcaption>Piezas con medidas: pared lateral, base, muslo y tibia. <a href="../assets/diagrama-pecas-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-perna-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-perna-es.svg" alt="Geometría de la pata con muslo de 55 mm, tibia de 60 mm y fórmulas de cinemática inversa" loading="lazy"></a><figcaption>Una pata a escala y las fórmulas que usa el código. <a href="../assets/diagrama-perna-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-calibracao-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-calibracao-es.svg" alt="Calibración en tres pasos: servos a 90 grados, montaje de la pata y ajuste fino" loading="lazy"></a><figcaption>Calibración: servo a 90°, montaje en ángulo recto y ajuste fino por Serial. <a href="../assets/diagrama-calibracao-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
+  <figure class="dia"><a href="../assets/diagrama-marcha-es.svg" target="_blank" rel="noopener"><img src="../assets/diagrama-marcha-es.svg" alt="Gráfico de tiempo del trote y la marcha lenta que muestra cuándo sube cada pie" loading="lazy"></a><figcaption>Cuándo sube cada pie en el trote y en la marcha lenta. <a href="../assets/diagrama-marcha-es.svg" target="_blank" rel="noopener">Abrir en pantalla completa</a></figcaption></figure>
 </div></section>
 
 <section id="guia"><div class="wrap">
   <span class="chip">Guía de uso · paso a paso</span>
-  <h2>Arma el robot en 10 pasos</h2>
-  <p class="sub">Reemplaza <code>/dev/ttyACM0</code> por el puerto de tu Uno (en Windows, algo como <code>COM3</code>). <code>arduino-cli board list</code> muestra cuál es.</p>
+  <h2>Montaje en 10 pasos</h2>
+  <p class="sub">Reemplaza <code>/dev/ttyACM0</code> por el puerto de tu Uno (en Windows, algo como <code>COM3</code>). <code>arduino-cli board list</code> te muestra cuál es.</p>
 
   <div class="step"><div class="b">1</div><div>
     <h3>Prueba la alimentación sin nada conectado</h3>
-    <p>Carga la LiPo. Conecta batería → interruptor → UBEC y mide la salida con el multímetro. Debe dar entre 5 y 6 V. Conecta un servo solo después.</p>
+    <p>Carga la LiPo. Conecta batería → interruptor → UBEC y mide la salida con el multímetro. Debe dar entre 5 y 6 V. Conecta cualquier servo solo después.</p>
   </div></div>
 
   <div class="step"><div class="b">2</div><div>
     <h3>Shield en el Uno, jumper SEL retirado</h3>
-    <p>Conecta el Sensor Shield. Retira el jumper SEL y comprueba con el multímetro que el pin V del shield no esté conectado a los 5 V del Uno (los clones varían). Conecta el UBEC al terminal de los servos. El Uno recibe alimentación de la LiPo por el jack DC (el conector redondo junto al USB), con un conector P4 de 5,5 × 2,1 mm: el centro es positivo, con el cable rojo en el pin del medio. Comprueba la polaridad con el multímetro antes de conectarlo.</p>
-    <p>El regulador del Uno necesita unos 7 V en el jack. Ajusta la alarma de la LiPo a 3,5 V por celda (7,0 V en total): sonará antes de que el Uno empiece a reiniciarse.</p>
-    <figure class="dia"><img src="../assets/fiacao-bancada.jpg" alt="Ilustración de la electrónica en la mesa: Uno con shield, servos conectados, UBEC, interruptor y batería" loading="lazy"><figcaption>Ilustración generada con IA: electrónica armada sobre la mesa antes de instalarla en el chasis.</figcaption></figure>
+    <p>Conecta el Sensor Shield. Retira el jumper SEL. Con todo apagado y sin batería, pon el multímetro en continuidad (el modo que pita) y toca un pin V de cualquier puerto de servo con una punta y el pin 5V del Uno (o el pin 5V del shield) con la otra: <strong>no debe pitar</strong>. Si pita, el jumper todavía conecta ambos puntos (hay diferencias entre clones). Conecta el UBEC a la bornera de los servos. El Uno recibe la alimentación lógica de la LiPo por el jack DC (el conector redondo junto al USB), con un enchufe P4 de 5,5 × 2,1 mm: centro positivo, cable rojo en el pin del medio. Comprueba la polaridad con el multímetro antes de conectarlo.</p>
+    <p>El regulador del Uno necesita unos 7 V en el jack. Ajusta la alarma de la LiPo a 3,5 V por celda (7,0 V en total): suena antes de que el Uno empiece a reiniciarse.</p>
+    <figure class="dia"><img src="../assets/fiacao-bancada.jpg" alt="Ilustración de la electrónica sobre la mesa: Uno con shield, servos conectados, UBEC, interruptor y batería" loading="lazy"><figcaption>Ilustración generada con IA: electrónica montada sobre la mesa antes de instalarla en el chasis.</figcaption></figure>
   </div></div>
 
   <div class="step"><div class="b">3</div><div>
     <h3>Servos sueltos a 90°</h3>
-    <p>Conecta los 8 servos a los pines D2 a D9 (marrón en G, rojo en V, naranja en S), sin los brazos (horns, la pieza plástica que encaja en el eje) colocados. Enciende el interruptor (los servos reciben alimentación del UBEC) y carga el sketch de montaje: irán a 90° uno por uno y quedarán fijos. No gires el eje con la mano mientras estén conectados.</p>
+    <p>Conecta los 8 servos a los pines D2 a D9 (marrón en G, rojo en V, naranja en S), sin los brazos (horns, la pieza plástica que encaja en el eje). Con el interruptor de los servos apagado, carga el sketch de montaje por USB (el Uno puede tener un programa antiguo que mueve los pines D2 a D9). Luego enciende el interruptor: los servos irán a 90° uno por uno y quedarán fijos. No gires el eje con la mano mientras estén encendidos.</p>
 <pre><span class="k">arduino-cli compile --fqbn arduino:avr:uno firmware/montagem</span>
 <span class="k">arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/montagem</span></pre>
   </div></div>
 
   <div class="step"><div class="b">4</div><div>
-    <h3>Arma las patas con los servos quietos</h3>
-    <p>Corta las piezas siguiendo el <a href="#diagramas">dibujo con medidas</a>. Atornilla los servos de la cadera en las aberturas de las paredes laterales, con el eje hacia afuera, y fija el horn en la parte superior de cada muslo: el muslo debe quedar vertical, apuntando al suelo. Encaja el servo de la rodilla en la abertura del muslo con el eje hacia afuera (del mismo lado que la cadera) y el cuerpo subiendo por el muslo, orientado hacia el interior del robot. La espinilla va en el horn de la rodilla, por fuera del muslo, <strong>apuntando hacia el FRENTE del robot</strong> en ángulo recto (en las 4 patas). Si apunta hacia atrás, la rodilla se dobla en la dirección equivocada y el robot no se queda de pie; cambiar el sentido en el código no lo arregla. Si el horn no encaja exactamente en ángulo recto, usa el diente más cercano: lo demás se corrige en el paso 7. Opcional: para reducir el juego, coloca un tornillo M3 con tuerca de seguridad (con anillo de nylon que evita que se afloje) en el lado opuesto al eje, atravesando una segunda placa; servirá de cojinete.</p>
+    <h3>Monta las patas con los servos quietos</h3>
+    <p>Corta las piezas según el <a href="#diagramas">dibujo con medidas</a>. Atornilla los servos de la cadera en las aberturas de las paredes laterales, con el eje hacia afuera, y fija el horn en la parte superior de cada muslo: el muslo debe quedar vertical, apuntando al suelo. La ubicación de los 2 orificios para los tornillos del horn varía según el fabricante: apoya el horn sobre la pieza, centrado en el orificio del eje, y marca los orificios con él (orificio central de 3 mm para el tornillo del eje, orificios de 1,5 mm para los tornillos del horn). Encaja el servo de la rodilla en la abertura del muslo, con el eje hacia afuera (del mismo lado que la cadera) y el cuerpo subiendo por el muslo, orientado hacia el interior del robot. La tibia va en el horn de la rodilla, por fuera del muslo, <strong>apuntando hacia el FRENTE del robot</strong> en ángulo recto (en las 4 patas). Si apunta hacia atrás, la rodilla se dobla en el sentido incorrecto y el robot no se mantiene de pie; cambiar el sentido en el código no lo corrige. Si el horn no encaja en un ángulo recto exacto, usa el diente más cercano: puedes corregir el resto en el paso 7. Opcional: para reducir el juego, un tornillo M3 con tuerca autofrenante (tuerca con un anillo de nailon que no se afloja) en el lado opuesto al eje, pasando por una segunda placa, sirve como cojinete.</p>
     <figure class="dia"><img src="../assets/vista-explodida.jpg" alt="Ilustración de la vista explotada del robot con chasis, Arduino, shield, batería y patas" loading="lazy"><figcaption>Ilustración generada con IA: vista explotada (shield, Uno, chasis, batería y UBEC, patas).</figcaption></figure>
-    <figure class="dia"><img src="../assets/perna-detalhe.jpg" alt="Ilustración de una pata con un servo en la cadera y otro en la rodilla" loading="lazy"><figcaption>Ilustración generada con IA: servo de la cadera en el chasis, servo de la rodilla en el extremo del muslo, cables sujetos a lo largo de la pata.</figcaption></figure>
+    <figure class="dia"><img src="../assets/perna-detalhe.jpg" alt="Ilustración de una pata con servo en la cadera y servo en la rodilla" loading="lazy"><figcaption>Ilustración generada con IA: servo de la cadera en el chasis, servo de la rodilla en el extremo del muslo, cables sujetos a lo largo de la pata.</figcaption></figure>
   </div></div>
 
   <div class="step"><div class="b">5</div><div>
     <h3>Cierra el cuerpo</h3>
-    <p>Coloca el Uno + shield arriba, con separadores M3 de 25 mm (así la placa queda por encima de los servos de la cadera); la batería y el UBEC van abajo, sujetos con velcro. Sujeta los cables con bridas y deja holgura en la rodilla; de lo contrario, el cable tirará cuando la pata se doble.</p>
+    <p>Coloca el Uno + shield arriba con separadores M3 de 25 mm (así la placa pasa por encima de los servos de la cadera); fija la batería y el UBEC abajo con velcro. Sujeta los cables con bridas y deja holgura en la rodilla; si no, el cable tira cuando la pata se dobla.</p>
   </div></div>
 
   <div class="step"><div class="b">6</div><div>
     <h3>Carga el firmware</h3>
-    <p>El firmware incluye la cinemática, las marchas y la calibración. La primera vez, deja el robot suspendido (sobre un recipiente, con las patas en el aire). Si no hay una calibración guardada, se inicia en modo de montaje, con todo a 90°, y solo se pone de pie cuando se lo indiques.</p>
+    <p>El firmware incluye la cinemática, los modos de marcha y la calibración. Deja el robot suspendido (sobre un recipiente, con las patas en el aire) la primera vez. Si no hay una calibración guardada, se inicia en modo de montaje, con todo a 90°, y solo se pone de pie cuando se lo indiques.</p>
 <pre><span class="k">arduino-cli compile --fqbn arduino:avr:uno firmware/robo4</span>
 <span class="k">arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno firmware/robo4</span>
 <span class="k">arduino-cli monitor -p /dev/ttyACM0 -c baudrate=9600</span>  <span class="c"># robo4 pronto (sem calibracao: modo montagem, 90 graus).</span></pre>
@@ -287,7 +288,7 @@
 
   <div class="step"><div class="b">7</div><div>
     <h3>Calibra cada articulación</h3>
-    <p>Escribe <code>m</code> para poner todo a 90°. Corrige la articulación torcida con el comando <code>o &lt;perna&gt; &lt;junta&gt; &lt;graus&gt;</code>, escrito de una vez y con Enter (<code>arduino-cli monitor</code> no muestra lo que escribes; en Arduino IDE configura el Monitor Serial en «Nueva línea»). El valor <strong>reemplaza</strong> el ajuste anterior de esa articulación, no se suma: pata 0 a 3 (FE, FD, TE, TD), articulación 0 = cadera, 1 = rodilla, grados de −30 a 30. Guarda con <code>g</code> en la EEPROM (la memoria del Uno que no se borra al apagarlo).</p>
+    <p>Escribe <code>m</code> para poner todo a 90°. Corrige la articulación torcida con el comando <code>o &lt;perna&gt; &lt;junta&gt; &lt;graus&gt;</code>, escrito de una sola vez y con Enter (<code>arduino-cli monitor</code> no muestra lo que escribes; en Arduino IDE, selecciona «Nueva línea» en el Monitor Serial). El valor <strong>reemplaza</strong> el ajuste anterior de esa articulación; no se suma: pata 0 a 3 (FE, FD, TE, TD), articulación 0 = cadera, 1 = rodilla, grados de −30 a 30. Guarda con <code>g</code> en la EEPROM (la memoria del Uno que no se borra al apagarlo).</p>
 <pre><span class="k">m</span>          <span class="c"># todo a 90°</span>
 <span class="k">o 0 1 -6</span>   <span class="c"># rodilla delantera izquierda: −6° (si empeora, usa 6)</span>
 <span class="k">p</span>          <span class="c"># muestra los ajustes</span>
@@ -296,20 +297,20 @@
 
   <div class="step"><div class="b">8</div><div>
     <h3>Ponte de pie</h3>
-    <p>Escribe <code>x</code>. Las patas se moverán poco a poco hasta la posición de pie (cada servo se mueve como máximo 5° cada 20 ms, lo que también reduce la carga de la fuente). Las cuatro deben doblarse igual. Si alguna se dobla hacia el lado equivocado, cambia su sentido en <code>SENTIDO[][]</code> en el código, compila y vuelve a cargarlo.</p>
+    <p>Escribe <code>x</code>. Las patas irán poco a poco a la posición de pie (cada servo se mueve como máximo 5° cada 20 ms; esto también reduce la carga de la fuente). Las cuatro deben doblarse igual. Si alguna se dobla hacia el lado incorrecto, cambia su sentido en <code>SENTIDO[][]</code> en el código, compila y vuelve a cargarlo.</p>
 <pre><span class="c">// firmware/robo4/robo4.ino</span>
 <span class="k">const int8_t SENTIDO[4][2] = {{1, -1}, {-1, 1}, {1, -1}, {-1, 1}};</span></pre>
   </div></div>
 
   <div class="step"><div class="b">9</div><div>
     <h3>Primeros pasos: marcha lenta</h3>
-    <p>Con el robot suspendido, escribe <code>c</code> (marcha lenta, en inglés <em>creep</em>) y comprueba el orden: trasera izquierda, delantera izquierda, trasera derecha, delantera derecha. El cuerpo se balancea hacia delante y hacia atrás a propósito, para mantener el peso sobre las tres patas apoyadas en el suelo. Después, ponlo en el suelo.</p>
-<p><code>BALANCO</code> solo mueve el cuerpo hacia delante y hacia atrás. Si se cae hacia delante o hacia atrás, aumenta <code>BALANCO</code> (12 → 18) o reduce <code>PASSO</code>. Si se cae hacia un lado, baja la altura con <code>-</code> o separa las patas (base de más de 80 mm).</p>
+    <p>Con el robot suspendido, escribe <code>c</code> (marcha lenta, en inglés <em>creep</em>) y comprueba el orden: trasera izquierda, delantera izquierda, trasera derecha, delantera derecha. El cuerpo se balancea hacia adelante y hacia atrás: es intencional, para que el peso quede sobre las tres patas apoyadas en el suelo. Después, ponlo en el suelo.</p>
+<p><code>BALANCO</code> solo mueve el cuerpo hacia adelante y hacia atrás. Si se cae hacia adelante o hacia atrás, aumenta <code>BALANCO</code> (12 → 18) o reduce <code>PASSO</code>. Si se cae hacia un lado, baja la altura con <code>-</code> o separa las patas (base más ancha que 80 mm).</p>
   </div></div>
 
   <div class="step"><div class="b">10</div><div>
     <h3>Trote y comandos</h3>
-    <p>Cuando la marcha lenta sea estable, pasa al trote.</p>
+    <p>Cuando la marcha lenta sea estable, cambia al trote.</p>
 <pre><span class="k">w</span> adelante   <span class="k">s</span> atrás   <span class="k">a</span> gira izq.   <span class="k">d</span> gira der.
 <span class="k">c</span> marcha lenta   <span class="k">x</span> parar   <span class="k">z</span> acostarse   <span class="k">+</span> / <span class="k">-</span> altura</pre>
   </div></div>
@@ -317,10 +318,10 @@
 
 <section id="exemplos"><div class="wrap">
   <span class="chip">Referencia visual</span>
-  <h2>Así queda armado</h2>
+  <h2>Así queda una vez montado</h2>
   <p class="sub">Imágenes generadas con IA para mostrar el objetivo. Todavía no son fotos de un prototipo real.</p>
   <div class="ex">
-    <figure><img src="../assets/robo4-montado.jpg" alt="Ilustración del robot cuadrúpedo armado sobre la mesa" loading="lazy"><figcaption>Robot armado: Uno + shield arriba, batería abajo, dos servos por pata.</figcaption></figure>
+    <figure><img src="../assets/robo4-montado.jpg" alt="Ilustración del robot cuadrúpedo montado sobre la mesa" loading="lazy"><figcaption>Robot montado: Uno + shield arriba, batería abajo, dos servos por pata.</figcaption></figure>
     <figure><img src="../assets/perna-detalhe.jpg" alt="Ilustración de cerca de una pata del robot" loading="lazy"><figcaption>De cerca: la rodilla es un segundo servo en el extremo del muslo.</figcaption></figure>
   </div>
 </div></section>
@@ -328,29 +329,29 @@
 <section id="termos"><div class="wrap">
   <span class="chip">Términos</span>
   <h2>Palabras que aparecen en la guía</h2>
-  <p class="sub">Si alguna palabra te dificultó la lectura, aquí encontrarás su significado.</p>
+  <p class="sub">Si una palabra te impide seguir leyendo, aquí encontrarás su significado.</p>
   <div class="tblwrap"><table class="tbl">
     <tr><th>Término</th><th>Qué es</th></tr>
-    <tr><td>Servo</td><td>Motor pequeño que gira hasta el ángulo indicado (de 0 a 180°) y se queda ahí.</td></tr>
-    <tr><td>Horn</td><td>Brazo plástico que encaja en el eje del servo; ahí se atornilla la pata.</td></tr>
-    <tr><td>Shield</td><td>Placa que se conecta encima del Arduino y agrega conectores.</td></tr>
-    <tr><td>Jumper SEL</td><td>Pieza plástica del shield que conecta los 5 V del Arduino con los servos. Aquí se retira.</td></tr>
-    <tr><td>Terminal</td><td>Conector con tornillo donde se sujeta el cable al apretarlo.</td></tr>
+    <tr><td>Servo</td><td>Motor pequeño que gira hasta el ángulo indicado (0 a 180°) y se queda en esa posición.</td></tr>
+    <tr><td>Horn</td><td>Brazo plástico que encaja en el eje del servo; la pata se atornilla a él.</td></tr>
+    <tr><td>Shield</td><td>Placa que se conecta encima del Arduino y añade conectores.</td></tr>
+    <tr><td>Jumper SEL</td><td>Pieza plástica del shield que conecta los 5 V del Arduino a los servos. Aquí se retira.</td></tr>
+    <tr><td>Bornera</td><td>Conector que sujeta el cable al apretarlo con un tornillo.</td></tr>
     <tr><td>LiPo 2S</td><td>Batería de polímero de litio con 2 celdas en serie: 7,4 V nominales.</td></tr>
-    <tr><td>XT60</td><td>Conector amarillo común en las baterías LiPo; soporta corrientes altas.</td></tr>
-    <tr><td>UBEC</td><td>Regulador que baja el voltaje de la batería a 5–6 V con corriente suficiente para los servos.</td></tr>
+    <tr><td>XT60</td><td>Conector amarillo común en baterías LiPo; soporta una corriente alta.</td></tr>
+    <tr><td>UBEC</td><td>Regulador que reduce el voltaje de la batería a 5–6 V con corriente suficiente para los servos.</td></tr>
     <tr><td>AWG</td><td>Medida del grosor del cable: cuanto menor es el número, más grueso es el cable (18 AWG es más grueso que 20).</td></tr>
-    <tr><td>Cojinete</td><td>Apoyo en el lado opuesto al eje que permite que la pieza gire sin juego.</td></tr>
+    <tr><td>Cojinete</td><td>Soporte en el lado opuesto al eje que permite que la pieza gire sin juego.</td></tr>
     <tr><td>EEPROM</td><td>Memoria del Arduino que no se borra al apagarlo; guarda la calibración.</td></tr>
     <tr><td>Sketch</td><td>Nombre del programa de Arduino (la carpeta con el archivo <code>.ino</code>).</td></tr>
-    <tr><td>Monitor Serial</td><td>Ventana de texto para comunicarte con el Arduino por el cable USB.</td></tr>
-    <tr><td>Step-down</td><td>Regulador que baja el voltaje (el UBEC es un step-down).</td></tr>
+    <tr><td>Monitor Serial</td><td>Ventana de texto donde te comunicas con el Arduino por el cable USB.</td></tr>
+    <tr><td>Step-down</td><td>Regulador que reduce el voltaje (el UBEC es un step-down).</td></tr>
     <tr><td>I2C</td><td>Conexión de 2 cables (A4 y A5 en el Uno) que usan sensores como la IMU.</td></tr>
-    <tr><td>IMU</td><td>Sensor que mide la inclinación y el giro (por ejemplo, MPU-6050).</td></tr>
-    <tr><td>Jack DC / P4</td><td>Conector redondo de alimentación del Uno y el enchufe que se conecta en él.</td></tr>
+    <tr><td>IMU</td><td>Sensor que mide la inclinación y el giro (ej.: MPU-6050).</td></tr>
+    <tr><td>Jack DC / P4</td><td>Conector redondo de alimentación del Uno y el enchufe que se conecta a él.</td></tr>
     <tr><td>FQBN</td><td>Nombre completo de la placa para <code>arduino-cli</code>: <code>arduino:avr:uno</code>.</td></tr>
     <tr><td>Cinemática inversa</td><td>Cálculo que transforma «dónde debe estar el pie» en los ángulos de la cadera y la rodilla.</td></tr>
-    <tr><td>Marcha lenta (creep) y trote</td><td>Formas de caminar: subir un pie a la vez o dos pies en diagonal.</td></tr>
+    <tr><td>Marcha lenta (creep) y trote</td><td>Formas de caminar: un pie en el aire a la vez, o dos pies en diagonal.</td></tr>
   </table></div>
 </div></section>
 
@@ -360,14 +361,14 @@
   <p class="sub">Casi todos los problemas de un cuadrúpedo con servos se deben a la alimentación o a la calibración.</p>
   <div class="tblwrap"><table class="tbl">
     <tr><th>Síntoma</th><th>Causa probable</th><th>Qué hacer</th></tr>
-    <tr><td>El Arduino se reinicia cuando se mueven los servos</td><td>Los servos consumen energía del Uno</td><td>Retira el jumper SEL, alimenta los servos solo con el UBEC y conecta el GND común</td></tr>
-    <tr><td>El servo tiembla cuando está quieto</td><td>Fuente débil o cable delgado</td><td>Usa un UBEC de 5 A o más, cable 18 AWG en la línea de alimentación y una batería cargada</td></tr>
-    <tr><td>El servo se calienta</td><td>Está haciendo fuerza contra el límite</td><td>Ajusta con el comando <code>o</code>; comprueba que la pata no choque con el chasis</td></tr>
-    <tr><td>La pata se dobla hacia el lado equivocado</td><td>Sentido invertido o espinilla montada hacia atrás</td><td>Comprueba que la espinilla apunte hacia delante a 90° (paso 4); si es así, cambia el sentido en <code>SENTIDO[][]</code></td></tr>
+    <tr><td>El Arduino se reinicia cuando se mueven los servos</td><td>Los servos consumen energía del Uno</td><td>Retira el jumper SEL, alimenta los servos solo con el UBEC y conecta GND común</td></tr>
+    <tr><td>El servo tiembla cuando está quieto</td><td>Fuente débil o cable delgado</td><td>UBEC de 5 A o más, cable 18 AWG en la línea de alimentación, batería cargada</td></tr>
+    <tr><td>El servo se calienta</td><td>Está forzando el límite</td><td>Ajusta con el comando <code>o</code>; comprueba que la pata no choque con el chasis</td></tr>
+    <tr><td>La pata se dobla hacia el lado incorrecto</td><td>Sentido invertido o tibia montada hacia atrás</td><td>Comprueba que la tibia apunte hacia adelante a 90° (paso 4); si es así, cambia el sentido en <code>SENTIDO[][]</code></td></tr>
     <tr><td>Camina torcido</td><td>Los lados están calibrados de forma distinta</td><td>Usa el comando <code>m</code> y luego iguala las patas con el comando <code>o</code></td></tr>
-    <tr><td>Se tropieza</td><td>El pie sube poco</td><td>Aumenta <code>ELEVA</code> en el código</td></tr>
+    <tr><td>Se tropieza</td><td>El pie sube poco</td><td>Aumenta <code>ELEVA</code> (constantes al principio de <code>firmware/robo4/robo4.ino</code>)</td></tr>
     <tr><td>Se cae hacia un lado durante el trote</td><td>El paso es demasiado largo o rápido</td><td>Reduce <code>PASSO</code> o aumenta <code>CICLO_TROTE</code></td></tr>
-    <tr><td>No carga el código</td><td>Bluetooth conectado a D0/D1</td><td>Desconecta el módulo durante la carga</td></tr>
+    <tr><td>No carga el código</td><td>Bluetooth conectado a D0/D1</td><td>Apaga el módulo durante la carga</td></tr>
   </table></div>
   <div class="aviso"><strong>Batería LiPo:</strong> cárgala solo con un cargador balanceado y bajo supervisión. No la descargues por debajo de 6,6 V en total. Si la batería está hinchada, deséchala; nunca la uses en el robot.</div>
 </div></section>
@@ -375,11 +376,11 @@
 <section id="roadmap"><div class="wrap">
   <span class="chip">Próximos pasos</span>
   <h2>Después de que camine</h2>
-  <p class="sub">Todo cabe en los pines libres del Uno.</p>
-  <div class="phase"><div class="tag">Ahora</div><div class="d"><strong>Plan, diagramas y código</strong><span>Lista de piezas, cableado, calibración, cinemática y dos marchas. El código compila, pero todavía no se ha probado en un robot armado.</span></div></div>
+  <p class="sub">Todo cabe en los pines que quedaron libres en el Uno.</p>
+  <div class="phase"><div class="tag">Ahora</div><div class="d"><strong>Plan, diagramas y código</strong><span>Lista de piezas, cableado, calibración, cinemática y dos modos de marcha. El código compila; todavía no se ha probado en un robot montado.</span></div></div>
   <div class="phase"><div class="tag">Extra 1</div><div class="d"><strong>Control desde el celular</strong><span>Módulo Bluetooth HC-05 en D0/D1: las mismas letras, enviadas desde una app de terminal serial.</span></div></div>
   <div class="phase"><div class="tag">Extra 2</div><div class="d"><strong>Evitar obstáculos</strong><span>Sensor ultrasónico HC-SR04 en D10/D11: se detiene o gira cuando algo se acerca.</span></div></div>
-  <div class="phase"><div class="tag">Extra 3</div><div class="d"><strong>Equilibrio</strong><span>IMU MPU-6050 en A4/A5: mide la inclinación y corrige la altura de cada pata.</span></div></div>
+  <div class="phase"><div class="tag">Extra 3</div><div class="d"><strong>Equilibrio</strong><span>IMU MPU-6050 en A4/A5: lee la inclinación y corrige la altura de cada pata.</span></div></div>
 </div></section>
 
 <footer>

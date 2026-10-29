@@ -89,13 +89,13 @@
   </g>
   <g id="cotas" font-size="14" fill="#e9e9ee">
     <text x="40" y="680" fill="#FACC15" font-size="16" font-weight="700">Marking dimensions (mm, from the top-left corner of each part)</text>
-    <text x="40" y="706">Wall: axes at 20 and 120 from the end, 20 below the top. Slot 23 × 12.5, from height 13.75 to 26.25; the axis is 6 from the slot end closest to the</text>
-    <text x="40" y="726">wall end.</text>
+    <text x="40" y="706">Wall: axes at 20 and 120 from the end, 20 below the top. Slot 23 × 12.5, from height 13.75 to 26.25; the axis is 6 from the slot end</text>
+    <text x="40" y="726">closest to the wall end.</text>
     <text x="40" y="750">Hip servo tabs: M2 holes at 11.5 and 39.3 (rear servo) and at 100.7 and 128.5 (front servo), at axis height.</text>
-    <text x="40" y="774">Base: Uno centered, board corner at (35.7; 13.4). Uno holes from that corner: (14.0; 2.5) (15.3; 50.7) (66.1; 7.6) (66.1; 35.5). 25 mm M3 standoffs:</text>
-    <text x="40" y="794">the Uno sits above the hip servos.</text>
-    <text x="40" y="818">Thigh: horn hole 8 from the top, centered. Knee axis 63 from the top; slot from 46.2 to 69 (the servo body runs up the thigh, axis at the bottom); M2</text>
-    <text x="40" y="838">tab holes at 43.7 and 71.5.</text>
+    <text x="40" y="774">Base: Uno centered, board corner at (35.7; 13.4). Uno holes from that corner: (14.0; 2.5) (15.3; 50.7) (66.1; 7.6) (66.1; 35.5). 25</text>
+    <text x="40" y="794">mm M3 standoffs: the Uno sits above the hip servos.</text>
+    <text x="40" y="818">Thigh: horn axis hole (3 mm) 8 from the top, centered; horn screw holes: mark them using the horn itself. Knee axis 63 from the top;</text>
+    <text x="40" y="838">slot from 46.2 to 69 (the servo body runs up the thigh, axis at the bottom); M2 tab holes at 43.7 and 71.5.</text>
     <text x="40" y="862">Shin: horn 8 from the top, foot hole 60 below (6 from the bottom edge).</text>
   </g>
 </svg>

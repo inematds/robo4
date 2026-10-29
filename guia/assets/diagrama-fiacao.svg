@@ -79,4 +79,5 @@
     <text x="0" y="134" fill="#e9e9ee" font-size="15">5. Pico de 8 MG90S ≈ 4–6 A: fonte de 5 A no mínimo.</text>
   </g>
   <text x="1160" y="700" fill="#5b5b68" font-size="13" text-anchor="end">robo4 · INEMA.CLUB · confira o seu shield: clones mudam a posição do jumper</text>
+  <text id="fusivel" x="300" y="140" fill="#FACC15" font-size="14" font-weight="700">fusível 7,5 A</text>
 </svg>

@@ -79,4 +79,5 @@
     <text x="0" y="134" fill="#e9e9ee" font-size="15">5. 8 MG90S servos can draw ≈ 4–6 A at peak: use a 5 A source at minimum.</text>
   </g>
   <text x="1160" y="700" fill="#5b5b68" font-size="13" text-anchor="end">robo4 · INEMA.CLUB · check your shield: clones may place the jumper differently</text>
+  <text id="fusivel" x="300" y="140" fill="#FACC15" font-size="14" font-weight="700">7.5 A fuse</text>
 </svg>
